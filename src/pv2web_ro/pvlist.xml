@@ -25,7 +25,7 @@
 
 
   <EPICS_PV PV="vbox:TOD" 				description="IOC current time"  	mne="tod"/>
-  <EPICS_PV PV="vbox:STARTTOD" 			description="IOC boot time"  		mne=goottod/>
+  <EPICS_PV PV="vbox:STARTTOD" 			description="IOC boot time"  		mne="starttod"/>
   <EPICS_PV PV="vbox:HOSTNAME"			description="IOC host name" 		mne="hostname"/>
   <EPICS_PV PV="vbox:ENGINEER"			description="engineer" 				mne="engineer"/>
 

@@ -2,15 +2,19 @@
 <pv2web_ro__config version="1.0">
 
   <PVLIST_FILE 				value="pvlist.xml" />
+  <LOCAL_WWW_LIVEDATA_DIR 	value="localwww" />
+
   <HTML_INDEX_FILE 			value="index.html" />
+  <XML_REPORT_FILE 			value="report.xml" />
   <HTML_RAWREPORT_FILE 		value="raw-report.html" />
   <LIVEDATA_XSL_STYLESHEET 	value="livedata.xsl" />
-  <LOCAL_WWW_LIVEDATA_DIR 	value="localwww" />
-  <LOG_INTERVAL_S 			value="300"  type="float" />
   <RAWTABLE_XSL_STYLESHEET 	value="raw-table.xsl" />
+
+  <LOG_INTERVAL_S 			value="300"  type="float" />
+
   <REPORT_INTERVAL_S 		value="10"  type="float" />
   <SLEEP_INTERVAL_S 		value="0.1"  type="float" />
-  <XML_REPORT_FILE 			value="report.xml" />
+
   <MAINLOOP_COUNTER_TRIGGER value="10000" type="int" />
 
 </pv2web_ro__config>

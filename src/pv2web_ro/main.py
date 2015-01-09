@@ -12,6 +12,7 @@ import datetime
 import epics
 import logging
 from lxml import etree
+import numpy
 import os
 import sys
 import traceback
@@ -34,6 +35,16 @@ class pvwatch(object):
         self.monitor_counter = 0
 
         self.get_pvlist()
+
+        pv_conn = [pv['ch'].connected for pv in self.pvdb.values()]
+        numConnected = numpy.count_nonzero(pv_conn)
+        logMessage("Connected %d of total %d EPICS PVs" % (numConnected, len(self.pvdb)) )
+
+        self.nextReport = getTime()
+        self.nextLog = self.nextReport
+        self.delta_report = datetime.timedelta(seconds=configuration['REPORT_INTERVAL_S'])
+        self.delta_log = datetime.timedelta(seconds=configuration['LOG_INTERVAL_S'])
+        self.mainLoopCount = 0
     
     def start(self):
         '''begin receiving PV updates and posting new web content'''
@@ -179,9 +190,16 @@ def main():
                         help="XML configuration file",
                         default='configuration.xml')
 
+    parser.add_argument('-l', '--log_file', 
+                        action='store', 
+                        help="log file",
+                        default='log_file.txt')
+
     parser.add_argument('-v', '--version', action='version', version=pv2web_ro.__version__)
 
     user_args = parser.parse_args()
+    
+    logging.basicConfig(filename=user_args.log_file, level=logging.INFO)
 
     configuration = read_config.read_xml(user_args.xml_config_file)
     watcher = pvwatch(configuration)

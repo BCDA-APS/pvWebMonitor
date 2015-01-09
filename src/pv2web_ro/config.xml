@@ -6,11 +6,11 @@
   <HTML_RAWREPORT_FILE 		value="raw-report.html" />
   <LIVEDATA_XSL_STYLESHEET 	value="livedata.xsl" />
   <LOCAL_WWW_LIVEDATA_DIR 	value="/data/USAXS_data/localwww/" />
-  <LOG_INTERVAL_S 			value="300"  float="true" />
+  <LOG_INTERVAL_S 			value="300"  type="float" />
   <RAWTABLE_XSL_STYLESHEET 	value="raw-table.xsl" />
-  <REPORT_INTERVAL_S 		value="10"  float="true" />
-  <SLEEP_INTERVAL_S 		value="0.1"  float="true" />
+  <REPORT_INTERVAL_S 		value="10"  type="float" />
+  <SLEEP_INTERVAL_S 		value="0.1"  type="float" />
   <XML_REPORT_FILE 			value="report.xml" />
-  <MAINLOOP_COUNTER_TRIGGER value="10000" int="true" />
+  <MAINLOOP_COUNTER_TRIGGER value="10000" type="int" />
 
 </pv2web_ro__config>

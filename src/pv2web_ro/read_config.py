@@ -30,10 +30,11 @@ def read_xml(xml_file):
     for node in root:
         key = node.tag
         value = node.get('value')
-        if node.get('float', 'false').lower() == 'true':
-            value = float(value)
-        if node.get('int', 'false').lower() == 'true':
-            value = int(value)
+        data_type = node.get('type', 'string').lower()
+        if data_type in ( 'float', 'int' ):
+            # represent number types as directed
+            typeconversion = dict(float=float, int=int)[data_type]
+            value = typeconversion(value)
         conf[key] = value
         
     return conf

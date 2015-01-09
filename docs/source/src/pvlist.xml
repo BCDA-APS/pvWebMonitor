@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="pvlist.xsl" ?>
+
+<!-- You can edit this file with a text editor -->
+
+<pvwatch version="1.0">
+
+  <EPICS_PV PV="ioc:alldone" 
+	  description="IOC motors moving" 
+	  mne="ioc_alldone"
+	  />
+
+  <EPICS_PV PV="APS:SRcurrentAI" 
+	  description="APS storage ring current, mA" 
+	  display_format="%.2f" 
+	  mne="SR_current"
+	  />
+
+  <EPICS_PV PV="ID:Energy"    
+	  mne="Und_E" 
+	  description="ID E, keV"  
+	  display_format="%.4f"
+	  />
+  <EPICS_PV PV="dcm:BraggEAO" 
+	  mne="DCM_E" 
+	  description="DCM E, keV" 
+	  display_format="%.4f"
+	  />
+
+  <EPICS_PV PV="PSS:STA_A_FES_OPEN_PL.VAL" 
+	  description="white shutter opened" 
+	  mne="white_shtr_opened"
+	  />
+  <EPICS_PV PV="PSS:STA_B_SBS_OPEN_PL.VAL" 
+	  description="mono shutter opened" 
+	  mne="mono_shtr_opened"
+	  />
+  <EPICS_PV PV="PSS:D_BEAM_READY" 
+	  _ignore_="true"  
+	  description="PSS: D Beam Ready" 
+	  mne="D_beam_ready"
+	  />
+
+</pvwatch>
+

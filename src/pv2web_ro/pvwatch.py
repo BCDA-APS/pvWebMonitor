@@ -21,8 +21,6 @@ import time             # provides sleep()
 from xml.dom import minidom
 from xml.etree import ElementTree
 import epics            # manages EPICS (PyEpics) connections for Python 2.6+
-# TODO: refactor localConfig.py into XML
-import localConfig      # definitions for 15ID
 # TODO: generalize wwwServerTransfers to support localConfig
 import wwwServerTransfers
 import traceback
@@ -95,7 +93,7 @@ def EPICS_monitor_receiver(*args, **kws):
 def add_pv(mne, pv, desc, fmt):
     '''Connect to another EPICS (PyEpics) process variable'''
     if pv in pvdb:
-        raise Exception("%s already defined by id=%s" % (pv, pvdb[pv]['id']))
+        raise Exception("key '%s' already defined by id=%s" % (pv, pvdb[pv]['id']))
     ch = epics.PV(pv)
     #ch.connect()
     entry = {
@@ -127,7 +125,7 @@ def add_pv(mne, pv, desc, fmt):
         units = cv['units']
         if units in unit_renames:
             units = unit_renames[units]
-	entry['units'] = units
+        entry['units'] = units
     update_pvdb(pv, ch.get())   # initialize the cache
 
 

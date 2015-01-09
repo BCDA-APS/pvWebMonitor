@@ -9,7 +9,7 @@ read XML configuration file for `pv2web_ro` package
 
 
 import os
-import lxml.etree
+from lxml import etree
 
 
 ROOT_TAG = 'pv2web_ro__config'
@@ -19,7 +19,7 @@ def read_xml(xml_file):
     '''return the configuration details as a dictionary'''
     if not os.path.exists(xml_file):
         raise IOError(xml_file + ' file not found')
-    tree = lxml.etree.parse(xml_file)
+    tree = etree.parse(xml_file)
     root = tree.getroot()
     if root.tag != ROOT_TAG:
         msg = 'XML root tag must be ' + ROOT_TAG

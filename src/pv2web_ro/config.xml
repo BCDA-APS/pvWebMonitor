@@ -5,7 +5,7 @@
   <HTML_INDEX_FILE 			value="index.html" />
   <HTML_RAWREPORT_FILE 		value="raw-report.html" />
   <LIVEDATA_XSL_STYLESHEET 	value="livedata.xsl" />
-  <LOCAL_WWW_LIVEDATA_DIR 	value="/data/USAXS_data/localwww/" />
+  <LOCAL_WWW_LIVEDATA_DIR 	value="localwww" />
   <LOG_INTERVAL_S 			value="300"  type="float" />
   <RAWTABLE_XSL_STYLESHEET 	value="raw-table.xsl" />
   <REPORT_INTERVAL_S 		value="10"  type="float" />

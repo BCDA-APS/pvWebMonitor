@@ -11,7 +11,7 @@ pv2web_ro
 import datetime
 import epics
 import logging
-import lxml
+from lxml import etree
 import os
 import sys
 import traceback
@@ -46,7 +46,7 @@ class pvwatch(object):
             logMessage('could not find file: ' + pvlist_file)
             return
         try:
-            tree = lxml.etree.parse(pvlist_file)
+            tree = etree.parse(pvlist_file)
         except:
             logMessage('could not parse file: ' + pvlist_file)
             return
@@ -60,7 +60,7 @@ class pvwatch(object):
                 try:
                     self.add_pv(mne, pv, desc, fmt)
                 except:
-                    msg = "%s: problem connecting: %s" % (pvlist_file, lxml.etree.tostring(key))
+                    msg = "%s: problem connecting: %s" % (pvlist_file, etree.tostring(key))
                     logException(msg)
 
     def add_pv(self, mne, pv, desc, fmt):
@@ -147,6 +147,23 @@ def logException(troublemaker):
         logMessage(_)
     for _ in traceback.format_exc().splitlines():
         logMessage('\t' + _)
+
+
+def writeFile(output_file, contents):
+    '''write contents to file'''
+    f = open(output_file, 'w')
+    f.write(contents)
+    f.close()
+
+
+def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
+    '''transform an XML file using an XSLT'''
+    src_doc = etree.parse(src_xml_file)
+    xslt_doc = etree.parse(xslt_file)
+    transform = etree.XSLT(xslt_doc)
+    result_doc = transform(src_doc)
+    buf = etree.tostring(result_doc, pretty_print=True)
+    writeFile(result_xml_file, buf)
 
 
 def main():

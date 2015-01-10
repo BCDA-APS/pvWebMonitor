@@ -128,11 +128,12 @@ class pvwatch(object):
             'VDC':     'V',
             'eng':     '',
         }
-        if 'units' in cv:
+        if cv is not None and 'units' in cv:
             units = cv['units']
             if units in unit_renames:
                 units = unit_renames[units]
             entry['units'] = units
+        # FIXME: what to do if PV did not connect? (ch.connected == False)
         self.update_pvdb(pv, ch.get())   # initialize the cache
 
     def update_pvdb(self, pv, raw_value):

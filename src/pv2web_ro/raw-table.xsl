@@ -29,12 +29,12 @@
                 <hr />
                 <p>
                     <small>
-                        data gathered by: <xsl:value-of select="/pv2web_ro/writer"/>
+                        data gathered by: <tt><xsl:value-of select="/pv2web_ro/written_by"/></tt>
                     </small>
                 </p>
                 <p>
                     <small>
-                        report page: $Id: raw-table.xsl 803 2013-04-20 05:19:52Z jemian $
+                        report page: <tt>raw-table.xsl</tt>
                     </small>
                 </p>
             </body>

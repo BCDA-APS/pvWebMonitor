@@ -28,13 +28,14 @@ def read_xml(xml_file):
     
     conf = {}
     for node in root:
-        key = node.tag
-        value = node.get('value')
-        data_type = node.get('type', 'string').lower()
-        if data_type in ( 'float', 'int' ):
-            # represent number types as directed
-            typeconversion = dict(float=float, int=int)[data_type]
-            value = typeconversion(value)
-        conf[key] = value
+        if not isinstance(node, etree._Comment):
+            key = node.tag
+            value = node.get('value')
+            data_type = node.get('type', 'string').lower()
+            if data_type in ( 'float', 'int' ):
+                # represent number types as directed
+                typeconversion = dict(float=float, int=int)[data_type]
+                value = typeconversion(value)
+            conf[key] = value
         
     return conf

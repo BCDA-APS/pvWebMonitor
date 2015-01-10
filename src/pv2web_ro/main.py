@@ -15,6 +15,7 @@ from lxml import etree
 import numpy
 import os
 import sys
+import time
 import traceback
 import pv2web_ro
 
@@ -40,15 +41,36 @@ class pvwatch(object):
         numConnected = numpy.count_nonzero(pv_conn)
         logMessage("Connected %d of total %d EPICS PVs" % (numConnected, len(self.pvdb)) )
 
-        self.nextReport = getTime()
-        self.nextLog = self.nextReport
-        self.delta_report = datetime.timedelta(seconds=configuration['REPORT_INTERVAL_S'])
-        self.delta_log = datetime.timedelta(seconds=configuration['LOG_INTERVAL_S'])
-        self.mainLoopCount = 0
-    
     def start(self):
         '''begin receiving PV updates and posting new web content'''
-        pass
+        nextReport = getTime()
+        nextLog = nextReport
+        delta_report = datetime.timedelta(seconds=self.configuration['REPORT_INTERVAL_S'])
+        delta_log = datetime.timedelta(seconds=self.configuration['LOG_INTERVAL_S'])
+        mainLoopCount = 0
+
+        while True:
+            mainLoopCount = (mainLoopCount + 1) % self.configuration['MAINLOOP_COUNTER_TRIGGER']
+
+            dt = getTime()
+            epics.ca.poll()
+        
+            if mainLoopCount == 0:
+                logMessage(" %s times through main loop" % self.configuration['MAINLOOP_COUNTER_TRIGGER'])
+        
+            if dt >= nextReport:
+                nextReport = dt + delta_report
+        
+                try: self.report()                                   # write contents of pvdb to a file
+                except Exception: logException("report()")
+        
+            if dt >= nextLog:
+                nextLog = dt + delta_log
+                msg = "checkpoint, %d EPICS monitor events received" % self.monitor_counter
+                logMessage(msg)
+                self.monitor_counter = 0  # reset
+
+            time.sleep(self.configuration['SLEEP_INTERVAL_S'])
     
     def get_pvlist(self):
         '''get the PVs from the XML file'''
@@ -133,6 +155,71 @@ class pvwatch(object):
         self.update_pvdb(pv, kws['value'])   # cache the last known good value
         self.monitor_counter += 1
 
+    def buildReport(self):
+        '''build the report'''
+        root = etree.Element("pv2web_ro")
+        root.set("version", "1")
+        node = etree.SubElement(root, "written_by")
+        node.text = 'pv2web_ro/pvwatch'
+        node = etree.SubElement(root, "datetime")
+        node.text = str(getTime()).split('.')[0]
+    
+        sorted_id_list = sorted(self.xref)
+        fields = ("name", "id", "description", "timestamp",
+                  "counter", "units", "value", "raw_value", "format")
+    
+        for mne in sorted_id_list:
+            pv = self.xref[mne]
+            entry = self.pvdb[pv]
+    
+            node = etree.SubElement(root, "pv")
+            node.set("id", mne)
+            node.set("name", pv)
+    
+            for item in fields:
+                subnode = etree.SubElement(node, item)
+                subnode.text = str(entry[item])
+
+        pi_xml = etree.ProcessingInstruction('xml', 'version="1.0"')
+        pi_xsl = etree.ProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="pvlist.xsl"')
+        xmlText = etree.tostring(pi_xml, pretty_print=True)
+        xmlText += etree.tostring(pi_xsl, pretty_print=True)
+        xmlText += etree.tostring(root, pretty_print=True)
+
+        return xmlText
+
+    def report(self):
+        '''write the values out to files'''
+    
+        xmlText = self.buildReport()
+    
+        # WWW directory for livedata (absolute path)
+        localDir = self.configuration['LOCAL_WWW_LIVEDATA_DIR']
+    
+        #--- write the XML with the raw data from EPICS
+        raw_xml = self.configuration['XML_REPORT_FILE']
+        abs_raw_xml = os.path.join(localDir, raw_xml)
+        writeFile(abs_raw_xml, xmlText)
+        copyToWebServer(abs_raw_xml, raw_xml)
+    
+        #--- xslt transforms from XML to HTML
+    
+        # make the index.html file
+        index_html = self.configuration['HTML_INDEX_FILE']  # short name
+        abs_index_html = os.path.join(localDir, index_html)  # absolute path
+        xslt_transformation(self.configuration['LIVEDATA_XSL_STYLESHEET'], abs_raw_xml, abs_index_html)
+        copyToWebServer(abs_index_html, index_html)  # copy to XSD
+    
+        # display the raw data (but pre-convert it in an html page)
+        raw_html = self.configuration['HTML_RAWREPORT_FILE']
+        abs_raw_html = os.path.join(localDir, raw_html)
+        xslt_transformation(self.configuration['RAWTABLE_XSL_STYLESHEET'], abs_raw_xml, abs_raw_html)
+        copyToWebServer(abs_raw_html, raw_html)
+    
+        # also copy the raw table XSLT
+        xslFile = self.configuration['RAWTABLE_XSL_STYLESHEET']
+        copyToWebServer(os.path.join(localDir, xslFile), xslFile)
+
 
 def getTime():
     return datetime.datetime.now()
@@ -175,6 +262,11 @@ def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
     result_doc = transform(src_doc)
     buf = etree.tostring(result_doc, pretty_print=True)
     writeFile(result_xml_file, buf)
+
+
+def copyToWebServer(local_file, web_server_file):
+    # scpToWebServer(os.path.join(localDir, xslFile), xslFile)
+    pass
 
 
 def main():

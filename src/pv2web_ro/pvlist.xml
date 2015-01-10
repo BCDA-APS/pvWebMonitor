@@ -26,13 +26,14 @@
 
   <EPICS_PV PV="vbox:TOD" 				description="IOC current time"  	mne="tod"/>
   <EPICS_PV PV="vbox:STARTTOD" 			description="IOC boot time"  		mne="starttod"/>
+  <EPICS_PV PV="vbox:UPTIME" 			description="time IOC running"  	mne="uptime"/>
   <EPICS_PV PV="vbox:HOSTNAME"			description="IOC host name" 		mne="hostname"/>
   <EPICS_PV PV="vbox:ENGINEER"			description="engineer" 				mne="engineer"/>
 
   <EPICS_PV PV="vbox:m1.DMOV"  description="VDM_Stripe motor done moving" mne="VDM_Stripe_dmov"/>
-  <EPICS_PV PV="vbox:m1.RBV"   description="VDM_Stripe motor, mm" display_format="%.3f" mne="VDM_Stripe"/>
+  <EPICS_PV PV="vbox:m1.RBV"   description="VDM_Stripe motor" display_format="%.3f" mne="VDM_Stripe"/>
   <EPICS_PV PV="vbox:m2.DMOV"  description="DCM_theta motor done moving" mne="DCM_theta_dmov"/>
-  <EPICS_PV PV="vbox:m2.RBV"   description="DCM_theta motor, mm" display_format="%.6f" mne="DCM_theta"/>
+  <EPICS_PV PV="vbox:m2.RBV"   description="DCM_theta motor" display_format="%.6f" mne="DCM_theta"/>
 
   <EPICS_PV PV="vbox:alldone" description="all motors done moving" mne="vbox_alldone"/>
   <EPICS_PV PV="vbox:moving" description="number of motors moving" mne="vbox_moving"/>

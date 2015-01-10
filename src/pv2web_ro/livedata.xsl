@@ -8,7 +8,7 @@
             <head>
                 <meta http-equiv="Pragma" content="no-cache"/>
                 <meta http-equiv="Refresh" content="300"/>
-                <title>USAXS: status</title>
+                <title>Instrument Status</title>
                 <style type="text/css">
                     
                     body {
@@ -80,7 +80,7 @@
                 <table border="0" width="96%" rules="none" bgcolor="darkblue">
                     <tr>
 						<td align="center" class="description">
-			 			    <font color="white">IOC status</font>
+			 			    <font color="white">Instrument Status</font>
 						</td>
 				    </tr>
 		            <tr>

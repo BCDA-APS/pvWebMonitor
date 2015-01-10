@@ -53,3 +53,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+
+# pv2web_ro local application
+src/pv2web_ro/log_file.txt

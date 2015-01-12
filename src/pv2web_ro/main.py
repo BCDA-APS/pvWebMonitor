@@ -50,8 +50,5 @@ def main():
 
 
 if __name__ == '__main__':
-    '''simple test program for developers'''
-    sys.argv.append('config.xml')
-    #sys.argv.append('-h')
-    #sys.argv.append('-v')
+    '''command-line interface'''
     main()

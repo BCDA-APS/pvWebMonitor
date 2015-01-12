@@ -26,6 +26,9 @@ class NoneEpicsValue(Exception): pass
 '''pv not in pvdb'''
 class PvNotRegistered(Exception): pass
 
+'''Could not parse XML file'''
+class CouldNotParseXml(Exception): pass
+
 
 class pvwatch(object):
     
@@ -36,6 +39,7 @@ class pvwatch(object):
         self.monitor_counter = 0
 
         self.get_pvlist()
+        logMessage('read list of PVs to monitor')
 
         pv_conn = [pv['ch'].connected for pv in self.pvdb.values()]
         numConnected = numpy.count_nonzero(pv_conn)
@@ -81,8 +85,9 @@ class pvwatch(object):
         try:
             tree = etree.parse(pvlist_file)
         except:
-            logMessage('could not parse file: ' + pvlist_file)
-            return
+            msg = 'could not parse file: ' + pvlist_file
+            logMessage(msg)
+            raise CouldNotParseXml(msg)
 
         for key in tree.findall(".//EPICS_PV"):
             if key.get("_ignore_", "false").lower() == "false":
@@ -295,7 +300,11 @@ def main():
     logging.basicConfig(filename=user_args.log_file, level=logging.INFO)
 
     configuration = read_config.read_xml(user_args.xml_config_file)
+    logMessage('read configuration file: ' + user_args.xml_config_file)
+
     watcher = pvwatch(configuration)
+
+    logMessage('starting the monitor and report cycle')
     watcher.start()
 
 

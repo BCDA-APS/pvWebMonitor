@@ -25,6 +25,16 @@ class CouldNotParseXml(Exception): pass
 
 
 class PvWatch(object):
+    '''
+    Core function of the pv2web_ro package
+    
+    To call this code, first define ``configuration=dict()`` with terms
+    as defined in :meth:`read_config.read_xml`, then statements such as::
+    
+        watcher = PvWatch(configuration)
+        watcher.start()
+    
+    '''
     
     def __init__(self, configuration):
         self.configuration = configuration  # from XML configuration file
@@ -136,6 +146,12 @@ class PvWatch(object):
         self.update_pvdb(pv, ch.get())   # initialize the cache
 
     def update_pvdb(self, pv, raw_value):
+        '''
+        log PV value to the cache in pvdb
+
+        :param str pv: name of EPICS PV
+        :param obj raw_value: could be str, float, int, or ...
+        '''
         if pv not in self.pvdb:
             msg = '!!!ERROR!!! %s was not found in pvdb!' % pv
             raise PvNotRegistered, msg

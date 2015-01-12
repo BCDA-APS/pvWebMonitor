@@ -17,11 +17,13 @@ import traceback
 
 
 def copyToWebServer(local_file, web_server_file):
+    '''placeholder in case a more advanced copy method is needed'''
     # scpToWebServer(os.path.join(localDir, xslFile), xslFile)
     pass
 
 
 def getTime():
+    '''simple wrapper for common timenow() function'''
     return datetime.datetime.now()
 
 
@@ -39,7 +41,11 @@ def logMessage(message):
 
 
 def logException(troublemaker):
-    '''write an exception report to the log file'''
+    '''
+    write an exception report to the log file
+
+    :param obj troublemaker: instance of Exception
+    '''
     msg = "problem with %s:" % troublemaker
     for _ in msg.splitlines():
         logMessage(_)
@@ -48,14 +54,25 @@ def logException(troublemaker):
 
 
 def writeFile(output_file, contents):
-    '''write contents to file'''
+    '''
+    write contents to file
+
+    :param str output_file: file to be written (path is optional)
+    :param str contents: text to write in *output_file*
+    '''
     f = open(output_file, 'w')
     f.write(contents)
     f.close()
 
 
 def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
-    '''transform an XML file using an XSLT'''
+    '''
+    transform an XML file using an XSLT
+
+    :param str xslt_file: name of XSLT file
+    :param str src_xml_file: name of XML file
+    :param str result_xml_file: name of output XML file
+    '''
     src_doc = etree.parse(src_xml_file)
     xslt_doc = etree.parse(xslt_file)
     transform = etree.XSLT(xslt_doc)

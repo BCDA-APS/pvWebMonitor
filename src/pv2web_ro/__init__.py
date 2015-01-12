@@ -3,7 +3,7 @@ __package_name__        = u'pv2web_ro'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
 
-__version__             = u'2015.0112.1'
+__version__             = u'2015.0112.2'
 __release__             = __version__
 __author__              = u'Pete R. Jemian'
 __email__               = u'jemian@anl.gov'
@@ -14,10 +14,9 @@ __author_email__        = __email__
 __copyright__           = u'2005-2015, UChicago Argonne, LLC'
 # __license_url__         = u''
 __license__             = u'UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)'
-__url__                 = u'https://github.com/prjemian/pv2web_ro/'
-#__url__                 = u'http://pv2web_ro.readthedocs.org'
-__download_url__        = __url__
-__keywords__            = ['EPICS', 'tool', 'HTML']
+__url__                 = u'http://pv2web_ro.readthedocs.org'
+__download_url__        = u'https://github.com/prjemian/pv2web_ro.git'
+__keywords__            = ['EPICS', 'PV', 'tool', 'HTML']
 __requires__            = ['epics', 'lxml', 'numpy']
 
 __classifiers__ = [

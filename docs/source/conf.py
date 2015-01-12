@@ -44,8 +44,8 @@ class Mock(object):
             return Mock()
 
 MOCK_MODULES = pv2web_ro.__requires__
-MOCK_MODULES.append('epics')
-MOCK_MODULES.append('lxml')
+# MOCK_MODULES.append('epics')
+# MOCK_MODULES.append('lxml')
 
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = Mock()

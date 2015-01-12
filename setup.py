@@ -31,7 +31,7 @@ setup (name             = pv2web_ro.__package_name__,        # pv2web_ro
        keywords         = pv2web_ro.__keywords__,
        install_requires = requires,
        platforms        = 'any',
-       package_dir      = {'': 'src'},
+       package_dir      = {'pv2web_ro': 'src/pv2web_ro'},
        #packages         = find_packages(),
        packages         = [pv2web_ro.__package_name__, ],
        package_data     = dict(pv2web_ro=[]),

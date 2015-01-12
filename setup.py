@@ -38,7 +38,7 @@ setup (name             = pv2web_ro.__package_name__,        # pv2web_ro
        classifiers      = pv2web_ro.__classifiers__,
        entry_points={
           # create & install console_scripts in <python>/bin
-          'console_scripts': ['pv2web_ro = pv2web_ro.main:main'],
+          'console_scripts': ['pv2web_ro = pv2web_ro.main:main', ],
           #'gui_scripts': ['pv2web_ro = pv2web_ro.main:main'],
           },
       )

@@ -6,6 +6,7 @@ Contents
    :glob:
 
    configuration/index
+   example/index
    src/index
    changes
    license

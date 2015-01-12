@@ -5,8 +5,8 @@ Contents
    :maxdepth: 2
    :glob:
 
-   src/*
-   install
+   configuration/index
+   src/index
    changes
    license
 

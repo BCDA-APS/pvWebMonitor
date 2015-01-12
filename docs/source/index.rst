@@ -4,3 +4,8 @@
    :maxdepth: 1
    
    contents
+
+-----
+
+:version: |version|
+:published: |today|

@@ -2,6 +2,34 @@
 
 '''
 pv2web_ro.main
+
+USAGE::
+
+    jemian@gov:~$ pv2web_ro
+    usage: pv2web_ro [-h] [-l LOG_FILE] [-v] xml_config_file
+    pv2web_ro: error: too few arguments
+
+HELP::
+
+    jemian@gov:~$ pv2web_ro -h
+    usage: pv2web_ro [-h] [-l LOG_FILE] [-v] xml_config_file
+    
+    pv2web_ro: post EPICS PVs to read-only web page
+    
+    positional arguments:
+      xml_config_file       XML configuration file
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -l LOG_FILE, --log_file LOG_FILE
+                            log file
+      -v, --version         show program's version number and exit
+
+VERSION::
+
+    jemian@gov:~$ pv2web_ro -v
+    2015.0112.0
+
 '''
 
 # Copyright (c) 2005-2015, UChicago Argonne, LLC.
@@ -9,7 +37,6 @@ pv2web_ro.main
 
 
 import logging
-import sys
 
 import pv2web_ro
 import pvwatch
@@ -17,6 +44,7 @@ import utils
 
 
 def main():
+    '''entry point for the command-line interface'''
     import argparse
     import read_config
     
@@ -50,5 +78,5 @@ def main():
 
 
 if __name__ == '__main__':
-    '''command-line interface'''
+    '''call the command-line interface'''
     main()

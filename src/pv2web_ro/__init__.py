@@ -18,7 +18,7 @@ __url__                 = u'https://github.com/prjemian/pv2web_ro/'
 #__url__                 = u'http://pv2web_ro.readthedocs.org'
 __download_url__        = __url__
 __keywords__            = ['EPICS', 'tool', 'HTML']
-__requires__            = ['epics', 'lxml']
+__requires__            = ['epics', 'lxml', 'numpy']
 
 __classifiers__ = [
             'Development Status :: 4 - Beta',

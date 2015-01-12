@@ -40,12 +40,12 @@
 
   <EPICS_PV PV="ino:cr:rate"       description="Arduino update rate"  mne="arduino_rate" />
   <EPICS_PV PV="ino:cr:ai0"        description="Arduino AI0"   display_format="%.3f" mne="ai0" />
-  <EPICS_PV PV="ino:cr:ai0:mean"   description="Arduino <AI0>" display_format="%.4f" mne="ai0_mean" />
+  <EPICS_PV PV="ino:cr:ai0:mean"   description="Arduino mean AI0" display_format="%.4f" mne="ai0_mean" />
   <EPICS_PV PV="ino:cr:ai1"        description="Arduino AI1"   display_format="%.3f" mne="ai1" />
-  <EPICS_PV PV="ino:cr:ai1:mean"   description="Arduino <AI1>" display_format="%.4f" mne="ai1_mean" />
+  <EPICS_PV PV="ino:cr:ai1:mean"   description="Arduino mean AI1" display_format="%.4f" mne="ai1_mean" />
   <EPICS_PV PV="ino:cr:ai2"        description="Arduino AI2"   display_format="%.3f" mne="ai2" />
-  <EPICS_PV PV="ino:cr:ai2:mean"   description="Arduino <AI2>" display_format="%.4f" mne="ai2_mean" />
-  <EPICS_PV PV="ino:cr:ai3"        description="Arduino AI3"   display_format="%.3f" mne="ai3" />
-  <EPICS_PV PV="ino:cr:ai3:mean"   description="Arduino <AI3>" display_format="%.4f" mne="ai3_mean" />
+  <EPICS_PV PV="ino:cr:ai2:mean"   description="Arduino mean AI2" display_format="%.4f" mne="ai2_mean" />
+  <EPICS_PV PV="ino:cr:ai3"        description="Arduino AI3"   display_format="%.3f" mne="ai3" _ignore_="true" />
+  <EPICS_PV PV="ino:cr:ai3:mean"   description="Arduino mean AI3" display_format="%.4f" mne="ai3_mean" />
 
 </pvwatch>

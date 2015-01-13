@@ -9,7 +9,6 @@
             <body>
                 <h1>pv2web_ro: EPICS process variables to be monitored and reported</h1>
                 <small>
-                <p>XML subversion ID: <xsl:value-of select="pvwatch/SVN/@svnid"/></p>
                 <p>
                 	XML version: 
                 	<xsl:value-of select="pvwatch/@version"/>

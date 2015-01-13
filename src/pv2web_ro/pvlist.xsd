@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+XML Schema to validate the pvlist.xml file
+
+# Copyright (c) 2005-2015, UChicago Argonne, LLC.
+# See LICENSE file for details.
+ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="pvwatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="definition" type="definition_type" maxOccurs="unbounded" minOccurs="0" />
+        <xs:element name="EPICS_PV" type="pv_type" maxOccurs="unbounded" />
+      </xs:sequence>
+      
+      <xs:attributeGroup ref="version_type" />
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="definition_type" mixed="true">
+    <!-- used to tell humans what the terms mean in a pvlist.xml file -->
+    <xs:attribute name="name" use="required" type="xs:NCName" />
+  </xs:complexType>
+
+  <xs:complexType name="pv_type">
+    <!-- defines the declaration of one PV to be monitored -->
+    <xs:attribute name="PV" type="xs:NMTOKEN" use="required" />
+    <xs:attribute name="description" type="xs:string" use="required" />
+    <xs:attribute name="display_format" type="xs:string" use="optional" default="%s" />
+    <xs:attribute name="mne" type="xs:NCName" use="required" />
+    <xs:attribute name="_ignore_" type="xs:boolean" use="optional" default="false" />
+  </xs:complexType>
+  
+  <xs:attributeGroup name="version_type">
+    <xs:attribute name="version" use="required">
+      <!-- allowed version(s) of the config.xml format -->
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <!-- only allowed version -->
+          <xs:enumeration value="1.0" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+</xs:schema>

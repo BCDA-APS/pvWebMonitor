@@ -59,3 +59,4 @@ target/
 src/pv2web_ro/log_file.txt
 src/pv2web_ro/pvlist.xml
 src/pv2web_ro/localwww
+src/pv2web_ro/www_project

@@ -8,7 +8,6 @@ setup a new project directory
 
 
 import os
-import sys
 
 
 PROJECT_SOURCE_DIR = 'project'
@@ -53,18 +52,3 @@ def _ok_to_proceed_(src_files, new_files):
         if fname in src_files:
             return False
     return True
-
-
-# if __name__ == '__main__':
-#     '''call the command-line interface'''
-#     import time
-#     path = 'www_test'
-#     if os.path.exists(path):
-#         for fname in os.listdir(path):
-#             dest = os.path.join(path, fname)
-#             os.remove(dest)
-#         os.rmdir(path)
-#         time.sleep(0.1)
-#     if not os.path.exists(path):
-#         os.mkdir(path)
-#     main(path)

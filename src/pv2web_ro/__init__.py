@@ -17,7 +17,7 @@ __license__             = u'UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICEN
 __url__                 = u'http://pv2web_ro.readthedocs.org'
 __download_url__        = u'https://github.com/prjemian/pv2web_ro.git'
 __keywords__            = ['EPICS', 'PV', 'tool', 'HTML']
-__requires__            = ['epics', 'lxml', 'numpy']
+__requires__            = ['pyepics', 'lxml', 'numpy']
 
 __classifiers__ = [
             'Development Status :: 4 - Beta',

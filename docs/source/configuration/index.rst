@@ -8,6 +8,7 @@ Configuration
    Add this to the command line options with "--initialize" requiring a destination directory.
    Raise exceptions if the destination directory has files that would be overwritten.
 
+# install the *pv2web_ro* package into your Python environment
 # initialize the project configuration directory
 # identify the web server directory to be used
 # edit config.xml
@@ -25,6 +26,7 @@ Configuration
    :glob:
 
    install
+   init
    pvlist
    config
    manage

@@ -10,7 +10,7 @@ under :meth:`pv2web_ro.read_config.read_xml`
    
       .. rubric:: Example ``config.xml`` file.
       
-      .. literalinclude:: ../../../src/pv2web_ro/config.xml
+      .. literalinclude:: ../../../src/pv2web_ro/project/config.xml
          :tab-width: 4
          :linenos:
          :language: guess

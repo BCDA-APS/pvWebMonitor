@@ -4,9 +4,9 @@
 pv2web_ro
 =========
 
--------------------------------------------------
+------------------------------------------------
 post EPICS PVs to read-only (static) web page(s)
--------------------------------------------------
+------------------------------------------------
 
 :author: 	Pete R. Jemian
 :email:  	jemian@anl.gov
@@ -15,3 +15,8 @@ post EPICS PVs to read-only (static) web page(s)
 :docs:      http://pv2web_ro.readthedocs.org
 :git:       https://github.com/prjemian/pv2web_ro.git
 :PyPI:      https://pypi.python.org/pypi/pv2web_ro 
+
+
+.. note:: The documentation of **pv2web_ro** is being developed now.
+   Entire sections may be incomplete or missing.
+

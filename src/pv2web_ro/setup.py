@@ -25,3 +25,46 @@ def main(new_directory):
     '''
     if not os.path.exists(new_directory):
         raise RuntimeError('new project directory must exist: ' + new_directory)
+    
+    src_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), PROJECT_SOURCE_DIR)
+    src_files = os.listdir(src_path)
+    new_files = os.listdir(new_directory)
+    
+    if _ok_to_proceed_(src_files, new_files):
+        import shutil
+        for fname in src_files:
+            # TODO: configure each file for local machine
+            src = os.path.join(src_path, fname)
+            dest = os.path.join(new_directory, fname)
+            shutil.copyfile(src, dest)
+    else:
+        raise RuntimeError('new project directory contains files that would be overwritten: ' + new_directory)
+
+
+def _ok_to_proceed_(src_files, new_files):
+    '''
+    not ok if any src_files are in new_files list
+    
+    :param [str] src_files: list of file names in source directory
+    :param [str] new_files: list of file names in new directory
+    '''
+    if len(new_files) == 0: return True
+    for fname in new_files:
+        if fname in src_files:
+            return False
+    return True
+
+
+# if __name__ == '__main__':
+#     '''call the command-line interface'''
+#     import time
+#     path = 'www_test'
+#     if os.path.exists(path):
+#         for fname in os.listdir(path):
+#             dest = os.path.join(path, fname)
+#             os.remove(dest)
+#         os.rmdir(path)
+#         time.sleep(0.1)
+#     if not os.path.exists(path):
+#         os.mkdir(path)
+#     main(path)

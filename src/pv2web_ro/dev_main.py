@@ -15,9 +15,11 @@ import main
 
 if __name__ == '__main__':
     '''start program with common code for developers'''
-    sys.argv.append('-h')
+    #sys.argv.append('-h')
     #sys.argv.append('-v')
-    #sys.argv.append('--setup')
-    #sys.argv.append('this_thing')
     #sys.argv.append('config.xml')
+    # - - - - - - - - -
+    # this option is exclusive of the others
+    sys.argv.append('--setup')
+    sys.argv.append('./www')
     main.main()

@@ -34,7 +34,7 @@ setup (name             = pv2web_ro.__package_name__,        # pv2web_ro
        package_dir      = {'pv2web_ro': 'src/pv2web_ro'},
        #packages         = find_packages(),
        packages         = [str(pv2web_ro.__package_name__), ],
-       #package_data     = {'pv2web_ro': []},
+       package_data     = {'pv2web_ro': ['project/*']},
        classifiers      = pv2web_ro.__classifiers__,
        entry_points={
           # create & install console_scripts in <python>/bin

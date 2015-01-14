@@ -3,6 +3,8 @@ The `manage.csh` file
 
 .. note:: tba
 
+.. issue #2: refactor manage.csh into manage.sh
+
 explanation ...
 
    .. compound::

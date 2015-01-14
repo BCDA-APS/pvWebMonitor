@@ -3,7 +3,8 @@ The `config.xml` file
 
 .. note:: tba
 
-explanation ...
+need to define values for each item listed in the table 
+under :meth:`pv2web_ro.read_config.read_xml`
 
    .. compound::
    

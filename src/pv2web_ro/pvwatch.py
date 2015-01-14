@@ -211,32 +211,56 @@ class PvWatch(object):
 
     def report(self):
         '''write the values out to files'''
+        # TODO: refactor per issue #4
     
         xmlText = self.buildReport()
     
         # WWW directory for livedata (absolute path)
-        localDir = self.configuration['LOCAL_WWW_LIVEDATA_DIR']
+        local_www_livedata_dir = os.path.abspath(self.configuration['LOCAL_WWW_LIVEDATA_DIR'])
     
         #--- write the XML with the raw data from EPICS
         raw_xml = self.configuration['XML_REPORT_FILE']
-        abs_raw_xml = os.path.join(localDir, raw_xml)
-        utils.writeFile(abs_raw_xml, xmlText)
-        utils.copyToWebServer(abs_raw_xml, raw_xml)
+        abs_raw_xml_data_file = os.path.join(local_www_livedata_dir, raw_xml)
+        utils.writeFile(abs_raw_xml_data_file, xmlText)
+        utils.copyToWebServer(abs_raw_xml_data_file, raw_xml)
     
         #--- xslt transforms from XML to HTML
     
         # make the index.html file
         index_html = self.configuration['HTML_INDEX_FILE']  # short name
-        abs_index_html = os.path.join(localDir, index_html)  # absolute path
-        utils.xslt_transformation(self.configuration['LIVEDATA_XSL_STYLESHEET'], abs_raw_xml, abs_index_html)
+        abs_index_html = os.path.join(local_www_livedata_dir, index_html)  # absolute path
+        utils.xslt_transformation(self.configuration['LIVEDATA_XSL_STYLESHEET'], abs_raw_xml_data_file, abs_index_html)
         utils.copyToWebServer(abs_index_html, index_html)  # copy to XSD
     
         # display the raw data (but pre-convert it in an html page)
         raw_html = self.configuration['HTML_RAWREPORT_FILE']
-        abs_raw_html = os.path.join(localDir, raw_html)
-        utils.xslt_transformation(self.configuration['RAWTABLE_XSL_STYLESHEET'], abs_raw_xml, abs_raw_html)
+        abs_raw_html = os.path.join(local_www_livedata_dir, raw_html)
+        utils.xslt_transformation(self.configuration['RAWTABLE_XSL_STYLESHEET'], abs_raw_xml_data_file, abs_raw_html)
         utils.copyToWebServer(abs_raw_html, raw_html)
     
         # also copy the raw table XSLT
         xslFile = self.configuration['RAWTABLE_XSL_STYLESHEET']
-        utils.copyToWebServer(os.path.join(localDir, xslFile), xslFile)
+        utils.copyToWebServer(os.path.join(local_www_livedata_dir, xslFile), xslFile)
+
+    def publish(self, raw_xml_data_file, html_file, xslt_file, local_www_livedata_dir):
+        '''
+        make XSLT transformation and publish to WWW site
+        
+        :param str raw_xml_data_file:   name of XML file containing monitored EPICS PV values
+        :param str html_file: name of HTML file to be written
+        :param str xslt_file: name of XSLT file to use in making the HTML file
+        :param str local_www_livedata_dir: path name of WWW directory on local host
+        '''
+        # identify local www directory path:    local_www_livedata_dir
+        # identify raw XML data file:           raw_xml_data_file
+        # identify XSLT transformation:         xslt_file
+        # construct name of HTML result file:   html_file
+        # make XSLT transformation
+        # copy to local www directory
+        
+        html_file_alt = os.path.splitext(xslt_file)[0] + os.pathsep + 'html'
+        utils.xslt_transformation(xslt_file, raw_xml_data_file, html_file_alt)
+#         utils.copyToWebServer(os.path.join(local_www_livedata_dir, html_file), html_file)
+#         utils.copyToWebServer(os.path.join(local_www_livedata_dir, xslt_file), xslt_file)
+        
+        pass

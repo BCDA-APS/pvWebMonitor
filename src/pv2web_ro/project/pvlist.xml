@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="pvlist.xsl" ?>
+
+<!-- You can edit this file with a text editor -->
+
+<pvwatch version="1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="local_schema pvlist.xsd">
+	<!-- (update version if format of XML file changes) -->
+
+  <definition name="mne">
+  	one-word mnemonic reference used in python and xslt code
+  	(mne should be unique for each EPICS_PV)
+  </definition>
+  <definition name="PV">
+  	EPICS process variable name (must be used in only one EPICS_PV)
+  </definition>
+  <definition name="description">
+  	useful text informative to others
+  </definition>
+  <definition name="display_format">
+  	(optional, default="%s") PVs will be formatted for display with this string
+  </definition>
+  <definition name="_ignore_">
+  	(optional, default="false") this PV is ignored if value is not "false"
+  </definition>
+
+
+  <EPICS_PV PV="morel:TOD" 				description="IOC current time"  	mne="tod"/>
+  <EPICS_PV PV="morel:STARTTOD" 			description="IOC boot time"  		mne="starttod"/>
+  <EPICS_PV PV="morel:UPTIME" 			description="time IOC running"  	mne="uptime"/>
+  <EPICS_PV PV="morel:HOSTNAME"			description="IOC host name" 		mne="hostname"/>
+  <EPICS_PV PV="morel:ENGINEER"			description="engineer" 				mne="engineer"/>
+
+  <EPICS_PV PV="morel:m1.DMOV"  description="VDM_Stripe motor done moving" mne="VDM_Stripe_dmov"/>
+  <EPICS_PV PV="morel:m1.RBV"   description="VDM_Stripe motor" display_format="%.3f" mne="VDM_Stripe"/>
+  <EPICS_PV PV="morel:m2.DMOV"  description="DCM_theta motor done moving" mne="DCM_theta_dmov"/>
+  <EPICS_PV PV="morel:m2.RBV"   description="DCM_theta motor" display_format="%.6f" mne="DCM_theta"/>
+
+  <EPICS_PV PV="morel:alldone" description="all motors done moving" mne="motors_alldone"/>
+  <EPICS_PV PV="morel:moving" description="number of motors moving" mne="motors_moving"/>
+
+</pvwatch>

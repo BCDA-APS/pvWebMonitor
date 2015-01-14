@@ -17,6 +17,9 @@ import time
 import utils
 
 
+XML_SCHEMA_FILE = 'pvlist.xsd'
+
+
 '''pv not in pvdb'''
 class PvNotRegistered(Exception): pass
 
@@ -92,6 +95,8 @@ class PvWatch(object):
             msg = 'could not parse file: ' + pvlist_file
             utils.logMessage(msg)
             raise CouldNotParseXml(msg)
+        
+        utils.validate(tree, XML_SCHEMA_FILE)
 
         for key in tree.findall(".//EPICS_PV"):
             if key.get("_ignore_", "false").lower() == "false":

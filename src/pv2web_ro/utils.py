@@ -53,6 +53,24 @@ def logException(troublemaker):
         logMessage('\t' + _)
 
 
+def validate(xml_tree, xml_schema_file):
+    '''
+    validate an XML document tree against an XML Schema file
+
+    :param obj xml_tree: instance of etree._ElementTree
+    :param str xml_schema_file: name of XML Schema file (local to package directory)
+    '''
+    path = os.path.abspath(os.path.dirname(__file__))
+    xsd_file_name = os.path.join(path, xml_schema_file)
+    if not os.path.exists(xsd_file_name):
+        raise IOError('Could not find XML Schema file: ' + xml_schema_file)
+    
+    xsd_doc = etree.parse(xsd_file_name)
+    xsd = etree.XMLSchema(xsd_doc)
+
+    return xsd.assertValid(xml_tree)
+
+
 def writeFile(output_file, contents):
     '''
     write contents to file

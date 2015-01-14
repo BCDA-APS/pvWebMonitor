@@ -1,7 +1,7 @@
 The `manage.csh` file
 =====================
 
-.. note:: tba
+.. warning:: This script is not ready for use yet and is subject to major changes.  See GitHub issue #2.
 
 .. issue #2: refactor manage.csh into manage.sh
 

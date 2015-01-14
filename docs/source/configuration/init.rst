@@ -29,3 +29,5 @@ manage.csh       shell script to manage the background task
 ===============  ============================================
 
 .. explain this
+
+.. warning:: The infrastructure that handles XSLT files is subject to major changes in the very near future.  See GitHub issue #4 and branch issue_4.

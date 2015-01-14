@@ -1,6 +1,0 @@
-
-The main code for v1 here is pvwatch.py.  It monitors EPICS PVs 
-(described in pvlist.xml) and writes files in the local 
-WWW server directory.  It can be started and stopped by
-the Makefile (for manual control) or the manage.csh script
-for automated startup in /etc/init.d or similar.

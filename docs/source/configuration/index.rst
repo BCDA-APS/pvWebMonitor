@@ -12,7 +12,7 @@ These are the steps needed to get the **pv2web_ro**
 service running on your workstation.
 
 #. install the *pv2web_ro* package into your Python environment
-#. initialize the project configuration directory
+#. setup the project configuration directory
 #. identify the web server directory to be used
 #. edit config.xml
 #. identify the list of EPICS PVs
@@ -28,7 +28,7 @@ These steps are described in the following sections:
    :glob:
 
    install
-   init
+   setup
    config
    pvlist
    livedata

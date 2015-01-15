@@ -1,6 +1,6 @@
-==================================
-Initialize a new project directory
-==================================
+=============================
+Setup a new project directory
+=============================
 
 The *pv2web_ro* service is configured by files
 configured by the user in a *project directory*.

@@ -239,14 +239,15 @@ class PvWatch(object):
         a table of contents of this static web site.
         '''
         xmlText = self.buildReport()
+        utils.writeFile(XML_RAWDATA_FILE_NAME, xmlText)
         
         # accumulate list of each file written below
         www_site_file_list = []
         xslt_file_list_used = ['index.xsl', ]  # do the index.xsl file last
+        www_site_file_list.append(XML_RAWDATA_FILE_NAME)
     
         # add pvlist.xml to file list
         pvlist_xml_file_name = self.configuration['PVLIST_FILE']
-        utils.writeFile(pvlist_xml_file_name, xmlText)
         www_site_file_list.append(pvlist_xml_file_name)
         
         # add pvlist.xsl to file list

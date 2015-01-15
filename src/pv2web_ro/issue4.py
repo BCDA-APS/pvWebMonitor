@@ -39,9 +39,6 @@ def report(cfg):
     
     :param dict cfg: program configuration dictionary
     '''
-    # TODO: refactor per issue #4
-    
-    # in each XSLT file, add "description" attribute to be used when building "index.html" file
     
     # accumulate list of each file written below
     www_site_file_list = []
@@ -77,6 +74,13 @@ def report(cfg):
     # finally, write index.html from file list, table of files and descriptions as provided
     xslt_file_name = XSL_INDEX_FILE_NAME
     if os.path.exists(xslt_file_name):
+        # TODO: each XSLT file has a "description" attribute
+        #  This could be used when building "index.html" file
+        #  For now, this is manually copied from .xsl file to the table in index.xsl
+        #  To automate this process, a new, temporary XML document will need to be
+        #  created with the names and descriptions of all HTML pages.
+        #  Then use that XML in the following XSLT.
+        #  Also should add a time stamp string.
         _xslt_(xslt_file_name, report_xml_file_name)
     
     # include any other useful files from the project directory

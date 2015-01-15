@@ -9,17 +9,43 @@ pv2web_ro.utils
 
 
 import datetime
+import hashlib
 import logging
 from lxml import etree
 import os
+import shutil
 import sys
 import traceback
 
 
-def copyToWebServer(local_file, web_server_file):
-    '''placeholder in case a more advanced copy method is needed'''
+def copyToWebServer(local_file, web_site_path):
+    '''
+    copy local file to web server directory (on a local file system)
+    
+    This copy routine assumes that it is not necessary to use scp to copy the file.
+    '''
     # scpToWebServer(os.path.join(localDir, xslFile), xslFile)
-    pass
+    web_site_path = os.path.abspath(web_site_path)
+    local_path = os.path.abspath(os.getcwd())
+    if web_site_path == local_path: 
+        # same directory, no need to copy
+        return
+    
+    web_site_file = os.path.join(web_site_path, local_file)
+    if os.path.exists(web_site_file):
+        local_file_mtime = os.path.getmtime(local_file)
+        web_site_file_mtime = os.path.getmtime(web_site_file)
+        if local_file_mtime <= web_site_file_mtime:
+            # not a new file, no need to copy
+            return
+
+        local_file_cksum = hashlib.md5(local_file).hexdigest()
+        web_site_file_cksum = hashlib.md5(web_site_file).hexdigest()
+        if local_file_cksum == web_site_file_cksum:
+            # the same file, no need to copy
+            return
+
+    shutil.copyfile(local_file, web_site_file)
 
 
 def getTime():

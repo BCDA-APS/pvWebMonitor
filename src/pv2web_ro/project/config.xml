@@ -3,14 +3,7 @@
 
   <var name="PVLIST_FILE" 				value="pvlist.xml" />			<!-- PVs to be monitored -->
 
-  <var name="LOCAL_WWW_LIVEDATA_DIR" 	value="./" />					<!-- absolute path to local directory with "web site" -->
-  <var name="XML_REPORT_FILE" 			value="report.xml" />			<!-- raw data, updated at REPORT_INTERVAL_S -->
-
-  <var name="HTML_INDEX_FILE" 			value="index.html" />			<!-- fancy display configured by instrument team -->
-  <var name="LIVEDATA_XSL_STYLESHEET" 	value="livedata.xsl" />			<!-- source file for HTML_INDEX_FILE -->
-
-  <var name="HTML_RAWREPORT_FILE" 		value="raw-report.html" />		<!-- complete list of monitored PVs -->
-  <var name="RAWTABLE_XSL_STYLESHEET" 	value="raw-table.xsl" />		<!-- source file for HTML_RAWREPORT_FILE -->
+  <var name="LOCAL_WWW_LIVEDATA_DIR" 	value="./" />					<!-- absolute directory path to WWW site on local file system -->
 
   <var name="LOG_INTERVAL_S" 			value="300"  type="float" />	<!-- writing messages to log file -->
 

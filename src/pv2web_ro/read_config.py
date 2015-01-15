@@ -30,11 +30,6 @@ def read_xml(xml_file):
     ========================  ===============  =================================================
     PVLIST_FILE               pvlist.xml       PVs to be monitored
     LOCAL_WWW_LIVEDATA_DIR    ./localwww       absolute path to local directory with "web site"
-    XML_REPORT_FILE           report.xml       raw data, updated at REPORT_INTERVAL_S
-    HTML_INDEX_FILE           index.htm        fancy display configured by instrument team
-    LIVEDATA_XSL_STYLESHEET   livedata.xsl     source file for HTML_INDEX_FILE
-    HTML_RAWREPORT_FILE       raw-report.html  complete list of monitored PVs
-    RAWTABLE_XSL_STYLESHEET   raw-table.xsl    source file for HTML_RAWREPORT_FILE
     LOG_INTERVAL_S            300 (float)      writing messages to log file
     REPORT_INTERVAL_S         10 (float)       updates to HTML pages
     SLEEP_INTERVAL_S          0.1 (float)      sleeps at end of main loop

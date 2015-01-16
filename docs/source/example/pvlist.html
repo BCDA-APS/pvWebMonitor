@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <title>pv2web_ro: EPICS process variables to be monitored and reported</title>
+  </head>
+  <body>
+    <h1>pv2web_ro: EPICS process variables to be monitored and reported</h1>
+    <small>
+      <p>
+                	XML version: 
+                	1.0
+                	(update version if format of XML file changes)
+                </p>
+    </small>
+    <h2>definitions</h2>
+    <dl>
+      <dt>mne</dt>
+      <dd>
+  	one-word mnemonic reference used in python and xslt code
+  	(mne should be unique for each EPICS_PV)
+  </dd>
+      <dt>PV</dt>
+      <dd>
+  	EPICS process variable name (must be used in only one EPICS_PV)
+  </dd>
+      <dt>description</dt>
+      <dd>
+  	useful text informative to others
+  </dd>
+      <dt>display_format</dt>
+      <dd>
+  	(optional, default="%s") PVs will be formatted for display with this string
+  </dd>
+      <dt>_ignore_</dt>
+      <dd>
+  	(optional, default="false") this PV is ignored if value is not "false"
+  </dd>
+    </dl>
+    <table border="2">
+      <tr style="background-color: grey; color: white;">
+        <th>mne</th>
+        <th>PV</th>
+        <th>_ignore_</th>
+        <th>description</th>
+        <th>display_format</th>
+      </tr>
+      <tr>
+        <td>tod</td>
+        <td>prj:TOD</td>
+        <td/>
+        <td>IOC current time</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>starttod</td>
+        <td>prj:STARTTOD</td>
+        <td/>
+        <td>IOC boot time</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>uptime</td>
+        <td>prj:UPTIME</td>
+        <td/>
+        <td>time IOC running</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>hostname</td>
+        <td>prj:HOSTNAME</td>
+        <td/>
+        <td>IOC host name</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>engineer</td>
+        <td>prj:ENGINEER</td>
+        <td/>
+        <td>engineer</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>VDM_Stripe_dmov</td>
+        <td>prj:m1.DMOV</td>
+        <td/>
+        <td>VDM_Stripe motor done moving</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>VDM_Stripe</td>
+        <td>prj:m1.RBV</td>
+        <td/>
+        <td>VDM_Stripe motor</td>
+        <td>%.3f</td>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>DCM_theta_dmov</td>
+        <td>prj:m2.DMOV</td>
+        <td/>
+        <td>DCM_theta motor done moving</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>DCM_theta</td>
+        <td>prj:m2.RBV</td>
+        <td/>
+        <td>DCM_theta motor</td>
+        <td>%.6f</td>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>motors_alldone</td>
+        <td>prj:alldone</td>
+        <td/>
+        <td>all motors done moving</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>motors_moving</td>
+        <td>prj:moving</td>
+        <td/>
+        <td>number of motors moving</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>ai0</td>
+        <td>ino:cr:ai0</td>
+        <td/>
+        <td>Arduino AI0</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>ai0_mean</td>
+        <td>ino:cr:ai0:mean</td>
+        <td/>
+        <td>Arduino mean AI0</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>ai1</td>
+        <td>ino:cr:ai1</td>
+        <td/>
+        <td>Arduino AI1</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>ai1_mean</td>
+        <td>ino:cr:ai1:mean</td>
+        <td/>
+        <td>Arduino mean AI1</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>ai2</td>
+        <td>ino:cr:ai2</td>
+        <td/>
+        <td>Arduino AI2</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>ai2_mean</td>
+        <td>ino:cr:ai2:mean</td>
+        <td/>
+        <td>Arduino mean AI2</td>
+        <td/>
+      </tr>
+      <tr bgcolor="Azure">
+        <td>ai3_mean</td>
+        <td>ino:cr:ai3:mean</td>
+        <td/>
+        <td>Arduino mean AI3</td>
+        <td/>
+      </tr>
+      <tr>
+        <td>arduino_rate</td>
+        <td>ino:cr:rate</td>
+        <td/>
+        <td>Arduino update rate</td>
+        <td/>
+      </tr>
+    </table>
+    <hr/>
+    <p>
+      <small>
+                        report page: <pre>pvlist.xsl</pre></small>
+    </p>
+  </body>
+</html>

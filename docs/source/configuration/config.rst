@@ -1,10 +1,12 @@
+=====================
 The `config.xml` file
 =====================
 
-.. note:: tba
+The *config.xml* file defines constants needed by the program.
 
-need to define values for each item listed in the table 
+Definitions for each item listed in the table 
 under :meth:`pv2web_ro.read_config.read_xml`
+are provided, such as this example:
 
    .. compound::
    
@@ -15,4 +17,37 @@ under :meth:`pv2web_ro.read_config.read_xml`
          :linenos:
          :language: guess
 
-.. explain this
+To use the *pv2web_ro* service effectively, it is likely
+you will only need to edit the value for *LOCAL_WWW_LIVEDATA_DIR*
+which defines the location of the directory used by the web server
+to serve content.
+
+Preamble
+--------
+
+The *config.xml* must be "well-formed XML".  
+
+The first line of the file is *always*:
+
+.. code-block:: guess
+   :linenos:
+
+   <?xml version="1.0" ?>
+
+This line declares this to be a file that should be well-formed XML
+according to the version 1.0 standard.  
+
+Root Tag
+--------
+
+All well-formed XML files have a single element at the outermost (root) 
+level of the file.  In the *config.xml* file, the root element
+is **pv2web_ro__config**.  Note the closing ``</pv2web_ro__config>`` 
+tag at the end of the file.
+
+A version attribute describes this file adheres to the ``version="1.0"``
+definition of *config.xml* files.  That definition is described in the
+XML Schema file *config.xsd* provided in the source code package.
+
+This XML Schema definition is used to validate the *config.xml* when it is read.
+If there are problems, the first problem discovered will be reported.

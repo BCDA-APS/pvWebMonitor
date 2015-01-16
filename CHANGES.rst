@@ -4,6 +4,7 @@
 CHANGES
 =======
 
+:2015-01-12: 2015.0115.0 - refactor XSLT infrastructure and web site
 :2015-01-12: 2015.0114.1 - include XML infrastructure in package
 :2015-01-12: 2015.0114.0 - packaging update
 :2015-01-12: 2015.0113.1 - add --setup to fill a new project directory with needed files

@@ -10,6 +10,7 @@ pv2web_ro.pvwatch
 
 import datetime
 import epics
+import fnmatch
 from lxml import etree
 import numpy
 import os
@@ -18,13 +19,33 @@ import utils
 
 
 XML_SCHEMA_FILE = 'pvlist.xsd'
+XML_RAWDATA_FILE_NAME = 'rawdata.xml'
+XSL_PVLIST_FILE_NAME = 'pvlist.xsl'
+XSL_RAWDATA_FILE_NAME = 'rawdata.xsl'
+XSL_INDEX_FILE_NAME = 'index.xsl'
+UPLOAD_FILE_EXTENSION_MATCHES = ('*.html', '*.gif', '*.jpeg', '*.jpg', '*.png', '*.xsl')
 
 
-'''pv not in pvdb'''
-class PvNotRegistered(Exception): pass
+class PvNotRegistered(Exception): 
+    '''pv not in pvdb'''
+    pass
 
-'''Could not parse XML file'''
-class CouldNotParseXml(Exception): pass
+class CouldNotParseXml(Exception): 
+    '''Could not parse XML file'''
+    pass
+
+
+def _xslt_(xslt_file, source_xml_file):
+    '''
+    convenience routine for XSLT transformations
+    
+    For a given XSLT file *abcdefg.xsl*, will produce a file *abcdefg.html*::
+
+        abcdefg.xsl + xml_data  --> abcdefg.html
+    
+    '''
+    output_xml_file = os.path.splitext(xslt_file)[0] + os.extsep + 'html'
+    utils.xslt_transformation(xslt_file, source_xml_file, output_xml_file)
 
 
 class PvWatch(object):
@@ -32,7 +53,10 @@ class PvWatch(object):
     Core function of the pv2web_ro package
     
     To call this code, first define ``configuration=dict()`` with terms
-    as defined in :meth:`read_config.read_xml`, then statements such as::
+    as defined in :meth:`read_config.read_xml`, then statements such as:
+
+    .. code-block:: python
+       :linenos:
     
         watcher = PvWatch(configuration)
         watcher.start()
@@ -210,33 +234,71 @@ class PvWatch(object):
         return xmlText
 
     def report(self):
-        '''write the values out to files'''
-    
+        '''
+        write the values out to files
+        
+        The values of the monitored EPICS PVs (the "raw data")
+        is written to an XML file.  This file is then used
+        with one or more XSLT stylesheets to create HTML pages.
+        An overall "home page" (index.html) is created to provide
+        a table of contents of this static web site.
+        '''
         xmlText = self.buildReport()
+        utils.writeFile(XML_RAWDATA_FILE_NAME, xmlText)
+        
+        # accumulate list of each file written below
+        www_site_file_list = []
+        xslt_file_list_used = ['index.xsl', ]  # do the index.xsl file last
+        www_site_file_list.append(XML_RAWDATA_FILE_NAME)
     
-        # WWW directory for livedata (absolute path)
-        localDir = self.configuration['LOCAL_WWW_LIVEDATA_DIR']
+        # add pvlist.xml to file list
+        pvlist_xml_file_name = self.configuration['PVLIST_FILE']
+        www_site_file_list.append(pvlist_xml_file_name)
+        
+        # add pvlist.xsl to file list
+        xslt_file_name = XSL_PVLIST_FILE_NAME
+        if os.path.exists(xslt_file_name):
+            _xslt_(xslt_file_name, pvlist_xml_file_name)
+            xslt_file_list_used.append(xslt_file_name)
     
-        #--- write the XML with the raw data from EPICS
-        raw_xml = self.configuration['XML_REPORT_FILE']
-        abs_raw_xml = os.path.join(localDir, raw_xml)
-        utils.writeFile(abs_raw_xml, xmlText)
-        utils.copyToWebServer(abs_raw_xml, raw_xml)
+        # add report.xml to file list
+        report_xml_file_name = XML_RAWDATA_FILE_NAME
+        if os.path.exists(report_xml_file_name):
+            # write "report.xml"    : values of monitored EPICS PVs
+            www_site_file_list.append(report_xml_file_name)
+            
+            xslt_file_name = XSL_RAWDATA_FILE_NAME
+            if os.path.exists(xslt_file_name):
+                _xslt_(xslt_file_name, report_xml_file_name)
+                xslt_file_list_used.append(xslt_file_name)
     
-        #--- xslt transforms from XML to HTML
+                # convert all .xsl files
+                xslt_files = fnmatch.filter(os.listdir('.'), '*.xsl')
+                for xslt_file_name in xslt_files:
+                    if xslt_file_name not in xslt_file_list_used:
+                        _xslt_(xslt_file_name, report_xml_file_name)
     
-        # make the index.html file
-        index_html = self.configuration['HTML_INDEX_FILE']  # short name
-        abs_index_html = os.path.join(localDir, index_html)  # absolute path
-        utils.xslt_transformation(self.configuration['LIVEDATA_XSL_STYLESHEET'], abs_raw_xml, abs_index_html)
-        utils.copyToWebServer(abs_index_html, index_html)  # copy to XSD
-    
-        # display the raw data (but pre-convert it in an html page)
-        raw_html = self.configuration['HTML_RAWREPORT_FILE']
-        abs_raw_html = os.path.join(localDir, raw_html)
-        utils.xslt_transformation(self.configuration['RAWTABLE_XSL_STYLESHEET'], abs_raw_xml, abs_raw_html)
-        utils.copyToWebServer(abs_raw_html, raw_html)
-    
-        # also copy the raw table XSLT
-        xslFile = self.configuration['RAWTABLE_XSL_STYLESHEET']
-        utils.copyToWebServer(os.path.join(localDir, xslFile), xslFile)
+        # finally, write index.html from file list, table of files and descriptions as provided
+        xslt_file_name = XSL_INDEX_FILE_NAME
+        if os.path.exists(xslt_file_name):
+            # TODO: each XSLT file has a "description" attribute
+            #  This could be used when building "index.html" file
+            #  For now, this is manually copied from .xsl file to the table in index.xsl
+            #  To automate this process, a new, temporary XML document will need to be
+            #  created with the names and descriptions of all HTML pages.
+            #  Then use that XML in the following XSLT.
+            #  Also should add a time stamp string.
+            _xslt_(xslt_file_name, report_xml_file_name)
+        
+        # include any other useful files from the project directory
+        local_files = os.listdir('.')
+        for extension_match in UPLOAD_FILE_EXTENSION_MATCHES:
+            www_site_file_list += fnmatch.filter(local_files, extension_match)
+            www_site_file_list += fnmatch.filter(local_files, extension_match.upper())
+        
+        # only copy files if web_site_path is not the current dir
+        www_site_file_list = sorted(set(www_site_file_list))
+        www_site_path = os.path.abspath(self.configuration['LOCAL_WWW_LIVEDATA_DIR'])
+        if www_site_path != os.path.abspath(os.getcwd()):
+            for fname in www_site_file_list:
+                utils.copyToWebServer(fname, www_site_path)

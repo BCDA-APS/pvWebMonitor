@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- 
+# Copyright (c) 2005-2015, UChicago Argonne, LLC.
+# See LICENSE file for details.
+ -->
+<xsl:stylesheet 
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+	version="1.0"
+	description="XSLT file to display the raw values of monitored EPICS PVs"
+>
 
     <xsl:template match="/">
         <html>

@@ -4,9 +4,7 @@
 pv2web_ro
 =========
 
-------------------------------------------------
-post EPICS PVs to read-only (static) web page(s)
-------------------------------------------------
+**post EPICS PVs to read-only (static) web page(s)**
 
 :author: 	Pete R. Jemian
 :email:  	jemian@anl.gov
@@ -21,8 +19,3 @@ This package provides a background service that monitors EPICS PVs
 and writes them into customized HTML files in a WWW server 
 directory.  The service can be started and stopped by a manage.csh 
 script for automated startup in a cron task or at system startup.
-
-
-.. note:: The documentation of **pv2web_ro** is being developed now.
-   Entire sections may be incomplete or missing.
-

@@ -2,12 +2,12 @@
 <?xml-stylesheet type="text/xsl" href="pvlist.xsl"?>
 <pv2web_ro version="1">
   <written_by>pv2web_ro/PvWatch</written_by>
-  <datetime>2015-01-12 14:07:26</datetime>
+  <datetime>2015-01-15 16:48:36</datetime>
   <pv id="DCM_theta" name="prj:m2.RBV">
     <name>prj:m2.RBV</name>
     <id>DCM_theta</id>
     <description>DCM_theta motor</description>
-    <timestamp>2015-01-12 14:07:16.373081</timestamp>
+    <timestamp>2015-01-15 15:30:16.891366</timestamp>
     <counter>2</counter>
     <units>deg</units>
     <value>-9.840000</value>
@@ -18,7 +18,7 @@
     <name>prj:m2.DMOV</name>
     <id>DCM_theta_dmov</id>
     <description>DCM_theta motor done moving</description>
-    <timestamp>2015-01-12 14:07:16.346382</timestamp>
+    <timestamp>2015-01-15 15:30:16.864203</timestamp>
     <counter>2</counter>
     <units>deg</units>
     <value>1</value>
@@ -29,7 +29,7 @@
     <name>prj:m1.RBV</name>
     <id>VDM_Stripe</id>
     <description>VDM_Stripe motor</description>
-    <timestamp>2015-01-12 14:07:16.319450</timestamp>
+    <timestamp>2015-01-15 15:30:16.837633</timestamp>
     <counter>2</counter>
     <units>deg</units>
     <value>-1.510</value>
@@ -40,7 +40,7 @@
     <name>prj:m1.DMOV</name>
     <id>VDM_Stripe_dmov</id>
     <description>VDM_Stripe motor done moving</description>
-    <timestamp>2015-01-12 14:07:16.292465</timestamp>
+    <timestamp>2015-01-15 15:30:16.810400</timestamp>
     <counter>2</counter>
     <units>deg</units>
     <value>1</value>
@@ -51,95 +51,95 @@
     <name>ino:cr:ai0</name>
     <id>ai0</id>
     <description>Arduino AI0</description>
-    <timestamp>2015-01-12 14:07:24.168242</timestamp>
-    <counter>10</counter>
+    <timestamp>2015-01-15 16:48:35.481271</timestamp>
+    <counter>1808</counter>
     <units>V</units>
-    <value>0.127</value>
-    <raw_value>0.127077223851</raw_value>
-    <format>%.3f</format>
+    <value>0.0439882697947</value>
+    <raw_value>0.0439882697947</raw_value>
+    <format>%s</format>
   </pv>
   <pv id="ai0_mean" name="ino:cr:ai0:mean">
     <name>ino:cr:ai0:mean</name>
     <id>ai0_mean</id>
     <description>Arduino mean AI0</description>
-    <timestamp>2015-01-12 14:07:26.673415</timestamp>
-    <counter>22</counter>
+    <timestamp>2015-01-15 16:48:35.987300</timestamp>
+    <counter>7901</counter>
     <units>V</units>
-    <value>0.1259</value>
-    <raw_value>0.125884652981</raw_value>
-    <format>%.4f</format>
+    <value>0.0467644183773</value>
+    <raw_value>0.0467644183773</raw_value>
+    <format>%s</format>
   </pv>
   <pv id="ai1" name="ino:cr:ai1">
     <name>ino:cr:ai1</name>
     <id>ai1</id>
     <description>Arduino AI1</description>
-    <timestamp>2015-01-12 14:07:16.536030</timestamp>
-    <counter>2</counter>
+    <timestamp>2015-01-15 16:43:42.932475</timestamp>
+    <counter>6</counter>
     <units>V</units>
-    <value>0.000</value>
+    <value>0.0</value>
     <raw_value>0.0</raw_value>
-    <format>%.3f</format>
+    <format>%s</format>
   </pv>
   <pv id="ai1_mean" name="ino:cr:ai1:mean">
     <name>ino:cr:ai1:mean</name>
     <id>ai1_mean</id>
     <description>Arduino mean AI1</description>
-    <timestamp>2015-01-12 14:07:16.562990</timestamp>
+    <timestamp>2015-01-15 15:30:17.053715</timestamp>
     <counter>2</counter>
     <units>V</units>
-    <value>0.0000</value>
+    <value>0.0</value>
     <raw_value>0.0</raw_value>
-    <format>%.4f</format>
+    <format>%s</format>
   </pv>
   <pv id="ai2" name="ino:cr:ai2">
     <name>ino:cr:ai2</name>
     <id>ai2</id>
     <description>Arduino AI2</description>
-    <timestamp>2015-01-12 14:07:24.683221</timestamp>
-    <counter>6</counter>
+    <timestamp>2015-01-15 16:47:54.988769</timestamp>
+    <counter>1319</counter>
     <units>V</units>
-    <value>2.634</value>
-    <raw_value>2.63440860215</raw_value>
-    <format>%.3f</format>
+    <value>2.64418377322</value>
+    <raw_value>2.64418377322</raw_value>
+    <format>%s</format>
   </pv>
   <pv id="ai2_mean" name="ino:cr:ai2:mean">
     <name>ino:cr:ai2:mean</name>
     <id>ai2_mean</id>
     <description>Arduino mean AI2</description>
-    <timestamp>2015-01-12 14:07:26.187834</timestamp>
-    <counter>18</counter>
+    <timestamp>2015-01-15 16:48:35.998230</timestamp>
+    <counter>7020</counter>
     <units>V</units>
-    <value>2.6344</value>
-    <raw_value>2.63440860215</raw_value>
-    <format>%.4f</format>
+    <value>2.64418377322</value>
+    <raw_value>2.64418377322</raw_value>
+    <format>%s</format>
   </pv>
   <pv id="ai3_mean" name="ino:cr:ai3:mean">
     <name>ino:cr:ai3:mean</name>
     <id>ai3_mean</id>
     <description>Arduino mean AI3</description>
-    <timestamp>2015-01-12 14:07:25.688224</timestamp>
-    <counter>17</counter>
+    <timestamp>2015-01-15 16:48:33.503247</timestamp>
+    <counter>5977</counter>
     <units>V</units>
-    <value>2.6100</value>
-    <raw_value>2.60997067449</raw_value>
-    <format>%.4f</format>
+    <value>2.61974584555</value>
+    <raw_value>2.61974584555</raw_value>
+    <format>%s</format>
   </pv>
   <pv id="arduino_rate" name="ino:cr:rate">
     <name>ino:cr:rate</name>
     <id>arduino_rate</id>
     <description>Arduino update rate</description>
-    <timestamp>2015-01-12 14:07:26.195270</timestamp>
-    <counter>16</counter>
+    <timestamp>2015-01-15 16:48:36.004167</timestamp>
+    <counter>6214</counter>
     <units>1/s</units>
-    <value>2136.0</value>
-    <raw_value>2136.0</raw_value>
+    <value>2142.0</value>
+    <raw_value>2142.0</raw_value>
     <format>%s</format>
   </pv>
   <pv id="engineer" name="prj:ENGINEER">
     <name>prj:ENGINEER</name>
     <id>engineer</id>
     <description>engineer</description>
-    <timestamp>2015-01-12 14:07:16.265253</timestamp>
+    <timestamp>2015-01-15 15:30:16.782947</timestamp>
     <counter>2</counter>
     <units></units>
     <value>engineer</value>
@@ -150,7 +150,7 @@
     <name>prj:HOSTNAME</name>
     <id>hostname</id>
     <description>IOC host name</description>
-    <timestamp>2015-01-12 14:07:16.237774</timestamp>
+    <timestamp>2015-01-15 15:30:16.755911</timestamp>
     <counter>2</counter>
     <units></units>
     <value>gov.aps.anl.gov</value>
@@ -161,7 +161,7 @@
     <name>prj:alldone</name>
     <id>motors_alldone</id>
     <description>all motors done moving</description>
-    <timestamp>2015-01-12 14:07:16.400878</timestamp>
+    <timestamp>2015-01-15 15:30:16.919038</timestamp>
     <counter>2</counter>
     <units></units>
     <value>1</value>
@@ -172,7 +172,7 @@
     <name>prj:moving</name>
     <id>motors_moving</id>
     <description>number of motors moving</description>
-    <timestamp>2015-01-12 14:07:16.426769</timestamp>
+    <timestamp>2015-01-15 15:30:16.945825</timestamp>
     <counter>2</counter>
     <units></units>
     <value>0</value>
@@ -183,7 +183,7 @@
     <name>prj:STARTTOD</name>
     <id>starttod</id>
     <description>IOC boot time</description>
-    <timestamp>2015-01-12 14:07:16.183574</timestamp>
+    <timestamp>2015-01-15 15:30:16.701840</timestamp>
     <counter>2</counter>
     <units></units>
     <value>01/12/2015 12:56:08</value>
@@ -194,22 +194,22 @@
     <name>prj:TOD</name>
     <id>tod</id>
     <description>IOC current time</description>
-    <timestamp>2015-01-12 14:07:25.746851</timestamp>
-    <counter>12</counter>
+    <timestamp>2015-01-15 16:48:35.521618</timestamp>
+    <counter>4701</counter>
     <units></units>
-    <value>01/12/2015 14:07:25</value>
-    <raw_value>01/12/2015 14:07:25</raw_value>
+    <value>01/15/2015 16:48:35</value>
+    <raw_value>01/15/2015 16:48:35</raw_value>
     <format>%s</format>
   </pv>
   <pv id="uptime" name="prj:UPTIME">
     <name>prj:UPTIME</name>
     <id>uptime</id>
     <description>time IOC running</description>
-    <timestamp>2015-01-12 14:07:25.747071</timestamp>
-    <counter>12</counter>
+    <timestamp>2015-01-15 16:48:35.521851</timestamp>
+    <counter>4701</counter>
     <units></units>
-    <value>01:11:17</value>
-    <raw_value>01:11:17</raw_value>
+    <value>3 days, 03:52:27</value>
+    <raw_value>3 days, 03:52:27</raw_value>
     <format>%s</format>
   </pv>
 </pv2web_ro>

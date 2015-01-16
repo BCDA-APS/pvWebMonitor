@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="pvlist.xsl" ?>
+
+<!-- You can edit this file with a text editor -->
+
+<pvwatch version="1.0">
+	<!-- (update version if format of XML file changes) -->
+
+  <definition name="mne">
+  	one-word mnemonic reference used in python and xslt code
+  	(mne should be unique for each EPICS_PV)
+  </definition>
+  <definition name="PV">
+  	EPICS process variable name (must be used in only one EPICS_PV)
+  </definition>
+  <definition name="description">
+  	useful text informative to others
+  </definition>
+  <definition name="display_format">
+  	(optional, default="%s") PVs will be formatted for display with this string
+  </definition>
+  <definition name="_ignore_">
+  	(optional, default="false") this PV is ignored if value is not "false"
+  </definition>
+
+
+  <EPICS_PV PV="prj:TOD" 				description="IOC current time"  	mne="tod"/>
+  <EPICS_PV PV="prj:STARTTOD" 			description="IOC boot time"  		mne="starttod"/>
+  <EPICS_PV PV="prj:UPTIME" 			description="time IOC running"  	mne="uptime"/>
+  <EPICS_PV PV="prj:HOSTNAME"			description="IOC host name" 		mne="hostname"/>
+  <EPICS_PV PV="prj:ENGINEER"			description="engineer" 				mne="engineer"/>
+
+  <EPICS_PV PV="prj:m1.DMOV"  description="VDM_Stripe motor done moving" mne="VDM_Stripe_dmov"/>
+  <EPICS_PV PV="prj:m1.RBV"   description="VDM_Stripe motor" display_format="%.3f" mne="VDM_Stripe"/>
+  <EPICS_PV PV="prj:m2.DMOV"  description="DCM_theta motor done moving" mne="DCM_theta_dmov"/>
+  <EPICS_PV PV="prj:m2.RBV"   description="DCM_theta motor" display_format="%.6f" mne="DCM_theta"/>
+
+  <EPICS_PV PV="prj:alldone" description="all motors done moving" mne="motors_alldone"/>
+  <EPICS_PV PV="prj:moving" description="number of motors moving" mne="motors_moving"/>
+
+
+  <EPICS_PV PV="ino:cr:ai0" mne="ai0" description="Arduino AI0" />
+  <EPICS_PV PV="ino:cr:ai0:mean" mne="ai0_mean" description="Arduino mean AI0" />
+  <EPICS_PV PV="ino:cr:ai1" mne="ai1" description="Arduino AI1" />
+  <EPICS_PV PV="ino:cr:ai1:mean" mne="ai1_mean" description="Arduino mean AI1" />
+  <EPICS_PV PV="ino:cr:ai2" mne="ai2" description="Arduino AI2" />
+  <EPICS_PV PV="ino:cr:ai2:mean" mne="ai2_mean" description="Arduino mean AI2" />
+  <EPICS_PV PV="ino:cr:ai3:mean" mne="ai3_mean" description="Arduino mean AI3" />
+  <EPICS_PV PV="ino:cr:rate" mne="arduino_rate" description="Arduino update rate" />
+
+</pvwatch>

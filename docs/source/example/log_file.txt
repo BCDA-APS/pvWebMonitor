@@ -1,0 +1,24 @@
+INFO:root:(14961,pv2web_ro,2015-01-15 15:30:16.597792) read configuration file: config.xml
+INFO:root:(14961,pv2web_ro,2015-01-15 15:30:17.162038) read list of PVs to monitor
+INFO:root:(14961,pv2web_ro,2015-01-15 15:30:17.162524) Connected 19 of total 19 EPICS PVs
+INFO:root:(14961,pv2web_ro,2015-01-15 15:30:17.162718) starting the monitor and report cycle
+INFO:root:(14961,pv2web_ro,2015-01-15 15:30:17.179051) checkpoint, 22 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 15:35:17.188364) checkpoint, 2466 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 15:40:17.199532) checkpoint, 2628 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 15:45:17.229796) checkpoint, 2615 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 15:47:01.140965)  10000 times through main loop
+INFO:root:(14961,pv2web_ro,2015-01-15 15:50:17.256723) checkpoint, 2477 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 15:55:17.301998) checkpoint, 2495 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:00:17.348372) checkpoint, 2617 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:03:45.290207)  10000 times through main loop
+INFO:root:(14961,pv2web_ro,2015-01-15 16:05:17.366322) checkpoint, 2578 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:10:17.396056) checkpoint, 2564 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:15:17.408302) checkpoint, 2597 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:20:17.434299) checkpoint, 2495 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:20:29.380735)  10000 times through main loop
+INFO:root:(14961,pv2web_ro,2015-01-15 16:25:17.460845) checkpoint, 2459 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:30:17.468311) checkpoint, 2569 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:35:17.520830) checkpoint, 2536 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:37:13.488741)  10000 times through main loop
+INFO:root:(14961,pv2web_ro,2015-01-15 16:40:17.544907) checkpoint, 2468 EPICS monitor events received
+INFO:root:(14961,pv2web_ro,2015-01-15 16:45:17.547789) checkpoint, 2522 EPICS monitor events received

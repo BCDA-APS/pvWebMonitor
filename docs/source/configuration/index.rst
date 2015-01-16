@@ -1,13 +1,6 @@
 Configuration
 =============
 
-.. note:: -tba-
-
-.. issue #3
-   needs additional feature for users to setup a new project config directory
-   Add this to the command line options with "--initialize" requiring a destination directory.
-   Raise exceptions if the destination directory has files that would be overwritten.
-
 These are the steps needed to get the **pv2web_ro** 
 service running on your workstation.
 
@@ -31,6 +24,6 @@ These steps are described in the following sections:
    setup
    config
    pvlist
+   rawdata
    livedata
-   raw_table
    manage

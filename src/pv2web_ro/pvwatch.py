@@ -26,11 +26,13 @@ XSL_INDEX_FILE_NAME = 'index.xsl'
 UPLOAD_FILE_EXTENSION_MATCHES = ('*.html', '*.gif', '*.jpeg', '*.jpg', '*.png', '*.xsl')
 
 
-'''pv not in pvdb'''
-class PvNotRegistered(Exception): pass
+class PvNotRegistered(Exception): 
+    '''pv not in pvdb'''
+    pass
 
-'''Could not parse XML file'''
-class CouldNotParseXml(Exception): pass
+class CouldNotParseXml(Exception): 
+    '''Could not parse XML file'''
+    pass
 
 
 def _xslt_(xslt_file, source_xml_file):
@@ -51,7 +53,10 @@ class PvWatch(object):
     Core function of the pv2web_ro package
     
     To call this code, first define ``configuration=dict()`` with terms
-    as defined in :meth:`read_config.read_xml`, then statements such as::
+    as defined in :meth:`read_config.read_xml`, then statements such as:
+
+    .. code-block:: python
+       :linenos:
     
         watcher = PvWatch(configuration)
         watcher.start()

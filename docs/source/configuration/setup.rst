@@ -24,10 +24,8 @@ config.xml       defines user settings for the program
 pvlist.xml       declares list of EPICS PVs to be monitored
 pvlist.xsl       for easy display of pvlist.xml
 livedata.xsl     user-customized display
-raw-table.xsl    standard display of all monitored EPICS PVs
+rawdata.xsl      standard display of all monitored EPICS PVs
 manage.csh       shell script to manage the background task
 ===============  ============================================
 
-.. explain this
-
-.. warning:: The infrastructure that handles XSLT files is subject to major changes in the very near future.  See GitHub issue #4 and branch issue_4.
+Each of these files will be explained in the coming sections.

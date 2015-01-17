@@ -1,10 +1,10 @@
 Configuration
 =============
 
-These are the steps needed to get the **pv2web_ro** 
+These are the steps needed to get the **pvWebMonitor** 
 service running on your workstation.
 
-#. install the *pv2web_ro* package into your Python environment
+#. install the *pvWebMonitor* package into your Python environment
 #. setup the project configuration directory
 #. identify the web server directory to be used
 #. edit config.xml

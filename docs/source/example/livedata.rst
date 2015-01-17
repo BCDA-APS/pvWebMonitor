@@ -11,7 +11,7 @@ Livedata Report
 .. figure:: livedata.png
    
    Example user report of the raw data monitored by an 
-   instance of *pv2web_ro*.
+   instance of *pvWebMonitor*.
 
 ----
 

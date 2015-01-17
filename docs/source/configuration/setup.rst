@@ -2,19 +2,19 @@
 Setup a new project directory
 =============================
 
-The *pv2web_ro* service is configured by files
+The *pvWebMonitor* service is configured by files
 configured by the user in a *project directory*.
 
 To get default versions of the files, run this command::
 
    mkdir path/to/project/directory
-   pv2web_ro --setup path/to/project/directory
+   pvWebMonitor --setup path/to/project/directory
    cd path/to/project/directory
 
 where *path/to/project/directory* is either a partial, relative,
 or absolute path to an existing directory to be used.  Once this 
 command has run, the files will be copied to the designated
-directory.  If files with these names already exist, *pv2web_ro*
+directory.  If files with these names already exist, *pvWebMonitor*
 will stop with an error report and not overwrite the existing files.
 
 ===============  ============================================

@@ -101,7 +101,7 @@
                             <table border="1" width="100%" rules="all" bgcolor="lightblue">
                                 <tr>
                                     <td>
-									content updated: <xsl:value-of select="/pv2web_ro/datetime"/>
+									content updated: <xsl:value-of select="/pvWebMonitor/datetime"/>
 								    </td>
                                     <td align="center"><a href="raw-report.html">raw info</a> </td>
 								</tr>
@@ -168,7 +168,7 @@
                 
                 <p><small><center>
                 	<tt>livedata.xsl</tt> and 
-                	<tt><xsl:value-of select="/pv2web_ro/written_by"/></tt>
+                	<tt><xsl:value-of select="/pvWebMonitor/written_by"/></tt>
                 </center></small></p>
                 
             </body>

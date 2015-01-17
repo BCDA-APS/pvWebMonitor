@@ -1,10 +1,10 @@
 #!/bin/bash
-# init file for pv2web_ro
+# init file for pvWebMonitor
 #
 # chkconfig: - 98 98
-# description: pv2web_ro WWW page update script for IOC: prj
+# description: pvWebMonitor WWW page update script for IOC: prj
 #
-# processname: pv2web_ro_iocprj
+# processname: pvWebMonitor_iocprj
 
 
 PROJECT_DIR=/tmp/pv
@@ -14,7 +14,7 @@ PIDFILE=${PROJECT_DIR}/pid.txt
 CONFIGFILE=${PROJECT_DIR}/config.xml
 
 PYTHON_DIR=/home/oxygen/JEMIAN/Apps/anaconda/bin
-SCRIPT=${PYTHON_DIR}/pv2web_ro
+SCRIPT=${PYTHON_DIR}/pvWebMonitor
 
 RETVAL=0
 
@@ -33,11 +33,11 @@ check_pid_running(){
 	RETVAL=1
     else
  	RESPONSE=`ps -p ${PID} -o comm=`
- 	if [ "${RESPONSE}" == "pv2web_ro" ]; then
- 	    # PID matches the pv2web_ro profile
+ 	if [ "${RESPONSE}" == "pvWebMonitor" ]; then
+ 	    # PID matches the pvWebMonitor profile
  	    RETVAL=0
  	else
- 	    # PID is not pv2web_ro
+ 	    # PID is not pvWebMonitor
  	    RETVAL=1
  	fi
     fi

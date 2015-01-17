@@ -12,12 +12,12 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>pv2web_ro: EPICS process variables</title>
+                <title>pvWebMonitor: EPICS process variables</title>
             </head>
             <body>
-                <h1>pv2web_ro: raw PV data from EPICS</h1>
-                <p>written by: <xsl:value-of select="/pv2web_ro/written_by"/></p>
-                <p>date/time stamp: <xsl:value-of select="/pv2web_ro/datetime"/></p>
+                <h1>pvWebMonitor: raw PV data from EPICS</h1>
+                <p>written by: <xsl:value-of select="/pvWebMonitor/written_by"/></p>
+                <p>date/time stamp: <xsl:value-of select="/pvWebMonitor/datetime"/></p>
 
                 <hr />
                 
@@ -31,13 +31,13 @@
                         <th>units</th>
                         <th>timestamp</th>
                     </tr>
-                    <xsl:apply-templates select="pv2web_ro/pv"/>
+                    <xsl:apply-templates select="pvWebMonitor/pv"/>
                 </table>
 
                 <hr />
                 <p>
                     <small>
-                        data gathered by: <tt><xsl:value-of select="/pv2web_ro/written_by"/></tt>
+                        data gathered by: <tt><xsl:value-of select="/pvWebMonitor/written_by"/></tt>
                     </small>
                 </p>
                 <p>

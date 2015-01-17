@@ -12,10 +12,10 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>pv2web_ro: EPICS process variables to be monitored and reported</title>
+                <title>pvWebMonitor: EPICS process variables to be monitored and reported</title>
             </head>
             <body>
-                <h1>pv2web_ro: EPICS process variables to be monitored and reported</h1>
+                <h1>pvWebMonitor: EPICS process variables to be monitored and reported</h1>
                 <small>
                 <p>
                 	XML version: 

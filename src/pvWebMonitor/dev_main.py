@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-pv2web_ro.dev_main
+pvWebMonitor.dev_main
 '''
 
 # Copyright (c) 2005-2015, UChicago Argonne, LLC.

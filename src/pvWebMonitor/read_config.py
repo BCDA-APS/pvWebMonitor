@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-read XML configuration file for `pv2web_ro` package
+read XML configuration file for `pvWebMonitor` package
 '''
 
 # Copyright (c) 2005-2015, UChicago Argonne, LLC.
@@ -13,7 +13,7 @@ from lxml import etree
 import utils
 
 
-ROOT_TAG = 'pv2web_ro__config'
+ROOT_TAG = 'pvWebMonitor__config'
 XML_SCHEMA_FILE = 'config.xsd'
 
 

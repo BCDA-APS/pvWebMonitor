@@ -5,19 +5,19 @@ The `config.xml` file
 The *config.xml* file defines constants needed by the program.
 
 Definitions for each item listed in the table 
-under :meth:`pv2web_ro.read_config.read_xml`
+under :meth:`pvWebMonitor.read_config.read_xml`
 are provided, such as this example:
 
    .. compound::
    
       .. rubric:: Example ``config.xml`` file.
       
-      .. literalinclude:: ../../../src/pv2web_ro/project/config.xml
+      .. literalinclude:: ../../../src/pvWebMonitor/project/config.xml
          :tab-width: 4
          :linenos:
          :language: guess
 
-To use the *pv2web_ro* service effectively, it is likely
+To use the *pvWebMonitor* service effectively, it is likely
 you will only need to edit the value for *LOCAL_WWW_LIVEDATA_DIR*
 which defines the location of the directory used by the web server
 to serve content.
@@ -42,7 +42,7 @@ Root Tag
 
 All well-formed XML files have a single element at the outermost (root) 
 level of the file.  In the *config.xml* file, the root element
-is **pv2web_ro__config**.  Note the closing ``</pv2web_ro__config>`` 
+is **pvWebMonitor__config**.  Note the closing ``</pvWebMonitor__config>`` 
 tag at the end of the file.
 
 A version attribute describes this file adheres to the ``version="1.0"``

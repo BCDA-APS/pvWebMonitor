@@ -1,8 +1,8 @@
 .. _rawdata:
 
-========================================
+============================
 Example Raw Data for Reports
-========================================
+============================
 
 :file: 		<web_site>/rawdata.html
 :XSLT:		:download:`rawdata.xsl`
@@ -17,7 +17,7 @@ Example Raw Data for Reports
 .. figure:: rawdata.png
    
    Example report of the raw data monitored by an 
-   instance of *pv2web_ro*.
+   instance of *pvWebMonitor*.
 
 ----
 

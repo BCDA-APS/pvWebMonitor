@@ -1,7 +1,7 @@
 
 
 '''
-pv2web_ro.pvwatch
+pvWebMonitor.pvwatch
 '''
 
 # Copyright (c) 2005-2015, UChicago Argonne, LLC.
@@ -50,7 +50,7 @@ def _xslt_(xslt_file, source_xml_file):
 
 class PvWatch(object):
     '''
-    Core function of the pv2web_ro package
+    Core function of the pvWebMonitor package
     
     To call this code, first define ``configuration=dict()`` with terms
     as defined in :meth:`read_config.read_xml`, then statements such as:
@@ -202,10 +202,10 @@ class PvWatch(object):
 
     def buildReport(self):
         '''build the report'''
-        root = etree.Element("pv2web_ro")
+        root = etree.Element("pvWebMonitor")
         root.set("version", "1")
         node = etree.SubElement(root, "written_by")
-        node.text = 'pv2web_ro/PvWatch'
+        node.text = 'pvWebMonitor/PvWatch'
         node = etree.SubElement(root, "datetime")
         node.text = str(utils.getTime()).split('.')[0]
     

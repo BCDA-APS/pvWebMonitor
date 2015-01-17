@@ -1,7 +1,7 @@
-*pv2web_ro* Package: :mod:`setup` Module
-========================================
+*pvWebMonitor* Package: :mod:`setup` Module
+===========================================
 
-.. automodule:: pv2web_ro.setup
+.. automodule:: pvWebMonitor.setup
     :members:
     :undoc-members:
     :show-inheritance:

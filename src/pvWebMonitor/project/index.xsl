@@ -14,19 +14,19 @@
 
         <html>
             <head>
-                <title>pv2web_ro: default index.html page</title>
+                <title>pvWebMonitor: default index.html page</title>
             </head>
             
             <body>
                 
-                <h1>pv2web_ro: default index.html page</h1>
+                <h1>pvWebMonitor: default index.html page</h1>
             
 	            <h2>purpose</h2>
 	            
-	            The <b>pv2web_ro</b> project was built to post EPICS PVs to read-only (static) web page(s)
+	            The <b>pvWebMonitor</b> project was built to post EPICS PVs to read-only (static) web page(s)
 	            
 	            <h2>page(s) available</h2>
-	            <h3>written: <xsl:value-of select="/pv2web_ro/datetime"/></h3>
+	            <h3>written: <xsl:value-of select="/pvWebMonitor/datetime"/></h3>
 	            
                 <table>
                     <tr>

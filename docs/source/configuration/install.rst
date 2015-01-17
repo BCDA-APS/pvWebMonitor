@@ -1,13 +1,13 @@
 Installation
 ============
 
-If you need to install the *pv2web_ro* package, follow these terse instructions::
+If you need to install the *pvWebMonitor* package, follow these terse instructions::
 
-   pip install pv2web_ro
+   pip install pvWebMonitor
 
 Alternatively, you could clone the GitHub project::
 
-   git clone https://github.com/prjemian/pv2web_ro.git
+   git clone https://github.com/prjemian/pvWebMonitor.git
 
 Once the installation is complete, 
-the *pv2web_ro* executable should be ready to use.
+the *pvWebMonitor* executable should be ready to use.

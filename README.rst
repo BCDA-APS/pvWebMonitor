@@ -1,8 +1,8 @@
-.. _pv2web_ro:
+.. _pvWebMonitor:
 
-=========
-pv2web_ro
-=========
+============
+pvWebMonitor
+============
 
 **post EPICS PVs to read-only (static) web page(s)**
 
@@ -10,9 +10,9 @@ pv2web_ro
 :email:  	jemian@anl.gov
 :copyright: 2005-2015, UChicago Argonne, LLC
 :license:   ANL OPEN SOURCE LICENSE (see *LICENSE*)
-:docs:      http://pv2web_ro.readthedocs.org
-:git:       https://github.com/prjemian/pv2web_ro.git
-:PyPI:      https://pypi.python.org/pypi/pv2web_ro 
+:docs:      http://pvWebMonitor.readthedocs.org
+:git:       https://github.com/prjemian/pvWebMonitor.git
+:PyPI:      https://pypi.python.org/pypi/pvWebMonitor 
 
 
 This package provides a background service that monitors EPICS PVs 

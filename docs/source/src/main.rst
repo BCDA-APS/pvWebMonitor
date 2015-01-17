@@ -1,7 +1,7 @@
-*pv2web_ro* Package: :mod:`main` Module
-==============================================
+*pvWebMonitor* Package: :mod:`main` Module
+==========================================
 
-.. automodule:: pv2web_ro.main
+.. automodule:: pvWebMonitor.main
     :members:
     :undoc-members:
     :show-inheritance:

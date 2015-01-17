@@ -1,7 +1,7 @@
 
 
 '''
-pv2web_ro.utils
+pvWebMonitor.utils
 '''
 
 # Copyright (c) 2005-2015, UChicago Argonne, LLC.
@@ -55,7 +55,7 @@ def getTime():
 
 def logMessage(message):
     '''
-    log a message or report from pv2web_ro
+    log a message or report from pvWebMonitor
 
     :param str message: words to be logged
     '''

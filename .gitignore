@@ -55,8 +55,8 @@ docs/_build/
 target/
 
 
-# pv2web_ro local application
-src/pv2web_ro/log_file.txt
-src/pv2web_ro/pvlist.xml
-src/pv2web_ro/localwww
-src/pv2web_ro/www_project
+# pvWebMonitor local application
+src/pvWebMonitor/log_file.txt
+src/pvWebMonitor/pvlist.xml
+src/pvWebMonitor/localwww
+src/pvWebMonitor/www_project

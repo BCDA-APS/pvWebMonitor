@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="pvlist.xsl"?>
-<pv2web_ro version="1">
-  <written_by>pv2web_ro/PvWatch</written_by>
+<pvWebMonitor version="1">
+  <written_by>pvWebMonitor/PvWatch</written_by>
   <datetime>2015-01-15 16:48:36</datetime>
   <pv id="DCM_theta" name="prj:m2.RBV">
     <name>prj:m2.RBV</name>
@@ -212,4 +212,4 @@
     <raw_value>3 days, 03:52:27</raw_value>
     <format>%s</format>
   </pv>
-</pv2web_ro>
+</pvWebMonitor>

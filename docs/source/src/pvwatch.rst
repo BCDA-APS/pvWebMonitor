@@ -1,7 +1,7 @@
-*pv2web_ro* Package: :mod:`pvwatch` Module
-==============================================
+*pvWebMonitor* Package: :mod:`pvwatch` Module
+=============================================
 
-.. automodule:: pv2web_ro.pvwatch
+.. automodule:: pvWebMonitor.pvwatch
     :members:
     :undoc-members:
     :show-inheritance:

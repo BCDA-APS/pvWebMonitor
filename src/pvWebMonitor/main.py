@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 
 '''
-pv2web_ro.main
+pvWebMonitor.main
 
 USAGE::
 
-    jemian@gov:~$ pv2web_ro
-    usage: pv2web_ro [-h] [-l LOG_FILE] [-v] xml_config_file
-    pv2web_ro: error: too few arguments
+    jemian@gov:~$ pvWebMonitor
+    usage: pvWebMonitor [-h] [-l LOG_FILE] [-v] xml_config_file
+    pvWebMonitor: error: too few arguments
 
 HELP::
 
-    jemian@gov:~$ pv2web_ro -h
-    usage: pv2web_ro [-h] [-l LOG_FILE] [-v] [--setup SETUP] xml_config_file
+    jemian@gov:~$ pvWebMonitor -h
+    usage: pvWebMonitor [-h] [-l LOG_FILE] [-v] [--setup SETUP] xml_config_file
     
-    pv2web_ro: post EPICS PVs to read-only web page
+    pvWebMonitor: post EPICS PVs to read-only web page
     
     positional arguments:
       xml_config_file       XML configuration file
@@ -30,7 +30,7 @@ HELP::
 
 VERSION::
 
-    jemian@gov:~$ pv2web_ro -v
+    jemian@gov:~$ pvWebMonitor -v
     2015.0112.0
 
 '''
@@ -42,7 +42,7 @@ VERSION::
 import logging
 import sys
 
-import pv2web_ro
+import pvWebMonitor
 import pvwatch
 import utils
 
@@ -54,8 +54,8 @@ def main():
     import argparse
     import read_config
     
-    doc = pv2web_ro.__package_name__
-    doc += ': ' + pv2web_ro.__description__
+    doc = pvWebMonitor.__package_name__
+    doc += ': ' + pvWebMonitor.__description__
     
     parser = argparse.ArgumentParser(description=doc)
 
@@ -72,7 +72,7 @@ def main():
         
         parser.add_argument('-v', '--version', 
                             action='version', 
-                            version=pv2web_ro.__version__)
+                            version=pvWebMonitor.__version__)
 
     group = parser.add_argument_group('getting started (none of the above)')
     group.add_argument('--setup', 

@@ -25,7 +25,7 @@ pvlist.xml       declares list of EPICS PVs to be monitored
 pvlist.xsl       for easy display of pvlist.xml
 livedata.xsl     user-customized display
 rawdata.xsl      standard display of all monitored EPICS PVs
-manage.csh       shell script to manage the background task
+manage.sh        shell script to manage the background task
 ===============  ============================================
 
 Each of these files will be explained in the coming sections.

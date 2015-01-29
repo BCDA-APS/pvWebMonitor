@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="short.xsl"?>
+<pvWebMonitor version="1">
+  <written_by>pvWebMonitor/PvWatch</written_by>
+  <datetime>2015-01-15 16:48:36</datetime>
+  <pv id="VDM_Stripe" name="prj:m1.RBV">
+    <name>prj:m1.RBV</name>
+    <id>VDM_Stripe</id>
+    <description>VDM_Stripe motor</description>
+    <timestamp>2015-01-15 15:30:16.837633</timestamp>
+    <counter>2</counter>
+    <units>deg</units>
+    <value>-1.510</value>
+    <raw_value>-1.51</raw_value>
+    <format>%.3f</format>
+  </pv>
+</pvWebMonitor>

@@ -5,6 +5,7 @@ Contents
    :maxdepth: 2
    :glob:
 
+   overview
    configuration/index
    example/index
    src/index

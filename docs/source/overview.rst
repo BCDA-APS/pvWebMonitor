@@ -23,12 +23,20 @@ Finally, all content in the project directory (except for the *config.xml* file)
 is copied to the WWW site directory.  
 (Only new content is copied, files that do not change are not re-copied.)
 
+It is important to note the WWW site is written as a *static web site* so that it provides
+no opportunity to change values in the EPICS system being monitored.
+
+Also, since some browsers do not have XML parsers and thus cannot render XSLT [#]_,
+all HTML files are created by **pvWebMonitor**.
+
 .. [#] The *rawdata.xml* file contains all the EPICS PV values, as well as 
    some additional metadata useful in building the WWW site.
 
 .. [#] Each XSLT files (``*.xsl``) contains the layout of a single HTML page,
    with additional markup to display the current EPICS PV values (and metadata).
    The EPICS PV data is provided in *rawdata.xml*.
+   
+.. [#] http://www.w3schools.com/xsl/xsl_server.asp
 
 Examples
 ********

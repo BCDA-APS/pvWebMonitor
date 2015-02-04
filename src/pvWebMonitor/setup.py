@@ -29,15 +29,15 @@ def main(new_directory):
     src_files = os.listdir(src_path)
     new_files = os.listdir(new_directory)
     
-    if _ok_to_proceed_(src_files, new_files):
-        import shutil
-        for fname in src_files:
-            # TODO: configure each file for local machine
-            src = os.path.join(src_path, fname)
-            dest = os.path.join(new_directory, fname)
-            shutil.copyfile(src, dest)
-    else:
+    if not _ok_to_proceed_(src_files, new_files):
         raise RuntimeError('new project directory contains files that would be overwritten: ' + new_directory)
+
+    import shutil
+    for fname in src_files:
+        # TODO: configure each file for local machine
+        src = os.path.join(src_path, fname)
+        dest = os.path.join(new_directory, fname)
+        shutil.copyfile(src, dest)
 
 
 def _ok_to_proceed_(src_files, new_files):

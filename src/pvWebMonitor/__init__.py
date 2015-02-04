@@ -3,7 +3,7 @@ __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
 
-__version__             = u'2015.0117.0'
+__version__             = u'2015.0204.0'
 __release__             = __version__
 __author__              = u'Pete R. Jemian'
 __email__               = u'jemian@anl.gov'

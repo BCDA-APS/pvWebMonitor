@@ -4,7 +4,7 @@
 # chkconfig: - 98 98
 # description: pvWebMonitor WWW page update script for IOC: prj
 #
-# processname: pvWebMonitor_iocprj
+# processname: pvWebMonitor_unique
 
 
 PROJECT_DIR=/tmp/pv

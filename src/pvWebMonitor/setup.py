@@ -8,9 +8,43 @@ setup a new project directory
 
 
 import os
+import sys
 
 
 PROJECT_SOURCE_DIR = 'project'
+
+
+def get_key_value(key, txt):
+    '''
+    find the assignment line in txt: key=value, and return value
+    '''
+    separator = '='
+    pattern = key + separator
+    sub = [_ for _ in txt.splitlines() if pattern in _ and _.startswith(key)]
+    if len(sub) != 1:
+        raise KeyError('could not unique find key=' + key)
+    return sub[0].split(separator)[1]
+    
+
+def modify_manage_script(filename):
+    '''
+    customize the manage.sh script for the current setup
+    '''
+    if not os.path.exists(filename): return
+
+    manage_sh = open(filename, 'r').read()
+
+    old_path = get_key_value('PROJECT_DIR', manage_sh)
+    old_python_dir = get_key_value('PYTHON_DIR', manage_sh)
+    
+    path = os.path.abspath(os.path.dirname(filename))
+    python_dir = sys.exec_prefix
+
+    manage_sh = manage_sh.replace(old_path, path)
+    manage_sh = manage_sh.replace(old_python_dir, python_dir)
+    
+    with open(filename, 'w') as f:
+        f.write(manage_sh) 
 
 
 def main(new_directory):
@@ -30,14 +64,20 @@ def main(new_directory):
     new_files = os.listdir(new_directory)
     
     if not _ok_to_proceed_(src_files, new_files):
-        raise RuntimeError('new project directory contains files that would be overwritten: ' + new_directory)
+        msg = 'new project directory contains files that would be overwritten: '
+        raise RuntimeError(msg + new_directory)
 
     import shutil
     for fname in src_files:
-        # TODO: configure each file for local machine
         src = os.path.join(src_path, fname)
         dest = os.path.join(new_directory, fname)
         shutil.copyfile(src, dest)
+    
+    # customize the manage.sh script to the current setup
+    owd = os.getcwd()
+    os.chdir(new_directory)
+    modify_manage_script('manage.sh')
+    os.chdir(owd)
 
 
 def _ok_to_proceed_(src_files, new_files):

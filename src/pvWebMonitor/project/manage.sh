@@ -2,9 +2,9 @@
 # init file for pvWebMonitor
 #
 # chkconfig: - 98 98
-# description: pvWebMonitor WWW page update script for IOC: prj
+# description: pvWebMonitor WWW page update script for NAME_YOUR_SYSTEM_HERE
 #
-# processname: pvWebMonitor_unique
+# processname: pvWebMonitor_MAKE_THIS_NAME_UNIQUE
 
 
 PROJECT_DIR=/tmp/pv

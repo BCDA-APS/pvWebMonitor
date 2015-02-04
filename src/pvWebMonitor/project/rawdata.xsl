@@ -14,7 +14,7 @@
             <head>
                 <title>pvWebMonitor: EPICS process variables</title>
                 <meta http-equiv="Pragma" content="no-cache"/>
-                <meta http-equiv="Refresh" content="300"/><!-- update page every 5 minutes -->
+                <meta http-equiv="Refresh" content="1200"/><xsl:comment> update page every 20 minutes </xsl:comment>
             </head>
             <body>
                 <h1>pvWebMonitor: raw PV data from EPICS</h1>

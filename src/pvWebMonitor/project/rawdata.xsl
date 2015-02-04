@@ -13,6 +13,8 @@
         <html>
             <head>
                 <title>pvWebMonitor: EPICS process variables</title>
+                <meta http-equiv="Pragma" content="no-cache"/>
+                <meta http-equiv="Refresh" content="300"/><!-- update page every 5 minutes -->
             </head>
             <body>
                 <h1>pvWebMonitor: raw PV data from EPICS</h1>
@@ -21,11 +23,11 @@
 
                 <hr />
                 
-                <h2> EPICS process variables </h2>
+                <h2> EPICS process variables (sorted by id) </h2>
                 <table border="2">
                     <tr style="background-color: grey; color: white;">
                         <th>name</th>
-                        <th>id</th>
+                        <th><b>id</b></th>
                         <th>description</th>
                         <th>value</th>
                         <th>units</th>
@@ -42,7 +44,7 @@
                 </p>
                 <p>
                     <small>
-                        report page: <tt>raw-table.xsl</tt>
+                        report page: <tt>rawdata.xsl</tt>
                     </small>
                 </p>
             </body>

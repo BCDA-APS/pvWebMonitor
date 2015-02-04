@@ -4,7 +4,7 @@
 CHANGES
 =======
 
-:2015-01-17: 2015.0204.0 - customize manage.sh to match setup
+:2015-02-04: 2015.0204.0 - customize manage.sh to match setup
 :2015-01-17: 2015.0117.0 - rename project to pvWebMonitor
 :2015-01-16: 2015.0116.0 - management shell script now uses /bin/bash
 :2015-01-15: 2015.0115.0 - refactor XSLT infrastructure and web site

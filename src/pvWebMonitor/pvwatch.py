@@ -156,6 +156,7 @@ class PvWatch(object):
         self.pvdb[pv] = entry
         self.xref[mne] = pv            # mne is local mnemonic, define actual PV in pvlist.xml
         ch.add_callback(self.EPICS_monitor_receiver)  # start callbacks now
+
         cv = ch.get_ctrlvars()
         unit_renames = {        # handle some non SI unit names
             # old      new
@@ -171,7 +172,20 @@ class PvWatch(object):
             if units in unit_renames:
                 units = unit_renames[units]
             entry['units'] = units
+
+        # report the RTYP (record type, if available)
+        basename = pv.split('.')[0]
+        field = pv[len(basename):]
+        rtyp_pv = epics.PV(basename + '.RTYP')
+        rtyp = rtyp_pv.get() or 'unknown'
+        if basename == pv or field == '.VAL':
+            entry['record_type'] = rtyp
+        else:
+            # field of record
+            entry['record_type'] = rtyp + field
+
         # FIXME: what to do if PV did not connect? (ch.connected == False)
+
         self.update_pvdb(pv, ch.get())   # initialize the cache
 
     def update_pvdb(self, pv, raw_value):
@@ -210,7 +224,7 @@ class PvWatch(object):
         node.text = str(utils.getTime()).split('.')[0]
     
         sorted_id_list = sorted(self.xref)
-        fields = ("name", "id", "description", "timestamp",
+        fields = ("name", "id", "description", "timestamp", "record_type",
                   "counter", "units", "value", "raw_value", "format")
     
         for mne in sorted_id_list:

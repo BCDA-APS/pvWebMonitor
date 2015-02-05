@@ -26,7 +26,7 @@ def setup_project_dir(path):
     if os.path.exists(path):
         for fname in os.listdir(path):
             os.remove(os.path.join(path, fname))
-        os.remove(path)
+        os.rmdir(path)
         time.sleep(0.1)
     
     # tear down any old directories

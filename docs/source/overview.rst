@@ -9,22 +9,27 @@ The basic flow of data from EPICS to the WWW site is described in the following 
       
       flow of data from EPICS to WWW site
 
-The **pvWebMonitor** service is run on a computer in the same subnet as the EPICS system
-to be monitored.  All configuration files and other resources are placed in a 
-single :index:`project directory`.
-**pvWebMonitor** places an EPICS Channel Access monitor on each PV in 
-the *pvlist.xml* file and stores updates in-memory.  
-Periodically, as specified in *config.xml*,
-**pvWebMonitor** write the PV values from memory to an XML file (named *rawdata.xml*) in the project directory.
-Once that XML file is written, **pvWebMonitor** uses *rawdata.xml* [#]_ with each of the XSLT 
-files [#]_ in the project directory to create a corresponding HTML file in the project directory.  
-The complete list of HTML files is written into an *index.html* file in the project directory.
-Finally, all content in the project directory (except for the *config.xml* file)
-is copied to the WWW site directory.  
-(Only new content is copied, files that do not change are not re-copied.)
+The **pvWebMonitor** service is run on a computer in the same subnet 
+as the EPICS system to be monitored.  
+All configuration files and other resources are placed in a single 
+:index:`project directory`. **pvWebMonitor** places an EPICS Channel 
+Access monitor on each PV in the *pvlist.xml* file and stores updates 
+in-memory.  
+Periodically, as specified in *config.xml*, **pvWebMonitor** writes 
+the PV values from memory to an XML file (named *rawdata.xml*) in the 
+project directory. 
+Once that XML file is written, **pvWebMonitor** uses *rawdata.xml* 
+[#]_ with each of the XSLT files [#]_ in the project directory to 
+create a corresponding HTML file in the project directory.  
+The complete list of HTML files is written into an *index.html* file 
+in the project directory. 
+Finally, all content in the project directory (except for the 
+*config.xml* file) is copied to the WWW site directory.  (Only new 
+content is copied, files that do not change are not re-copied.) 
 
-It is important to note the WWW site is written as a *static web site* so that it provides
-no opportunity to change values in the EPICS system being monitored.
+It is important to note the WWW site is written as a *static web site* 
+so that it provides no opportunity to change values in the EPICS system 
+being monitored.
 
 Also, since some browsers do not have XML parsers and thus cannot render XSLT [#]_,
 all HTML files are created by **pvWebMonitor**.

@@ -1,5 +1,3 @@
-
-
 '''
 pvWebMonitor.pvwatch
 '''

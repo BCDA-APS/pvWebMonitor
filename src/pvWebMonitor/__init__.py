@@ -1,4 +1,3 @@
-
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__

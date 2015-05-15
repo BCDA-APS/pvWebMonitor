@@ -1,4 +1,3 @@
-
 '''
 setup a new project directory
 '''

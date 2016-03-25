@@ -42,7 +42,6 @@ VERSION::
 import logging
 import sys
 
-import pvWebMonitor
 import pvwatch
 import utils
 
@@ -52,10 +51,11 @@ DEFAULT_LOG_FILE = 'log_file.txt'
 def main():
     '''entry point for the command-line interface'''
     import argparse
+    import __init__
     import read_config
     
-    doc = pvWebMonitor.__package_name__
-    doc += ': ' + pvWebMonitor.__description__
+    doc = __init__.__package_name__
+    doc += ': ' + __init__.__description__
     
     parser = argparse.ArgumentParser(description=doc)
 
@@ -72,7 +72,7 @@ def main():
         
         parser.add_argument('-v', '--version', 
                             action='version', 
-                            version=pvWebMonitor.__version__)
+                            version=__init__.__version__)
 
     group = parser.add_argument_group('getting started (none of the above)')
     group.add_argument('--setup', 

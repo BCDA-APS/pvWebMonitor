@@ -78,7 +78,7 @@ restart(){
 
 checkup(){
     #=====================
-    # call periodically (every 5 minutes) to see if livedata is running
+    # call periodically (every 5 minutes) to see if pvWebMonitor is running
     #=====================
     #	     field	    allowed values
     #	   -----	  --------------

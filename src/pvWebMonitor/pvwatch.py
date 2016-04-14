@@ -237,9 +237,13 @@ class PvWatch(object):
                 subnode = etree.SubElement(node, item)
                 subnode.text = str(entry[item])
 
-        pi_xml = etree.ProcessingInstruction('xml', 'version="1.0"')
+        try:
+            pi_xml = etree.ProcessingInstruction('xml', 'version="1.0"')
+            xmlText = etree.tostring(pi_xml, pretty_print=True)
+        except ValueError:
+            # some instanced of lxml raise a ValueError saying that 'xml' is not allowed
+            xmlText = '<?xml version="1.0" ?>\n'
         pi_xsl = etree.ProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="pvlist.xsl"')
-        xmlText = etree.tostring(pi_xml, pretty_print=True)
         xmlText += etree.tostring(pi_xsl, pretty_print=True)
         xmlText += etree.tostring(root, pretty_print=True)
 

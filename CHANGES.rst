@@ -4,7 +4,7 @@
 CHANGES
 =======
 
-:2016-04-14: 2016.0414.1 - resolve ValueError when creating XML declaration
+:2016-04-14: 2016.0414.2 - resolve ValueError when creating XML declaration
 :2015-05-15: 2015.0515.0 - CRLF to unix from a unix system
 :2015-02-05: 2015.0205.0 - report the PV's .RTYP value if known
 :2015-02-04: 2015.0204.0 - customize manage.sh to match setup

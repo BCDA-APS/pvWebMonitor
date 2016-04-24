@@ -4,6 +4,7 @@
 CHANGES
 =======
 
+:2016-04-23: 2016.0423.0 - user can add additional file extension patterns, fix setup flaw
 :2016-04-14: 2016.0414.2 - resolve ValueError when creating XML declaration
 :2015-05-15: 2015.0515.0 - CRLF to unix from a unix system
 :2015-02-05: 2015.0205.0 - report the PV's .RTYP value if known

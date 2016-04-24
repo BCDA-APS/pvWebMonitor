@@ -37,7 +37,8 @@ def modify_manage_script(filename):
     old_python_dir = get_key_value('PYTHON_DIR', manage_sh)
     
     path = os.path.abspath(os.path.dirname(filename))
-    python_dir = sys.exec_prefix
+    #python_dir = sys.exec_prefix
+    python_dir = os.path.dirname(sys.executable)
 
     manage_sh = manage_sh.replace(old_path, path)
     manage_sh = manage_sh.replace(old_python_dir, python_dir)

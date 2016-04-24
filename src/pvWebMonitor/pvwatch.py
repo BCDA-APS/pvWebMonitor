@@ -66,6 +66,7 @@ class PvWatch(object):
         self.pvdb = {}      # cache of last known good values
         self.xref = {}      # cross-reference between mnemonics and PV names: {mne:pvname}
         self.monitor_counter = 0
+        self.upload_file_extension_matches = UPLOAD_FILE_EXTENSION_MATCHES
 
         self.get_pvlist()
         utils.logMessage('read list of PVs to monitor')
@@ -185,6 +186,16 @@ class PvWatch(object):
         # FIXME: what to do if PV did not connect? (ch.connected == False)
 
         self.update_pvdb(pv, ch.get())   # initialize the cache
+
+    def add_extension_match(self, pattern):
+        '''
+        add ``pattern`` as an additional file extension pattern
+        
+        Any file with extension matching any of the patterns in 
+        ``self.upload_file_extension_matches`` will copied to the
+        WWW directory, if they are newer.
+        '''
+        self.upload_file_extension_matches.append(pattern)
 
     def update_pvdb(self, pv, raw_value):
         '''
@@ -308,7 +319,7 @@ class PvWatch(object):
         
         # include any other useful files from the project directory
         local_files = os.listdir('.')
-        for extension_match in UPLOAD_FILE_EXTENSION_MATCHES:
+        for extension_match in self.upload_file_extension_matches:
             www_site_file_list += fnmatch.filter(local_files, extension_match)
             www_site_file_list += fnmatch.filter(local_files, extension_match.upper())
         

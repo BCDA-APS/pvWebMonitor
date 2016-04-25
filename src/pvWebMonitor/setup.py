@@ -31,6 +31,7 @@ def modify_manage_script(filename):
     '''
     customize the manage.sh script for the current setup
     '''
+    # TODO: make the manage.sh script executable
     if not os.path.exists(filename): return
 
     manage_sh = open(filename, 'r').read()

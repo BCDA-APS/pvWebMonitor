@@ -12,10 +12,7 @@ MANAGE=${PROJECT_DIR}/manage.sh
 LOGFILE=${PROJECT_DIR}/log-manage.txt
 PIDFILE=${PROJECT_DIR}/pid.txt
 CONFIGFILE=${PROJECT_DIR}/config.xml
-
-PYTHON_DIR=/home/oxygen/JEMIAN/Apps/anaconda/bin
-SCRIPT=${PYTHON_DIR}/pvWebMonitor
-
+EXECUTABLE_SCRIPT=/home/oxygen/JEMIAN/Apps/anaconda/bin/pvWebMonitor
 RETVAL=0
 
 
@@ -47,11 +44,11 @@ check_pid_running(){
 
 start(){
     cd ${PROJECT_DIR}
-    ${SCRIPT} ${CONFIGFILE} 2>&1 >> ${LOGFILE} &
+    ${EXECUTABLE_SCRIPT} ${CONFIGFILE} 2>&1 >> ${LOGFILE} &
     PID=$!
     /bin/echo ${PID} > ${PIDFILE}
-    /bin/echo "# [$0 `/bin/date`] started ${PID}: ${SCRIPT}" 2>&1 >> ${LOGFILE} &
-    /bin/echo "# [$0 `/bin/date`] started ${PID}: ${SCRIPT}"
+    /bin/echo "# [$0 `/bin/date`] started ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+    /bin/echo "# [$0 `/bin/date`] started ${PID}: ${EXECUTABLE_SCRIPT}"
 }
 
 
@@ -60,11 +57,11 @@ stop(){
     check_pid_running
     
     if [ $RETVAL == 1 ]; then
-	/bin/echo "# [$0 `/bin/date`] not running ${PID}: ${SCRIPT}" 2>&1 >> ${LOGFILE} &
+	/bin/echo "# [$0 `/bin/date`] not running ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
     else
     	kill ${PID}
-    	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${SCRIPT}" 2>&1 >> ${LOGFILE} &
-    	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${SCRIPT}"
+    	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+    	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${EXECUTABLE_SCRIPT}"
     fi
     /bin/cp -f /dev/null ${PIDFILE}
 }

@@ -29,19 +29,19 @@ def modify_manage_script(filename):
     '''
     customize the manage.sh script for the current setup
     '''
+    # TODO: make the manage.sh script executable
     if not os.path.exists(filename): return
 
     manage_sh = open(filename, 'r').read()
 
     old_path = get_key_value('PROJECT_DIR', manage_sh)
-    old_python_dir = get_key_value('PYTHON_DIR', manage_sh)
+    old_executable_script = get_key_value('EXECUTABLE_SCRIPT', manage_sh)
     
     path = os.path.abspath(os.path.dirname(filename))
-    #python_dir = sys.exec_prefix
-    python_dir = os.path.dirname(sys.executable)
+    executable_script = os.path.abspath(sys.argv[0])
 
     manage_sh = manage_sh.replace(old_path, path)
-    manage_sh = manage_sh.replace(old_python_dir, python_dir)
+    manage_sh = manage_sh.replace(old_executable_script, executable_script)
     
     with open(filename, 'w') as f:
         f.write(manage_sh) 

@@ -4,7 +4,7 @@
 read XML configuration file for `pvWebMonitor` package
 '''
 
-# Copyright (c) 2005-2015, UChicago Argonne, LLC.
+# Copyright (c) 2005-2016, UChicago Argonne, LLC.
 # See LICENSE file for details.
 
 
@@ -15,6 +15,7 @@ import utils
 
 ROOT_TAG = 'pvWebMonitor__config'
 XML_SCHEMA_FILE = 'config.xsd'
+DEFAULT_FILE_UPLOAD_MATCH_PATTERNS = '*.html *.gif *.jpeg *.jpg *.png *.xsl'.split()
 
 
 def read_xml(xml_file):
@@ -23,7 +24,7 @@ def read_xml(xml_file):
     
     :param return: dictionary
     
-    At minimum, the dictionary should contain these definitions for use by :meth:`pvwatch.PvWatch`:
+    the dictionary WILL contain these definitions for use by :meth:`pvwatch.PvWatch`:
     
     ========================  ===============  =================================================
     dictionary key            example (type)   description
@@ -34,6 +35,7 @@ def read_xml(xml_file):
     REPORT_INTERVAL_S         10 (float)       updates to HTML pages
     SLEEP_INTERVAL_S          0.1 (float)      sleeps at end of main loop
     MAINLOOP_COUNTER_TRIGGER  10000 (int)      another logging message interval
+    PATTERNS                  *.html           upload all files that match these patterns
     ========================  ===============  =================================================
 
     '''
@@ -50,6 +52,11 @@ def read_xml(xml_file):
         raise ValueError(msg)
     
     conf = {}
+    if root.attrib['version'] == '1.0':
+        conf['PATTERNS'] = DEFAULT_FILE_UPLOAD_MATCH_PATTERNS
+    elif root.attrib['version'] == '1.0.1':
+        conf['PATTERNS'] = [node.get('value') for node in tree.findall(".//pattern")]
+
     for node in tree.findall(".//var"):
         key = node.get('name')
         value = node.get('value')

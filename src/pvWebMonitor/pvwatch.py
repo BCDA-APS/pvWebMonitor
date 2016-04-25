@@ -2,7 +2,7 @@
 pvWebMonitor.pvwatch
 '''
 
-# Copyright (c) 2005-2015, UChicago Argonne, LLC.
+# Copyright (c) 2005-2016, UChicago Argonne, LLC.
 # See LICENSE file for details.
 
 
@@ -21,7 +21,6 @@ XML_RAWDATA_FILE_NAME = 'rawdata.xml'
 XSL_PVLIST_FILE_NAME = 'pvlist.xsl'
 XSL_RAWDATA_FILE_NAME = 'rawdata.xsl'
 XSL_INDEX_FILE_NAME = 'index.xsl'
-UPLOAD_FILE_EXTENSION_MATCHES = ('*.html', '*.gif', '*.jpeg', '*.jpg', '*.png', '*.xsl')
 
 
 class PvNotRegistered(Exception): 
@@ -66,7 +65,7 @@ class PvWatch(object):
         self.pvdb = {}      # cache of last known good values
         self.xref = {}      # cross-reference between mnemonics and PV names: {mne:pvname}
         self.monitor_counter = 0
-        self.upload_file_extension_matches = UPLOAD_FILE_EXTENSION_MATCHES
+        self.upload_patterns = configuration['PATTERNS']
 
         self.get_pvlist()
         utils.logMessage('read list of PVs to monitor')
@@ -187,15 +186,15 @@ class PvWatch(object):
 
         self.update_pvdb(pv, ch.get())   # initialize the cache
 
-    def add_extension_match(self, pattern):
+    def add_file_pattern(self, pattern):
         '''
         add ``pattern`` as an additional file extension pattern
         
         Any file with extension matching any of the patterns in 
-        ``self.upload_file_extension_matches`` will copied to the
+        ``self.upload_patterns`` will copied to the
         WWW directory, if they are newer.
         '''
-        self.upload_file_extension_matches.append(pattern)
+        self.upload_patterns.append(pattern)
 
     def update_pvdb(self, pv, raw_value):
         '''
@@ -319,9 +318,9 @@ class PvWatch(object):
         
         # include any other useful files from the project directory
         local_files = os.listdir('.')
-        for extension_match in self.upload_file_extension_matches:
-            www_site_file_list += fnmatch.filter(local_files, extension_match)
-            www_site_file_list += fnmatch.filter(local_files, extension_match.upper())
+        for file_pattern in self.upload_patterns:
+            www_site_file_list += fnmatch.filter(local_files, file_pattern)
+            www_site_file_list += fnmatch.filter(local_files, file_pattern.upper())
         
         # only copy files if web_site_path is not the current dir
         www_site_file_list = sorted(set(www_site_file_list))

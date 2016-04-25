@@ -1,8 +1,13 @@
+
+'''
+pvWebMonitor
+'''
+
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
 
-__version__             = u'2016.0423.0'
+__version__             = u'2016.0424.0'
 __release__             = __version__
 __author__              = u'Pete R. Jemian'
 __email__               = u'jemian@anl.gov'
@@ -10,7 +15,7 @@ __institution__         = u"Advanced Photon Source, Argonne National Laboratory"
 __author_name__         = __author__
 __author_email__        = __email__
 
-__copyright__           = u'2005-2015, UChicago Argonne, LLC'
+__copyright__           = u'2005-2016, UChicago Argonne, LLC'
 # __license_url__         = u''
 __license__             = u'UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)'
 __url__                 = u'http://pvWebMonitor.readthedocs.org'

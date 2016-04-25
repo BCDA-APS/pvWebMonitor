@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2009 - 2014, UChicago Argonne, LLC.
+# Copyright (c) 2005-2016, UChicago Argonne, LLC.
 # See LICENSE file for details.
 
 

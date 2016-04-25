@@ -16,7 +16,7 @@ script for automated startup in a cron task or at system startup.
 
 :author: 	Pete R. Jemian
 :email:  	jemian@anl.gov
-:copyright: 2005-2015, UChicago Argonne, LLC
+:copyright: 2005-2016, UChicago Argonne, LLC
 :license:   ANL OPEN SOURCE LICENSE (see *LICENSE*)
 :docs:      http://pvWebMonitor.readthedocs.org
 :git:       https://github.com/prjemian/pvWebMonitor.git

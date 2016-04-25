@@ -4,6 +4,7 @@
 CHANGES
 =======
 
+:2016.0425.0:        improve the setup of manage.sh on Linux
 :2016.0424.0:        user can add additional file extension patterns
 :2016.0423.0:        fix setup flaw
 :2016.0414.2:        resolve ValueError when creating XML declaration

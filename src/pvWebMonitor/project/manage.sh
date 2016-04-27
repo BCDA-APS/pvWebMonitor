@@ -24,21 +24,21 @@ get_pid(){
 
 
 check_pid_running(){
-    get_pid
-    if [ "${PID}" == "" ]; then
-        # no PID in the PIDFILE
-	RETVAL=1
-    else
- 	RESPONSE=`ps -p ${PID} -o comm=`
- 	if [ "${RESPONSE}" == "pvWebMonitor" ]; then
- 	    # PID matches the pvWebMonitor profile
- 	    RETVAL=0
- 	else
- 	    # PID is not pvWebMonitor
- 	    RETVAL=1
- 	fi
-    fi
-    return $RETVAL
+	get_pid
+	if [ "${PID}" == "" ]; then
+		# no PID in the PIDFILE
+		RETVAL=1
+	else
+		RESPONSE=`ps -p ${PID} -o comm=`
+		if [ "${RESPONSE}" == "pvWebMonitor" ]; then
+			# PID matches the pvWebMonitor profile
+			RETVAL=0
+		else
+			# PID is not pvWebMonitor
+			RETVAL=1
+		fi
+	fi
+	return $RETVAL
 }
 
 
@@ -57,7 +57,7 @@ stop(){
     check_pid_running
     
     if [ $RETVAL == 1 ]; then
-	/bin/echo "# [$0 `/bin/date`] not running ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+		/bin/echo "# [$0 `/bin/date`] not running ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
     else
     	kill ${PID}
     	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
@@ -91,10 +91,10 @@ checkup(){
     get_pid
     check_pid_running
     if [ $RETVAL == 0 ]; then
-	echo "# [$0 `/bin/date`] running fine, so it seems" 2>&1 > /dev/null
+		echo "# [$0 `/bin/date`] running fine, so it seems" 2>&1 > /dev/null
     else
- 	echo "# [$0 `/bin/date`] could not identify running process ${PID}, starting new process" 2>&1 >> ${LOGFILE}
- 	start
+		echo "# [$0 `/bin/date`] could not identify running process ${PID}, starting new process" 2>&1 >> ${LOGFILE}
+		start
     fi
 }
 

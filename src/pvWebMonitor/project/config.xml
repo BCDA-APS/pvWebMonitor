@@ -33,6 +33,5 @@
   <pattern value="*.xsl" />  <!-- XML stylesheets -->
   <pattern value="*.txt" />  <!-- text -->
   <pattern value="*.pdf" />  <!-- documentation -->
-  <pattern value="*.rrd" />  <!-- round-robin databases -->
   
 </pvWebMonitor__config>

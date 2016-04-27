@@ -4,10 +4,7 @@
 CHANGES
 =======
 
-:2016.0427.0:        change line endings in manage.sh
-:2016.0425.0:        improve the setup of manage.sh on Linux
-:2016.0424.0:        user can add additional file extension patterns
-:2016.0423.0:        fix setup flaw
+:2016.0427.1:        improve the setup of manage.sh on Linux, user can add additional file extension patterns
 :2016.0414.2:        resolve ValueError when creating XML declaration
 :2015.0515.0:        CRLF to unix from a unix system
 :2015.0205.0:        report the PV's .RTYP value if known

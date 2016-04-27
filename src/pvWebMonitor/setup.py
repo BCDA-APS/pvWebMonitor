@@ -31,7 +31,6 @@ def modify_manage_script(filename):
     '''
     customize the manage.sh script for the current setup
     '''
-    # TODO: make the manage.sh script executable
     if not os.path.exists(filename): return
 
     manage_sh = open(filename, 'r').read()
@@ -51,7 +50,7 @@ def modify_manage_script(filename):
         permissions = stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR
         permissions |= stat.S_IRGRP | stat.S_IXGRP
         permissions |= stat.S_IROTH | stat.S_IXOTH
-        os.chmod(manage_sh, permissions)
+        os.chmod(filename, permissions)
 
 
 def main(new_directory):

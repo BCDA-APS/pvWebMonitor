@@ -7,8 +7,8 @@ __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
 
-__version__             = u'2016.0427.1'
-__release__             = __version__
+#__version__             = u'2016.0427.1'
+#__release__             = __version__
 __author__              = u'Pete R. Jemian'
 __email__               = u'jemian@anl.gov'
 __institution__         = u"Advanced Photon Source, Argonne National Laboratory"
@@ -42,3 +42,14 @@ __credits__ = u'author: ' + __author__
 __credits__ += u'\nemail: ' + __email__
 __credits__ += u'\ninstitution: ' + __institution__
 __credits__ += u'\nURL: ' + __url__
+
+
+import os
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
+if on_rtd:
+    # special handling for readthedocs.org, remove distracting info
+    __version__ = __version__.split('+')[0]
+__release__   = __version__

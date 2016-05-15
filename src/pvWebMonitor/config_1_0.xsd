@@ -7,20 +7,12 @@ XML Schema to validate the config.xml file
  -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   
-  <xs:element name="pvWebMonitor__config" type="v1.0.1" />  <!-- TODO: how to v1.0 | v1.0.1 ? -->
+  <xs:element name="pvWebMonitor__config" type="v1.0" />
   
   <xs:element name="var">
     <xs:complexType>
       <xs:attribute name="name" use="required" type="xs:NCName" />
       <xs:attributeGroup ref="value_type"/>
-      <xs:attribute name="value" use="required" type="xs:string" />
-    </xs:complexType>
-  </xs:element>
-  
-  <!-- added: v1.0.1 -->
-  <!-- previous version used a fixed list of patterns -->
-  <xs:element name="pattern">
-    <xs:complexType>
       <xs:attribute name="value" use="required" type="xs:string" />
     </xs:complexType>
   </xs:element>
@@ -39,28 +31,12 @@ XML Schema to validate the config.xml file
   
   <xs:complexType name="v1.0">
     <xs:sequence>
-      <xs:element name="var" maxOccurs="unbounded" />
+      <xs:element maxOccurs="unbounded" ref="var" />
     </xs:sequence>
     <xs:attribute name="version">
       <xs:simpleType>
         <xs:restriction base="xs:string">
           <xs:enumeration value="1.0" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:complexType>
-  
-  <xs:complexType name="v1.0.1">
-    <xs:choice minOccurs="1" maxOccurs="unbounded">  <!-- given in any order -->
-      <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="var" />
-        <xs:element maxOccurs="unbounded" ref="pattern" />
-      </xs:sequence>
-    </xs:choice>
-    <xs:attribute name="version">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="1.0.1" />
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>

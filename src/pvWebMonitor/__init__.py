@@ -46,7 +46,7 @@ __credits__ += u'\nURL: ' + __url__
 
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-from ._version import get_versions
+from _version import get_versions
 __version__ = get_versions()['version']
 del get_versions
 if on_rtd:

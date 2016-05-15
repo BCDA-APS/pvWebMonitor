@@ -14,7 +14,10 @@ import utils
 
 
 ROOT_TAG = 'pvWebMonitor__config'
-XML_SCHEMA_FILE = 'config.xsd'
+XML_SCHEMA_FILES = {
+    '1.0'   : 'config_1_0.xsd',
+    '1.0.1' : 'config_1_0_1.xsd',
+}
 DEFAULT_FILE_UPLOAD_MATCH_PATTERNS = '*.html *.gif *.jpeg *.jpg *.png *.xsl'.split()
 
 
@@ -42,8 +45,10 @@ def read_xml(xml_file):
     if not os.path.exists(xml_file):
         raise IOError(xml_file + ' file not found')
     tree = etree.parse(xml_file)
+    root = tree.getroot()
+    schema_version = root.attrib['version']
     
-    utils.validate(tree, XML_SCHEMA_FILE)
+    utils.validate(tree, XML_SCHEMA_FILES[schema_version])
     
     root = tree.getroot()
     if root.tag != ROOT_TAG:
@@ -51,11 +56,12 @@ def read_xml(xml_file):
         msg += ', found: ' + root.tag
         raise ValueError(msg)
     
-    conf = {}
-    if root.attrib['version'] == '1.0':
-        conf['PATTERNS'] = DEFAULT_FILE_UPLOAD_MATCH_PATTERNS
-    elif root.attrib['version'] == '1.0.1':
-        conf['PATTERNS'] = [node.get('value') for node in tree.findall(".//pattern")]
+    pattern_handlers = {
+        '1.0'   : patterns_1_0,
+        '1.0.1' : patterns_1_0_1,
+    }
+    conf = dict(PATTERNS = pattern_handlers[schema_version](tree),
+                SCHEMA_VERSION = schema_version)
 
     for node in tree.findall(".//var"):
         key = node.get('name')
@@ -68,3 +74,18 @@ def read_xml(xml_file):
         conf[key] = value
         
     return conf
+
+
+def patterns_1_0(*args):
+    '''
+    config_1_0 relies on a pre-defined list of file match patterns
+    '''
+    return DEFAULT_FILE_UPLOAD_MATCH_PATTERNS
+
+
+def patterns_1_0_1(*args):
+    '''
+    config_1_0_1 uses a user-defined list of file match patterns
+    '''
+    tree = args[0]
+    return [node.get('value') for node in tree.findall(".//pattern")]

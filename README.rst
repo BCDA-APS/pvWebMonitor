@@ -6,7 +6,7 @@ pvWebMonitor
 
 **post EPICS PVs to read-only (static) web page(s)**
 
-:version: |version|
+:version:   |version|
 :published: |today|
 
 This package provides a background service that monitors EPICS PVs 

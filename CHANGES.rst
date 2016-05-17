@@ -4,7 +4,8 @@
 CHANGES
 =======
 
-:2016.0427.1:        improve the setup of manage.sh on Linux, user can add additional file extension patterns
+:2016.0516.2:        accept both version 1.0 & 1.0.1 config.xml files
+:2016.0427.1:        user can add additional file extension patterns, improve the setup of manage.sh on Linux
 :2016.0414.2:        resolve ValueError when creating XML declaration
 :2015.0515.0:        CRLF to unix from a unix system
 :2015.0205.0:        report the PV's .RTYP value if known

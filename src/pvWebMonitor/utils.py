@@ -91,7 +91,9 @@ def validate(xml_tree, xml_schema_file):
     if not os.path.exists(xsd_file_name):
         raise IOError('Could not find XML Schema file: ' + xml_schema_file)
     
-    xsd_doc = etree.parse(xsd_file_name)
+    xsd_doc = __parse_xml__(xsd_file_name)
+    if xsd_doc is None:
+        return
     xsd = etree.XMLSchema(xsd_doc)
 
     return xsd.assertValid(xml_tree)
@@ -109,6 +111,19 @@ def writeFile(output_file, contents):
     f.close()
 
 
+def __parse_xml__(xml_file_name):
+    '''
+    common handler for lxml.etree.parse to catch certain exceptions
+    '''
+    try:
+        src_doc = etree.parse(xml_file_name)
+    except (IOError, etree.XMLSyntaxError), _exc:
+        msg = 'problem with ' + xml_file_name + ': ' + str(_exc)
+        logMessage(msg)
+        return
+    return src_doc
+
+
 def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
     '''
     transform an XML file using an XSLT
@@ -117,19 +132,14 @@ def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
     :param str src_xml_file: name of XML file
     :param str result_xml_file: name of output XML file
     '''
-    try:
-        src_doc = etree.parse(src_xml_file)
-    except (IOError, etree.XMLSyntaxError), _exc:
-        msg = src_xml_file + ': ' + str(_exc)
-        logMessage(msg)
+    src_doc = __parse_xml__(src_xml_file)
+    if src_doc is None:
         return
 
-    try:
-        xslt_doc = etree.parse(xslt_file)
-    except (IOError, etree.XMLSyntaxError), _exc:
-        msg = xslt_file + ': ' + str(_exc)
-        logMessage(msg)
+    xslt_doc = __parse_xml__(xslt_file)
+    if xslt_doc is None:
         return
+
 
     transform = etree.XSLT(xslt_doc)
     result_doc = transform(src_doc)

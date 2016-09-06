@@ -94,6 +94,8 @@ def main():
         exit()
 
     else:
+        utils.logMessage('-'*40)
+        utils.logMessage('pvWebMonitor starting')
         configuration = read_config.read_xml(user_args.xml_config_file)
         utils.logMessage('read configuration file: ' + user_args.xml_config_file)
         utils.logMessage('configuration schema version: ' + configuration['SCHEMA_VERSION'])

@@ -9,11 +9,13 @@ pvWebMonitor.utils
 
 
 import datetime
+import getpass
 import hashlib
 import logging
 from lxml import etree
 import os
 import shutil
+import socket
 import sys
 import traceback
 
@@ -60,9 +62,11 @@ def logMessage(message):
     :param str message: words to be logged
     '''
     now = getTime()
+    user = getpass.getuser()
+    host = socket.gethostname()
     name = os.path.basename(sys.argv[0])
     pid = os.getpid()
-    text = "(%d,%s,%s) %s" % (pid, name, now, message)
+    text = "(%s@%s,%d,%s,%s) %s" % (user, host, pid, name, now, message)
     logging.info(text)
 
 

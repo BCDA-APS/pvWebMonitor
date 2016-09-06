@@ -117,8 +117,20 @@ def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
     :param str src_xml_file: name of XML file
     :param str result_xml_file: name of output XML file
     '''
-    src_doc = etree.parse(src_xml_file)
-    xslt_doc = etree.parse(xslt_file)
+    try:
+        src_doc = etree.parse(src_xml_file)
+    except (IOError, etree.XMLSyntaxError), _exc:
+        msg = src_xml_file + ': ' + str(_exc)
+        logMessage(msg)
+        return
+
+    try:
+        xslt_doc = etree.parse(xslt_file)
+    except (IOError, etree.XMLSyntaxError), _exc:
+        msg = xslt_file + ': ' + str(_exc)
+        logMessage(msg)
+        return
+
     transform = etree.XSLT(xslt_doc)
     result_doc = transform(src_doc)
     buf = etree.tostring(result_doc, pretty_print=True)

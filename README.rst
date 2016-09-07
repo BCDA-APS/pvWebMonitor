@@ -18,6 +18,6 @@ script for automated startup in a cron task or at system startup.
 :email:  	jemian@anl.gov
 :copyright: 2005-2016, UChicago Argonne, LLC
 :license:   ANL OPEN SOURCE LICENSE (see *LICENSE*)
-:docs:      http://pvWebMonitor.readthedocs.org
+:docs:      http://pvWebMonitor.readthedocs.io
 :git:       https://github.com/prjemian/pvWebMonitor.git
 :PyPI:      https://pypi.python.org/pypi/pvWebMonitor

@@ -126,13 +126,15 @@ class PvWatch(object):
                 pv = key.get("PV")
                 desc = key.get("description")
                 fmt = key.get("display_format", "%s")  # default format
+                as_string = key.get("as_string", False)  # default format
+                # :see: http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get
                 try:
-                    self.add_pv(mne, pv, desc, fmt)
+                    self.add_pv(mne, pv, desc, fmt, as_string)
                 except:
                     msg = "%s: problem connecting: %s" % (pvlist_file, etree.tostring(key))
                     utils.logException(msg)
 
-    def add_pv(self, mne, pv, desc, fmt):
+    def add_pv(self, mne, pv, desc, fmt, as_string):
         '''Connect to a EPICS (PyEpics) process variable'''
         if pv in self.pvdb:
             msg = "key '%s' already defined by id=%s" % (pv, self.pvdb[pv]['id'])
@@ -140,16 +142,17 @@ class PvWatch(object):
 
         ch = epics.PV(pv)
         entry = {
-            'name': pv,           # EPICS PV name
-            'id': mne,            # symbolic name used in the python code
-            'description': desc,  # text description for humans
-            'timestamp': None,    # client time last monitor was received
-            'counter': 0,         # number of monitor events received
-            'units': "",          # engineering units
-            'ch': ch,             # EPICS PV channel
-            'format': fmt,        # format for display
-            'value': None,        # formatted value
-            'raw_value': None     # unformatted value
+            'name': pv,             # EPICS PV name
+            'id': mne,              # symbolic name used in the python code
+            'description': desc,    # text description for humans
+            'timestamp': None,      # client time last monitor was received
+            'counter': 0,           # number of monitor events received
+            'units': "",            # engineering units
+            'ch': ch,               # EPICS PV channel
+            'format': fmt,          # format for display
+            'value': None,          # formatted value
+            'raw_value': None,      # unformatted value
+            'as_string': as_string, # whether to return the string representation of the value
         }
         self.pvdb[pv] = entry
         self.xref[mne] = pv            # mne is local mnemonic, define actual PV in pvlist.xml

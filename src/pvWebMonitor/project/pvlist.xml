@@ -22,9 +22,12 @@
   	(optional, default="%s") PVs will be formatted for display with this string
   </definition>
   <definition name="_ignore_">
-  	(optional, default="false") this PV is ignored if value is not "false"
+    (optional, default="false") this PV is ignored if value is not "false"
   </definition>
-
+  <definition name="as_string">
+    (optional, default="false") write this PV from formatted raw_value if "false", from char_value if "true"
+  </definition>
+  
 
   <EPICS_PV PV="morel:TOD" 				description="IOC current time"  	mne="tod"/>
   <EPICS_PV PV="morel:STARTTOD" 		description="IOC boot time"  		mne="starttod"/>
@@ -32,9 +35,11 @@
   <EPICS_PV PV="morel:HOSTNAME"			description="IOC host name" 		mne="hostname"/>
   <EPICS_PV PV="morel:ENGINEER"			description="engineer" 				mne="engineer"/>
 
+  <EPICS_PV PV="morel:m1.DESC"  description="VDM_Stripe motor description" mne="VDM_Stripe_DESC" as_string="true"/>
   <EPICS_PV PV="morel:m1.RBV"   description="VDM_Stripe motor"             mne="VDM_Stripe"     display_format="%.3f"/>
   <EPICS_PV PV="morel:m1.VAL"   description="VDM_Stripe motor target"      mne="VDM_Stripe_VAL" display_format="%.3f"/>
   <EPICS_PV PV="morel:m1.DMOV"  description="VDM_Stripe motor done moving" mne="VDM_Stripe_DMOV"/>
+  <EPICS_PV PV="morel:m2.DESC"  description="DCM_theta motor description"  mne="DCM_theta_DESC" as_string="true"/>
   <EPICS_PV PV="morel:m2.RBV"   description="DCM_theta motor"              mne="DCM_theta"      display_format="%.6f"/>
   <EPICS_PV PV="morel:m2.VAL"   description="DCM_theta motor target"       mne="DCM_theta_VAL"  display_format="%.6f"/>
   <EPICS_PV PV="morel:m2.DMOV"  description="DCM_theta motor done moving"  mne="DCM_theta_DMOV"/>

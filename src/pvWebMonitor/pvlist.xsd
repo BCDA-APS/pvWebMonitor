@@ -6,7 +6,7 @@ XML Schema to validate the pvlist.xml file
 # See LICENSE file for details.
  -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-
+  
   <xs:element name="pvwatch">
     <xs:complexType>
       <xs:sequence>
@@ -22,7 +22,7 @@ XML Schema to validate the pvlist.xml file
     <!-- used to tell humans what the terms mean in a pvlist.xml file -->
     <xs:attribute name="name" use="required" type="xs:NCName" />
   </xs:complexType>
-
+  
   <xs:complexType name="pv_type">
     <!-- defines the declaration of one PV to be monitored -->
     <xs:attribute name="PV" type="xs:NMTOKEN" use="required" />
@@ -30,6 +30,7 @@ XML Schema to validate the pvlist.xml file
     <xs:attribute name="display_format" type="xs:string" use="optional" default="%s" />
     <xs:attribute name="mne" type="xs:NCName" use="required" />
     <xs:attribute name="_ignore_" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="as_string" type="xs:boolean" use="optional" default="false" />
   </xs:complexType>
   
   <xs:attributeGroup name="version_type">
@@ -43,5 +44,5 @@ XML Schema to validate the pvlist.xml file
       </xs:simpleType>
     </xs:attribute>
   </xs:attributeGroup>
-
+  
 </xs:schema>

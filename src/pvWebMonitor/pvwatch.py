@@ -152,6 +152,7 @@ class PvWatch(object):
             'format': fmt,          # format for display
             'value': None,          # formatted value
             'raw_value': None,      # unformatted value
+            'char_value': None,     # string value
             'as_string': as_string, # whether to return the string representation of the value
         }
         self.pvdb[pv] = entry
@@ -210,11 +211,15 @@ class PvWatch(object):
             msg = '!!!ERROR!!! %s was not found in pvdb!' % pv
             raise PvNotRegistered, msg
         entry = self.pvdb[pv]
-        # ch = entry['ch']
+        ch = entry['ch']
         entry['timestamp'] = utils.getTime()
         entry['counter'] += 1
         entry['raw_value'] = raw_value
-        entry['value'] = entry['format'] % raw_value
+        entry['char_value'] = ch.char_value
+        if entry['as_string']:
+            entry['value'] = ch.char_value
+        else:
+            entry['value'] = entry['format'] % raw_value
 
     def EPICS_monitor_receiver(self, *args, **kws):
         '''Response to an EPICS (PyEpics) monitor on the channel'''
@@ -236,7 +241,7 @@ class PvWatch(object):
     
         sorted_id_list = sorted(self.xref)
         fields = ("name", "id", "description", "timestamp", "record_type",
-                  "counter", "units", "value", "raw_value", "format")
+                  "counter", "units", "value", "char_value", "raw_value", "format")
     
         for mne in sorted_id_list:
             pv = self.xref[mne]

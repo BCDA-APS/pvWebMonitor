@@ -119,6 +119,8 @@ class PvWatch(object):
             raise CouldNotParseXml(msg)
         
         utils.validate(tree, XML_SCHEMA_FILE)
+        msg = 'validated file: ' + pvlist_file
+        utils.logMessage(msg)
 
         for key in tree.findall(".//EPICS_PV"):
             if key.get("_ignore_", "false").lower() == "false":
@@ -133,6 +135,8 @@ class PvWatch(object):
                 except:
                     msg = "%s: problem connecting: %s" % (pvlist_file, etree.tostring(key))
                     utils.logException(msg)
+
+        utils.logMessage('all PVs added')
 
     def add_pv(self, mne, pv, desc, fmt, as_string):
         '''Connect to a EPICS (PyEpics) process variable'''
@@ -187,6 +191,8 @@ class PvWatch(object):
             entry['record_type'] = rtyp + field
 
         # FIXME: what to do if PV did not connect? (ch.connected == False)
+        if not ch.connected:
+            utils.logMessage('PV not connected yet: ' + pv)
 
         self.update_pvdb(pv, ch.get())   # initialize the cache
 

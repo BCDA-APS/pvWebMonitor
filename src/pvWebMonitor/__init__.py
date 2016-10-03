@@ -3,12 +3,12 @@
 pvWebMonitor
 '''
 
+__version__             = u'2016.1003.0+'
+
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
 
-#__version__             = u'2016.0427.1'
-#__release__             = __version__
 __author__              = u'Pete R. Jemian'
 __email__               = u'jemian@anl.gov'
 __institution__         = u"Advanced Photon Source, Argonne National Laboratory"
@@ -18,7 +18,7 @@ __author_email__        = __email__
 __copyright__           = u'2005-2016, UChicago Argonne, LLC'
 # __license_url__         = u''
 __license__             = u'UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)'
-__url__                 = u'http://pvWebMonitor.readthedocs.org'
+__url__                 = u'http://pvWebMonitor.readthedocs.io'
 __download_url__        = u'https://github.com/prjemian/pvWebMonitor.git'
 __keywords__            = ['EPICS', 'PV', 'tool', 'HTML']
 __requires__            = ['pyepics', 'lxml', 'numpy']
@@ -44,12 +44,6 @@ __credits__ += u'\ninstitution: ' + __institution__
 __credits__ += u'\nURL: ' + __url__
 
 
-import os
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-from _version import get_versions
-__version__ = get_versions()['version']
-del get_versions
-if on_rtd:
-    # special handling for readthedocs.org, remove distracting info
-    __version__ = __version__.split('+')[0]
+from _version import get_version_strings
+__display_version__, __version__ = get_version_strings(__version__)
 __release__   = __version__

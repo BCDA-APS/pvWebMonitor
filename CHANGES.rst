@@ -4,9 +4,10 @@
 CHANGES
 =======
 
-:2016.0907.0:        `issue #18 <https://github.com/prjemian/spec2nexus/issues/18>`_: check XSLT files for syntax errors,
+:2016.1003.0:        `issue #22 <https://github.com/prjemian/pvWebMonitor/issues/22>`_: correct version number shown now
+:2016.0907.0:        `issue #18 <https://github.com/prjemian/pvWebMonitor/issues/18>`_: check XSLT files for syntax errors,
                      `issue #19 <https://github.com/prjemian/pvWebMonitor/issues/19>`_: let user choose to write waveform strings as string or array of integers,
-                     `issue #20 <https://github.com/prjemian/spec2nexus/issues/20>`_: add username and host to logging messages
+                     `issue #20 <https://github.com/prjemian/pvWebMonitor/issues/20>`_: add username and host to logging messages
 :2016.0516.2:        #16: accept both version 1.0 & 1.0.1 config.xml files
 :2016.0427.1:        #12: user can add additional file extension patterns, improve the setup of manage.sh on Linux
 :2016.0414.2:        #9: resolve ValueError when creating XML declaration

@@ -8,7 +8,6 @@ from setuptools import setup, find_packages
 import os
 import re
 import sys
-import versioneer
 
 # pull in some definitions from the package's __init__.py file
 sys.path.insert(0, os.path.join('src', ))
@@ -21,8 +20,7 @@ long_description = open('README.rst', 'r').read()
 
 
 setup (name             = pvWebMonitor.__package_name__,        # pvWebMonitor
-       version          = versioneer.get_version(),
-       cmdclass         = versioneer.get_cmdclass(),
+       version          = pvWebMonitor.__version__,
        license          = pvWebMonitor.__license__,
        description      = pvWebMonitor.__description__,
        long_description = long_description,

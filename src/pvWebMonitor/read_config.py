@@ -38,7 +38,7 @@ def read_xml(xml_file):
     REPORT_INTERVAL_S         10 (float)       updates to HTML pages
     SLEEP_INTERVAL_S          0.1 (float)      sleeps at end of main loop
     MAINLOOP_COUNTER_TRIGGER  10000 (int)      another logging message interval
-    PATTERNS                  *.html           upload all files that match these patterns
+    PATTERNS                  \*.html          upload all files that match these patterns
     ========================  ===============  =================================================
 
     '''

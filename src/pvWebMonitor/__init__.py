@@ -3,7 +3,7 @@
 pvWebMonitor
 '''
 
-__version__             = u'2016.1003.0+'
+__version__             = u'2016.1003.2+'
 
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'

@@ -4,7 +4,7 @@
 CHANGES
 =======
 
-:2016.1003.0:        `issue #22 <https://github.com/prjemian/pvWebMonitor/issues/22>`_: correct version number shown now
+:2016.1003.1:        `issue #22 <https://github.com/prjemian/pvWebMonitor/issues/22>`_: correct version number shown now
 :2016.0907.0:        `issue #18 <https://github.com/prjemian/pvWebMonitor/issues/18>`_: check XSLT files for syntax errors,
                      `issue #19 <https://github.com/prjemian/pvWebMonitor/issues/19>`_: let user choose to write waveform strings as string or array of integers,
                      `issue #20 <https://github.com/prjemian/pvWebMonitor/issues/20>`_: add username and host to logging messages

@@ -24,7 +24,7 @@ def git_release(version='release_undefined'):
                 release += '+' + parts[1]
                 release += ':' + parts[2]
             elif len(parts) > 1:
-                msg = 'unhandled response from git describe: ' + out.strip()
+                msg = 'unhandled response from ' + git_command + ': ' + out.strip()
                 raise ValueError(msg)
 
             _r = out

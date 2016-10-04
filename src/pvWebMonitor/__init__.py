@@ -3,7 +3,9 @@
 pvWebMonitor
 '''
 
-__version__             = u'2016.1003.2+'
+from _version import git_release
+__version__             = u'2016.1003.2'
+__release__             = git_release(__version__)
 
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
@@ -42,8 +44,3 @@ __credits__ = u'author: ' + __author__
 __credits__ += u'\nemail: ' + __email__
 __credits__ += u'\ninstitution: ' + __institution__
 __credits__ += u'\nURL: ' + __url__
-
-
-from _version import get_version_strings
-__display_version__, __version__ = get_version_strings(__version__)
-__release__   = __version__

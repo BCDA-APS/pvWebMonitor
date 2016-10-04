@@ -3,13 +3,13 @@
 pvWebMonitor
 '''
 
-from _version import git_release
-__version__             = u'2016.1003.2'
-__release__             = git_release(__version__)
-
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
+
+from _version import git_release
+__version__             = u'2016.1003.2'
+__release__             = git_release(__package_name__, __version__)
 
 __author__              = u'Pete R. Jemian'
 __email__               = u'jemian@anl.gov'

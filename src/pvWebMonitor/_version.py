@@ -9,13 +9,15 @@ USAGE:
 
     In the package's ``__init__.py`` file, place these commands::
 
-        __package_name__        = u'package_name'
+        __package_name__ = u'package_name'
         
         from _version import git_release
-        __version__             = u'1.2.3'
-        __release__             = git_release(__package_name__, __version__)
+        __version__ = u'1.2.3'
+        __release__ = git_release(__package_name__, __version__)
 
 '''
+
+DEVELOPER_TEST_STRING = '__developer_testing__'
 
 def git_release(package, version='release_undefined'):
     '''
@@ -31,7 +33,7 @@ def git_release(package, version='release_undefined'):
         # a valid response to the "git describe" command and return the wrong version string.
         path = os.path.dirname(__file__)
         dirname = os.path.split(path)[-1]
-        if package not in (dirname, '__developer_testing__'):
+        if package not in (dirname, DEVELOPER_TEST_STRING):
             raise ValueError
         
         git_command = 'git describe'.split()
@@ -85,4 +87,4 @@ def get_version_strings(__version__):
 
 
 if __name__ == '__main__':
-    print(git_release('__developer_testing__', 'git_release_string'))
+    print(git_release(DEVELOPER_TEST_STRING, 'git_release_string'))

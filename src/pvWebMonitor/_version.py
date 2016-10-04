@@ -12,8 +12,7 @@ def git_release(version='release_undefined'):
     '''
     release = version
     try:
-        import os, subprocess
-        # package_dir = os.path.abspath(os.path.dirname(__file__))
+        import subprocess
         git_command = 'git describe'.split()
         p = subprocess.Popen(git_command,
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)

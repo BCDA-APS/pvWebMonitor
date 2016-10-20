@@ -3,12 +3,16 @@
 pvWebMonitor
 '''
 
+import os
+from _version import git_release
+
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'
 __long_description__    = __description__
 
-from _version import git_release
-__version__             = u'2016.1003.2'
+_path = os.path.dirname(__file__)
+_vfile = os.path.join(_path, 'VERSION')
+__version__ = open(_vfile, 'r').read()
 __release__             = git_release(__package_name__, __version__)
 
 __author__              = u'Pete R. Jemian'

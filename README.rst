@@ -6,10 +6,6 @@ pvWebMonitor
 
 **post EPICS PVs to read-only (static) web page(s)**
 
-:version:   |version|
-:release:   |release|
-:published: |today|
-
 This package provides a background service that monitors EPICS PVs 
 and writes them into customized HTML files in a WWW server 
 directory.  The service can be started and stopped by a manage.csh 

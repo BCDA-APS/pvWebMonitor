@@ -4,7 +4,7 @@
 CHANGES
 =======
 
-:2016.1020.0:        revise the versioning process
+:2016.1025.0:        revise the versioning process
 :2016.1003.2:        `issue #22 <https://github.com/prjemian/pvWebMonitor/issues/22>`_: correct version number shown now
 :2016.0907.0:        `issue #18 <https://github.com/prjemian/pvWebMonitor/issues/18>`_: check XSLT files for syntax errors,
                      `issue #19 <https://github.com/prjemian/pvWebMonitor/issues/19>`_: let user choose to write waveform strings as string or array of integers,

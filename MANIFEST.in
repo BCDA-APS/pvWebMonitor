@@ -1,4 +1,2 @@
 include README.rst
 include CHANGES.rst
-include src/pvWebMonitor/LICENSE
-include src/pvWebMonitor/VERSION

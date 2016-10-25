@@ -34,7 +34,13 @@ setup (name             = pvWebMonitor.__package_name__,        # pvWebMonitor
        package_dir      = {'pvWebMonitor': 'src/pvWebMonitor'},
        #packages         = find_packages(),
        packages         = [str(pvWebMonitor.__package_name__), ],
-       package_data     = {'pvWebMonitor': ['project/*', '*.xsd']},
+       package_data     = {'pvWebMonitor': [
+                                            'project/*', 
+                                            '*.xsd',
+                                            'LICENSE',
+                                            'VERSION',
+                                            ]
+                           },
        classifiers      = pvWebMonitor.__classifiers__,
        entry_points={
           # create & install console_scripts in <python>/bin

@@ -1,6 +1,10 @@
 .. _pvWebMonitor:
 
 ============
+
+.. image:: https://badges.gitter.im/pvWebMonitor/Lobby.svg
+   :alt: Join the chat at https://gitter.im/pvWebMonitor/Lobby
+   :target: https://gitter.im/pvWebMonitor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 pvWebMonitor
 ============
 

@@ -40,7 +40,7 @@ all HTML files are created by **pvWebMonitor**.
    with additional markup to display the current EPICS PV values (and metadata).
    The EPICS PV data is provided in *rawdata.xml*.
    
-.. [#] http://www.w3schools.com/xsl/xsl_server.asp
+.. [#] https://www.w3schools.com/xml/xsl_intro.asp
 
 Examples
 ********

@@ -2,7 +2,7 @@
 setup a new project directory
 '''
 
-# Copyright (c) 2005-2016, UChicago Argonne, LLC.
+# Copyright (c) 2005-2017, UChicago Argonne, LLC.
 # See LICENSE file for details.
 
 

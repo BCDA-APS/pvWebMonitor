@@ -4,6 +4,7 @@
 CHANGES
 =======
 
+:2017.1211.1:        use Python versioneer
 :2017.1211.0:        ``as_string`` attribute
 :2016.1025.0:        revise the versioning process
 :2016.1003.2:        `issue #22 <https://github.com/prjemian/pvWebMonitor/issues/22>`_: correct version number shown now

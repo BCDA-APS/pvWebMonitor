@@ -1,2 +1,4 @@
 include README.rst
 include CHANGES.rst
+include versioneer.py
+include src/pvWebMonitor/_version.py

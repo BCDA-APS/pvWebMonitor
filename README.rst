@@ -19,12 +19,12 @@ script for automated startup in a cron task or at system startup.
 :git:       https://github.com/prjemian/pvWebMonitor.git
 :PyPI:      https://pypi.python.org/pypi/pvWebMonitor
 
-:release badges:
+:publishing:
    .. image:: https://img.shields.io/github/tag/prjemian/pvWebMonitor.svg
       :target: https://github.com/prjemian/pvWebMonitor/tags
    .. image:: https://img.shields.io/github/release/prjemian/pvWebMonitor.svg
       :target: https://github.com/prjemian/pvWebMonitor/releases
-   .. image:: https://img.shields.io/pypi/pyversions/pvWebMonitor.svg
+   .. .. image:: https://img.shields.io/pypi/pyversions/pvWebMonitor.svg
       :target: https://pypi.python.org/pypi/pvWebMonitor
    .. image:: https://img.shields.io/pypi/v/pvWebMonitor.svg
       :target: https://pypi.python.org/pypi/pvWebMonitor/

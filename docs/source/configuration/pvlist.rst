@@ -109,6 +109,7 @@ PV                EPICS process variable name (must be used in only one EPICS_PV
 description       useful text informative to others
 display_format    (optional, default="%s") PVs will be formatted for display with this string
 _ignore_          (optional, default="false") this PV is ignored if value is not "false"
+as_string         (optional, default="false") whether to return the string representation of the value
 ==============    ==============================================================================
 
 
@@ -128,6 +129,87 @@ These two declarations are equivalent:
      display_format="%.6f" 
      mne="mr"
      />
+
+
+.. index:: as_string
+
+EPICS R3 strings using the *waveform* record (``as_string``)
+************************************************************
+
+In EPICS R3 IOCs, it is common to provide support for long strings (40 or more characters)
+using a :index:`waveform` [#]_ record with character data type.  For example, the EPICS 
+:index:`AreaDetector` [#]_ has such a PV to store the full path (length up to 256) to an attributes file. 
+Here's an example using the PV with an instance of the :index:`ADSimDetector` [#]_::
+
+   $ caget 13SIM1:cam1:NDAttributesFile.{RTYP,FTVL,VAL}
+   13SIM1:cam1:NDAttributesFile.RTYP waveform
+   13SIM1:cam1:NDAttributesFile.FTVL CHAR
+   13SIM1:cam1:NDAttributesFile.VAL 256 47 116 109 112 47 ...
+
+`pvWebMonitor` uses the ``as_string`` support from PyEpics [#]_ to report
+both the character list values and the text string values of the string waveform.
+Here is the configuration in `pvlist.xml` to watch that PV::
+
+    <EPICS_PV 
+        PV="13SIM1:cam1:NDAttributesFile"  
+        description="NDAttributesFile array"  
+        mne="NDAttributesFile_array"/>
+
+and here is typical content in the `rawdata.xml` file::
+
+   <pv id="NDAttributesFile_array" name="13SIM1:cam1:NDAttributesFile">
+      <name>13SIM1:cam1:NDAttributesFile</name>
+      <id>NDAttributesFile_array</id>
+      <description>NDAttributesFile array</description>
+      <timestamp>2017-12-11 11:09:43.157445</timestamp>
+      <record_type>waveform</record_type>
+      <counter>2</counter>
+      <units></units>
+      <value>[ 47 116 109 112  47  97 116 116 114 105  98 117 116 101 115  46 120 109 108   0]</value>
+      <char_value>/tmp/attributes.xml</char_value>
+      <raw_value>[ 47 116 109 112  47  97 116 116 114 105  98 117 116 101 115  46 120 109 108   0]</raw_value>
+      <format>%s</format>
+   </pv>
+   
+You'll need to access the text as a string using ``char_value`` rather than just ``value``.
+If you want the ``value`` to be the text string, add the ``as_string="true"`` 
+attribute in the entry in the `pvlist.xml` file, such as::
+
+    <EPICS_PV 
+        PV="13SIM1:cam1:NDAttributesFile"  
+        description="NDAttributesFile array"  
+        mne="NDAttributesFile_array"
+        as_string="true"/>
+
+Then, the ``char_value`` and the ``value`` both have the string as a result::
+
+   <pv id="NDAttributesFile_string" name="13SIM1:cam1:NDAttributesFile">
+      <name>13SIM1:cam1:NDAttributesFile</name>
+      <id>NDAttributesFile_string</id>
+      <description>NDAttributesFile string</description>
+      <timestamp>2017-12-11 11:09:43.185298</timestamp>
+      <record_type>waveform</record_type>
+      <counter>2</counter>
+      <units></units>
+      <value>/tmp/attributes.xml</value>
+      <char_value>/tmp/attributes.xml</char_value>
+      <raw_value>[ 47 116 109 112  47  97 116 116 114 105  98 117 116 101 115  46 120 109 108   0]</raw_value>
+      <format>%s</format>
+   </pv>
+
+In both cases, whether or not ``as_string`` is used, the character list representation
+is available in the ``raw_value`` and the text string representation is available
+in the ``char_value``.
+
+.. [#] EPICS R3 *waveform* record: 
+       https://wiki-ext.aps.anl.gov/epics/index.php/RRM_3-14_Waveform
+.. [#] EPICS AreaDetector: 
+       http://cars9.uchicago.edu/software/epics/areaDetector.html
+.. [#] ADSimDetector: 
+       http://cars.uchicago.edu/software/epics/simDetectorDoc.html
+.. [#] PyEpics:
+       http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get
+
 
 Removing declarations
 *********************

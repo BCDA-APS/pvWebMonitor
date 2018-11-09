@@ -76,6 +76,18 @@ Also, the spacing between attributes is not important.  The entire
 Keep the description text short. Longer descriptions, including
 those with line breaks, are less useful in creating display screens.
 
+.. see: https://stackoverflow.com/questions/1631396/what-is-an-xsncname-type-and-when-should-it-be-used
+
+**Note:** The mnemonic name ``mne`` must adhere to the rules for XML ``NCName`` (non-colonized name).  
+The practical restrictions of NCName are that it cannot contain several 
+symbol characters like 
+``:``, ``@``, ``$``, ``%``, ``&``, ``/``, ``+``, ``,``, ``;``, 
+whitespace characters or different parentheses. 
+Furthermore an NCName cannot begin with a 
+number, dot or minus character although they can appear later in an NCName.
+The regular expression is:  ``[\i-[:]][\c-[:]]*``
+
+
 The closing tag
 ===============
 

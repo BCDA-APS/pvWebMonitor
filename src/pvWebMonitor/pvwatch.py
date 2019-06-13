@@ -113,8 +113,8 @@ class PvWatch(object):
             return
         try:
             tree = etree.parse(pvlist_file)
-        except:
-            msg = 'could not parse file: ' + pvlist_file
+        except Exception as exc:
+            msg = 'could not parse file: ' + pvlist_file + ", " + str(exc)
             utils.logMessage(msg)
             raise CouldNotParseXml(msg)
         

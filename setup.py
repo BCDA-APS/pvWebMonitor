@@ -4,9 +4,8 @@
 # See LICENSE file for details.
 
 
-from setuptools import setup, find_packages
+from setuptools import setup
 import os
-import re
 import sys
 import versioneer
 
@@ -15,7 +14,6 @@ sys.path.insert(0, os.path.join('src', ))
 import pvWebMonitor
 
 requires = pvWebMonitor.__requires__
-packages = find_packages()
 verbose=1
 long_description = open('README.rst', 'r').read()
 
@@ -34,7 +32,6 @@ setup (name             = pvWebMonitor.__package_name__,        # pvWebMonitor
        install_requires = requires,
        platforms        = 'any',
        package_dir      = {'pvWebMonitor': 'src/pvWebMonitor'},
-       #packages         = find_packages(),
        packages         = [str(pvWebMonitor.__package_name__), ],
        package_data     = {'pvWebMonitor': [
                                             'project/*', 

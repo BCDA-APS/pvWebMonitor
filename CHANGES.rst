@@ -4,6 +4,11 @@
 CHANGES
 =======
 
+:2021.0.0: release expected by 2020-12-18
+
+:2020.0.0: release expected by 2020-09-30
+    last python 2.7 release
+
 :2017.1211.1:        use Python versioneer
 :2017.1211.0:        ``as_string`` attribute
 :2016.1025.0:        revise the versioning process

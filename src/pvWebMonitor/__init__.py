@@ -1,9 +1,7 @@
 
-'''
+"""
 pvWebMonitor
-'''
-
-import os
+"""
 
 __package_name__        = u'pvWebMonitor'
 __description__         = u'post EPICS PVs to read-only web page'

@@ -121,7 +121,7 @@ def __parse_xml__(xml_file_name):
     '''
     try:
         src_doc = etree.parse(xml_file_name)
-    except (IOError, etree.XMLSyntaxError), _exc:
+    except (IOError, etree.XMLSyntaxError) as _exc:
         msg = 'problem with ' + xml_file_name + ': ' + str(_exc)
         logMessage(msg)
         return

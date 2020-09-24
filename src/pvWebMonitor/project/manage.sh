@@ -8,7 +8,7 @@
 
 
 PROJECT_DIR=/tmp/pv
-MANAGE=${PROJECT_DIR}/manage.sh
+# MANAGE=${PROJECT_DIR}/manage.sh
 LOGFILE=${PROJECT_DIR}/log-manage.txt
 PIDFILE=${PROJECT_DIR}/pid.txt
 CONFIGFILE=${PROJECT_DIR}/config.xml

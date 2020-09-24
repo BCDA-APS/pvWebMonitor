@@ -18,8 +18,8 @@ RETVAL=0
 
 get_pid(){
     cd ${PROJECT_DIR}
-    PID=`/bin/cat ${PIDFILE}`
-    return $PID
+    PID=$(/bin/cat ${PIDFILE})
+    return "$PID"
 }
 
 
@@ -29,7 +29,7 @@ check_pid_running(){
 		# no PID in the PIDFILE
 		RETVAL=1
 	else
-		RESPONSE=`ps -p ${PID} -o comm=`
+		RESPONSE=$(ps -p ${PID} -o comm=)
 		if [ "${RESPONSE}" == "pvWebMonitor" ]; then
 			# PID matches the pvWebMonitor profile
 			RETVAL=0
@@ -47,8 +47,8 @@ start(){
     ${EXECUTABLE_SCRIPT} ${CONFIGFILE} 2>&1 >> ${LOGFILE} &
     PID=$!
     /bin/echo ${PID} > ${PIDFILE}
-    /bin/echo "# [$0 `/bin/date`] started ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
-    /bin/echo "# [$0 `/bin/date`] started ${PID}: ${EXECUTABLE_SCRIPT}"
+    /bin/echo "# [$0 $(/bin/date)] started ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+    /bin/echo "# [$0 $(/bin/date)] started ${PID}: ${EXECUTABLE_SCRIPT}"
 }
 
 
@@ -57,11 +57,11 @@ stop(){
     check_pid_running
     
     if [ $RETVAL == 1 ]; then
-		/bin/echo "# [$0 `/bin/date`] not running ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+		/bin/echo "# [$0 $(/bin/date)] not running ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
     else
     	kill ${PID}
-    	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
-    	/bin/echo "# [$0 `/bin/date`] stopped ${PID}: ${EXECUTABLE_SCRIPT}"
+    	/bin/echo "# [$0 $(/bin/date)] stopped ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+    	/bin/echo "# [$0 $(/bin/date)] stopped ${PID}: ${EXECUTABLE_SCRIPT}"
     fi
     /bin/cp -f /dev/null ${PIDFILE}
 }
@@ -91,9 +91,9 @@ checkup(){
     get_pid
     check_pid_running
     if [ $RETVAL == 0 ]; then
-		echo "# [$0 `/bin/date`] running fine, so it seems" 2>&1 > /dev/null
+		echo "# [$0 $(/bin/date)] running fine, so it seems" 2>&1 > /dev/null
     else
-		echo "# [$0 `/bin/date`] could not identify running process ${PID}, starting new process" 2>&1 >> ${LOGFILE}
+		echo "# [$0 $(/bin/date)] could not identify running process ${PID}, starting new process" 2>&1 >> ${LOGFILE}
 		start
     fi
 }

@@ -35,7 +35,7 @@ setup (name             = pvWebMonitor.__package_name__,        # pvWebMonitor
        packages         = [str(pvWebMonitor.__package_name__), ],
        package_data     = {
          'pvWebMonitor': [
-              'project/*', 
+              'project/*',
               '*.xsd',
               'LICENSE',
               'VERSION',
@@ -45,7 +45,7 @@ setup (name             = pvWebMonitor.__package_name__,        # pvWebMonitor
        entry_points={
           # create & install console_scripts in <python>/bin
           'console_scripts': [
-            'pvWebMonitor=pvWebMonitor.main:main', 
+            'pvWebMonitor=pvWebMonitor.main:main',
           ],
           #'gui_scripts': ['pvWebMonitor=pvWebMonitor.main:main'],
       },

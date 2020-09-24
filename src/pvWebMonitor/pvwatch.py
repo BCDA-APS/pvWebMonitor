@@ -23,11 +23,11 @@ XSL_RAWDATA_FILE_NAME = 'rawdata.xsl'
 XSL_INDEX_FILE_NAME = 'index.xsl'
 
 
-class PvNotRegistered(Exception): 
+class PvNotRegistered(Exception):
     '''pv not in pvdb'''
     pass
 
-class CouldNotParseXml(Exception): 
+class CouldNotParseXml(Exception):
     '''Could not parse XML file'''
     pass
 
@@ -35,11 +35,11 @@ class CouldNotParseXml(Exception):
 def _xslt_(xslt_file, source_xml_file):
     '''
     convenience routine for XSLT transformations
-    
+
     For a given XSLT file *abcdefg.xsl*, will produce a file *abcdefg.html*::
 
         abcdefg.xsl + xml_data  --> abcdefg.html
-    
+
     '''
     output_xml_file = os.path.splitext(xslt_file)[0] + os.extsep + 'html'
     utils.xslt_transformation(xslt_file, source_xml_file, output_xml_file)
@@ -48,18 +48,18 @@ def _xslt_(xslt_file, source_xml_file):
 class PvWatch(object):
     '''
     Core function of the pvWebMonitor package
-    
+
     To call this code, first define ``configuration=dict()`` with terms
     as defined in :meth:`read_config.read_xml`, then statements such as:
 
     .. code-block:: python
        :linenos:
-    
+
         watcher = PvWatch(configuration)
         watcher.start()
-    
+
     '''
-    
+
     def __init__(self, configuration):
         self.configuration = configuration  # from XML configuration file
         self.pvdb = {}      # cache of last known good values
@@ -87,16 +87,16 @@ class PvWatch(object):
 
             dt = utils.getTime()
             epics.ca.poll()
-        
+
             if mainLoopCount == 0:
                 utils.logMessage(" %s times through main loop" % self.configuration['MAINLOOP_COUNTER_TRIGGER'])
-        
+
             if dt >= nextReport:
                 nextReport = dt + delta_report
-        
+
                 try: self.report()                                   # write contents of pvdb to a file
                 except Exception: utils.logException("report()")
-        
+
             if dt >= nextLog:
                 nextLog = dt + delta_log
                 msg = "checkpoint, %d EPICS monitor events received" % self.monitor_counter
@@ -104,7 +104,7 @@ class PvWatch(object):
                 self.monitor_counter = 0  # reset
 
             time.sleep(self.configuration['SLEEP_INTERVAL_S'])
-    
+
     def get_pvlist(self):
         '''get the PVs from the XML file'''
         pvlist_file = self.configuration['PVLIST_FILE']
@@ -117,7 +117,7 @@ class PvWatch(object):
             msg = 'could not parse file: ' + pvlist_file + ", " + str(exc)
             utils.logMessage(msg)
             raise CouldNotParseXml(msg)
-        
+
         utils.validate(tree, XML_SCHEMA_FILE)
         msg = 'validated file: ' + pvlist_file
         utils.logMessage(msg)
@@ -199,8 +199,8 @@ class PvWatch(object):
     def add_file_pattern(self, pattern):
         '''
         add ``pattern`` as an additional file extension pattern
-        
-        Any file with extension matching any of the patterns in 
+
+        Any file with extension matching any of the patterns in
         ``self.upload_patterns`` will copied to the
         WWW directory, if they are newer.
         '''
@@ -215,7 +215,7 @@ class PvWatch(object):
         '''
         if pv not in self.pvdb:
             msg = '!!!ERROR!!! %s was not found in pvdb!' % pv
-            raise PvNotRegistered, msg
+            raise PvNotRegistered as msg
         entry = self.pvdb[pv]
         ch = entry['ch']
         entry['timestamp'] = utils.getTime()
@@ -244,19 +244,19 @@ class PvWatch(object):
         node.text = 'pvWebMonitor/PvWatch'
         node = etree.SubElement(root, "datetime")
         node.text = str(utils.getTime()).split('.')[0]
-    
+
         sorted_id_list = sorted(self.xref)
         fields = ("name", "id", "description", "timestamp", "record_type",
                   "counter", "units", "value", "char_value", "raw_value", "format")
-    
+
         for mne in sorted_id_list:
             pv = self.xref[mne]
             entry = self.pvdb[pv]
-    
+
             node = etree.SubElement(root, "pv")
             node.set("id", mne)
             node.set("name", pv)
-    
+
             for item in fields:
                 subnode = etree.SubElement(node, item)
                 subnode.text = str(entry[item])
@@ -276,7 +276,7 @@ class PvWatch(object):
     def report(self):
         '''
         write the values out to files
-        
+
         The values of the monitored EPICS PVs (the "raw data")
         is written to an XML file.  This file is then used
         with one or more XSLT stylesheets to create HTML pages.
@@ -285,39 +285,39 @@ class PvWatch(object):
         '''
         xmlText = self.buildReport()
         utils.writeFile(XML_RAWDATA_FILE_NAME, xmlText)
-        
+
         # accumulate list of each file written below
         www_site_file_list = []
         xslt_file_list_used = ['index.xsl', ]  # do the index.xsl file last
         www_site_file_list.append(XML_RAWDATA_FILE_NAME)
-    
+
         # add pvlist.xml to file list
         pvlist_xml_file_name = self.configuration['PVLIST_FILE']
         www_site_file_list.append(pvlist_xml_file_name)
-        
+
         # add pvlist.xsl to file list
         xslt_file_name = XSL_PVLIST_FILE_NAME
         if os.path.exists(xslt_file_name):
             _xslt_(xslt_file_name, pvlist_xml_file_name)
             xslt_file_list_used.append(xslt_file_name)
-    
+
         # add report.xml to file list
         report_xml_file_name = XML_RAWDATA_FILE_NAME
         if os.path.exists(report_xml_file_name):
             # write "report.xml"    : values of monitored EPICS PVs
             www_site_file_list.append(report_xml_file_name)
-            
+
             xslt_file_name = XSL_RAWDATA_FILE_NAME
             if os.path.exists(xslt_file_name):
                 _xslt_(xslt_file_name, report_xml_file_name)
                 xslt_file_list_used.append(xslt_file_name)
-    
+
                 # convert all .xsl files
                 xslt_files = fnmatch.filter(os.listdir('.'), '*.xsl')
                 for xslt_file_name in xslt_files:
                     if xslt_file_name not in xslt_file_list_used:
                         _xslt_(xslt_file_name, report_xml_file_name)
-    
+
         # finally, write index.html from file list, table of files and descriptions as provided
         xslt_file_name = XSL_INDEX_FILE_NAME
         if os.path.exists(xslt_file_name):
@@ -329,13 +329,13 @@ class PvWatch(object):
             #  Then use that XML in the following XSLT.
             #  Also should add a time stamp string.
             _xslt_(xslt_file_name, report_xml_file_name)
-        
+
         # include any other useful files from the project directory
         local_files = os.listdir('.')
         for file_pattern in self.upload_patterns:
             www_site_file_list += fnmatch.filter(local_files, file_pattern)
             www_site_file_list += fnmatch.filter(local_files, file_pattern.upper())
-        
+
         # only copy files if web_site_path is not the current dir
         www_site_file_list = sorted(set(www_site_file_list))
         www_site_path = os.path.abspath(self.configuration['LOCAL_WWW_LIVEDATA_DIR'])

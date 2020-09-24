@@ -4,6 +4,8 @@
 pvWebMonitor
 ============
 
+**NOTE**:  We are moving this repository!  See https://github.com/prjemian/pvWebMonitor/issues/39
+
 **post EPICS PVs to read-only (static) web page(s)**
 
 This package provides a background service that monitors EPICS PVs 

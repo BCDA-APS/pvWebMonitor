@@ -12,7 +12,7 @@ __institution__         = u"Advanced Photon Source, Argonne National Laboratory"
 __author_name__         = __author__
 __author_email__        = __email__
 
-__copyright__           = u'2005-2017, UChicago Argonne, LLC'
+__copyright__           = u'2005-2020, UChicago Argonne, LLC'
 # __license_url__         = u''
 __license__             = u'UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)'
 __url__                 = u'http://pvWebMonitor.readthedocs.io'

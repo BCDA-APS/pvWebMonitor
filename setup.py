@@ -31,7 +31,7 @@ setup (name             = pvWebMonitor.__package_name__,        # pvWebMonitor
        keywords         = pvWebMonitor.__keywords__,
        install_requires = requires,
        platforms        = 'any',
-       package_dir      = {'pvWebMonitor': 'src/pvWebMonitor'},
+       package_dir      = {'': 'src'},
        packages         = [str(pvWebMonitor.__package_name__), ],
        package_data     = {'pvWebMonitor': [
                                             'project/*', 

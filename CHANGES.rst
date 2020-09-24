@@ -8,7 +8,7 @@ CHANGES
 
     * first python 2.8 release
 
-:2020.0.0: release expected by 2020-09-30
+:2020.0.0: released 2020-09-24
 
     * last python 2.7 release
 

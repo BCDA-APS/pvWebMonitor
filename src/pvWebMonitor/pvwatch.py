@@ -214,8 +214,9 @@ class PvWatch(object):
         :param obj raw_value: could be str, float, int, or ...
         '''
         if pv not in self.pvdb:
-            msg = '!!!ERROR!!! %s was not found in pvdb!' % pv
-            raise PvNotRegistered as msg
+            raise PvNotRegistered(
+                '!!!ERROR!!! PV %s was not found in pvdb!', pv
+            )
         entry = self.pvdb[pv]
         ch = entry['ch']
         entry['timestamp'] = utils.getTime()

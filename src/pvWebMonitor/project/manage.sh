@@ -29,7 +29,7 @@ check_pid_running(){
 		# no PID in the PIDFILE
 		RETVAL=1
 	else
-		RESPONSE=$(ps -p ${PID} -o comm=)
+		RESPONSE=$(ps -p "${PID}" -o comm=)
 		if [ "${RESPONSE}" == "pvWebMonitor" ]; then
 			# PID matches the pvWebMonitor profile
 			RETVAL=0

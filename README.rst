@@ -4,7 +4,7 @@
 pvWebMonitor
 ============
 
-**NOTE**:  We are moving this repository!  See https://github.com/prjemian/pvWebMonitor/issues/39
+**NOTE**:  We are moving this repository in 2020-Q3!  See https://github.com/prjemian/pvWebMonitor/issues/39
 
 **post EPICS PVs to read-only (static) web page(s)**
 

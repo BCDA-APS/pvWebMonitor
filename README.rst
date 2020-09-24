@@ -30,10 +30,7 @@ script for automated startup in a cron task or at system startup.
       :target: https://pypi.python.org/pypi/pvWebMonitor
    .. image:: https://img.shields.io/pypi/v/pvWebMonitor.svg
       :target: https://pypi.python.org/pypi/pvWebMonitor/
+
+:review:
    .. image:: https://app.codacy.com/project/badge/Grade/ee4a888d573247afb54c1f6f53d503bd    
       :target: https://www.codacy.com/manual/prjemian/pvWebMonitor/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prjemian/pvWebMonitor&amp;utm_campaign=Badge_Grade
-
-:discussion:
-    .. image:: https://badges.gitter.im/pvWebMonitor/Lobby.svg
-       :alt: Join the chat at https://gitter.im/pvWebMonitor/Lobby
-       :target: https://gitter.im/pvWebMonitor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge

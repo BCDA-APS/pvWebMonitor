@@ -6,6 +6,8 @@ CHANGES
 
 :2021.0.0: release expected by 2020-12-18
 
+    * first python 2.8 release
+
 :2020.0.0: release expected by 2020-09-30
 
     * last python 2.7 release

@@ -60,3 +60,6 @@ src/pvWebMonitor/log_file.txt
 src/pvWebMonitor/pvlist.xml
 src/pvWebMonitor/localwww
 src/pvWebMonitor/www_project
+
+# Microsoft VSCode editor
+.vscode/

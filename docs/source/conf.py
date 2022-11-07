@@ -16,7 +16,7 @@ import pvWebMonitor
 
 project = pvWebMonitor.__package_name__
 copyright = pvWebMonitor.__copyright__
-author = 'Pete Jemian'
+author = pvWebMonitor.__author__
 version = pvWebMonitor.__version__
 release = pvWebMonitor.__release__
 

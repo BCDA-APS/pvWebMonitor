@@ -49,7 +49,7 @@ command                 description
    This file contains the current system process identifier (*pid*)
    of the ``pvWebMonitor`` process.  Do not change this file.
 ``RETVAL``:
-   Value returned by this script.  Do not change this.
+   Internal use.  Do not change this.
 
 .. _cron:
 
@@ -76,10 +76,8 @@ might be asked to choose your text editor.)  Paste these lines into the editor
 
 .. code-block::
 
-   # every five minutes (generates no output from outer script)
-   # Re-direct output to throw away (`` >> /dev/null``)
-   # or log to a file (`` >> /some/file/some/where/log/txt``).
-   0-59/5 * * * *  /tmp/pv/manage.sh checkup 2>&1 >> /dev/null
+   # every five minutes (redirect cron output to ignore)
+   */5 * * * *  /tmp/pv/manage.sh checkup 2>&1 >> /dev/null
 
 The syntax of the file is described in ``cron``'s documentation.
 Suffice to say this runs the ``manage.sh checkup`` command (from the ``/tmp/pv``

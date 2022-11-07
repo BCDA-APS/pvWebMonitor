@@ -116,12 +116,12 @@ class PvEntry:
         pvname,
         as_string=False,
         description=None,
-        fmt = "%s",
+        fmt="%s",
     ):
         self.as_string: bool = as_string  # return string representation of the value
         self.description: str = description  # text description for humans
         self.fmt: str = fmt  # format for display
-        self.mnemonic: str = mnemonic   # symbolic name used in the python code
+        self.mnemonic: str = mnemonic  # symbolic name used in the python code
         self.pvname: str = pvname  # EPICS PV name
 
         self.char_value: str = None  # string value
@@ -129,7 +129,7 @@ class PvEntry:
         self.raw_value: str = None  # unformatted value
         self.record_type: str = None  # EPICS record type
         self.signal_ro = ophyd.EpicsSignalRO(pvname, name=mnemonic)  # EPICS PV
-        self.timestamp: object = None  #  client time last monitor was received
+        self.timestamp: object = None  # client time last monitor was received
         self.units: str = None  # engineering units
         self.value: str = None  # formatted value
 
@@ -201,7 +201,7 @@ class PvEntry:
         Record the EPICS RTYP (record type, if available).
         """
         basename = self.pvname.split(".")[0]
-        field = self.pvname[len(basename):]
+        field = self.pvname[len(basename) :]
         rtyp_pv = epics.PV(basename + ".RTYP")  # use PyEpics here
         rtyp = rtyp_pv.get() or "unknown"
         if basename == self.pvname or field == ".VAL":
@@ -248,9 +248,7 @@ class PvWatch(object):
         while True:
             mainLoopCount = (mainLoopCount + 1) % mainLoopCountRollover
             if mainLoopCount == 0:
-                logger.debug(
-                    " %s times through main loop", mainLoopCountRollover
-                )
+                logger.debug(" %s times through main loop", mainLoopCountRollover)
 
             t_now = time.time()
 
@@ -267,8 +265,7 @@ class PvWatch(object):
             if t_now >= log_deadline:
                 log_deadline = time.time() + log_interval
                 logger.debug(
-                    "checkpoint, %d EPICS monitor events received",
-                    self.monitor_counter
+                    "checkpoint, %d EPICS monitor events received", self.monitor_counter
                 )
                 self.monitor_counter = 0  # reset
 
@@ -283,9 +280,7 @@ class PvWatch(object):
         try:
             tree = etree.parse(pvlist_file)
         except Exception as exc:
-            raise CouldNotParseXml(
-                f"could not parse file '{pvlist_file}': {exc}"
-            )
+            raise CouldNotParseXml(f"could not parse file '{pvlist_file}': {exc}")
 
         utils.validate(tree, XML_SCHEMA_FILE)
         logger.debug("validated file: '%s'", pvlist_file)
@@ -303,7 +298,9 @@ class PvWatch(object):
                 except Exception as exc:
                     logger.warning(
                         "'%s': problem connecting '%s': %s",
-                        pvlist_file, utils.etree_as_str(key), exc
+                        pvlist_file,
+                        utils.etree_as_str(key),
+                        exc,
                     )
 
         logger.debug("all PVs added")
@@ -313,9 +310,7 @@ class PvWatch(object):
         if self.pvdb.known(pv):
             raise KeyError(f"PV '{pv}' already defined.")
 
-        entry = PvEntry(
-            mne, pv, description=desc, fmt=fmt, as_string=as_string
-        )
+        entry = PvEntry(mne, pv, description=desc, fmt=fmt, as_string=as_string)
         self.pvdb.add(pv, mne, entry)
 
         if not entry.connected:
@@ -370,10 +365,7 @@ class PvWatch(object):
         pi_xsl = etree.ProcessingInstruction(
             "xml-stylesheet", 'type="text/xsl" href="pvlist.xsl"'
         )
-        xmlText += (
-            f"\n{utils.etree_as_str(pi_xsl)}"
-            f"\n{utils.etree_as_str(root)}"
-        )
+        xmlText += f"\n{utils.etree_as_str(pi_xsl)}" f"\n{utils.etree_as_str(root)}"
 
         return xmlText
 

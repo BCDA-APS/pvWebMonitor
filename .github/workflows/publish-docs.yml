@@ -1,0 +1,70 @@
+name: Publish Sphinx Docs to GitHub Pages
+
+on:
+  # Build the docs on pushes to main branch, PRs to main branch, and new tags.
+  # Publish only on demand.
+  push:
+    branches:
+      - main
+    tags:
+      - '*'  # all tags
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:   # allow manual triggering
+    inputs:
+      deploy:
+        description: 'Deploy documentation'
+        type: boolean
+        required: true
+        default: false
+
+# see: https://sphinx-notes.github.io/pages/
+# see: https://github.com/marketplace/actions/sphinx-to-github-pages
+
+jobs:
+
+  publish-docs:
+    name: Publish documentation
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      with:
+        fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
+
+    - name: Deploy Information
+      if: ${{ github.event.inputs.deploy }}
+      run: |
+        echo "Docs will be published from this workflow run."
+
+    - name: Install pandoc
+      run: |
+        sudo apt-get update && sudo apt-get -y install pandoc python3-pip
+
+    - name: Install Sphinx build requirements
+      run: |
+        pip install -r requirements-sphinx.txt
+        # setuptools-scm
+
+    - name: Install our package
+      run: |
+        pip install --no-deps -e .
+
+    - name: Diagnostics
+      run: |
+        pip list
+
+    - name: Build and Commit
+      uses: sphinx-notes/pages@master
+      with:
+        # path to conf.py directory
+        documentation_path: docs/source
+
+    - name: Publish (push gh-pages branch) only on demand
+      if: ${{ github.event.inputs.deploy }}
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages

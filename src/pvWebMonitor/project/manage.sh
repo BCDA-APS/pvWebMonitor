@@ -77,14 +77,16 @@ checkup(){
     #=====================
     # call periodically (every 5 minutes) to see if pvWebMonitor is running
     #=====================
-    #	     field	    allowed values
-    #	   -----	  --------------
-    #	   minute	  0-59
-    #	   hour 	  0-23
-    #	   day of month   1-31
-    #	   month	  1-12 (or names, see below)
-    #	   day of week    0-7 (0 or 7 is Sun, or use names)
+    #   field         allowed values
+    #   -----         --------------
+    #   minute        0-59  (use /5 for 5 minute interval)
+    #   hour          0-23
+    #   day of month  1-31
+    #   month         1-12 (or names, see below)
+    #   day of week   0-7 (0 or 7 is Sun, or use names)
     #
+    # Re-direct output to throw away (`` >> /dev/null``)
+    # or log to a file (`` >> /some/file/some/where/log/txt``).
     # */5 * * * * /tmp/pv/manage.sh checkup 2>&1 > /dev/null
 
 
@@ -100,18 +102,10 @@ checkup(){
 
 
 case "$1" in
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  restart)
-    restart
-    ;;
-  checkup)
-    checkup
-    ;;
+  start) start ;;
+  stop) stop ;;
+  restart) restart ;;
+  checkup) checkup ;;
   *)
     echo $"Usage: $0 {start|stop|restart|checkup}"
     exit 1

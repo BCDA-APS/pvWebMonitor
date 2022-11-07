@@ -1,8 +1,39 @@
-.. this document is in ReSTructured text format
+..
+  This file describes user-visible changes between the versions.
 
-=======
-CHANGES
-=======
+  subsections could include these headings (in this order), omit if no content
+
+    Notice
+    Breaking Changes
+    New Features and/or Enhancements
+    Fixes
+    Maintenance
+    Deprecations
+    Contributors
+
+Change History
+##############
+
+The project `milestones <https://github.com/BCDA-APS/pvWebMonitor/milestones>`_
+describe the future plans.
+
+..
+   2021.0.1
+   ************
+
+   release expected by TBA
+
+2021.0.0
+************
+
+release expected by 2022-11-18
+
+Breaking Changes
+------------------------
+
+* Dropped support for Python <3.8 (includes Python 2)
+
+------------
 
 :2021.0.0: release expected by 2020-12-18
 

@@ -35,14 +35,14 @@
   <EPICS_PV PV="gp:HOSTNAME"			description="IOC host name" 		mne="hostname"/>
   <EPICS_PV PV="gp:ENGINEER"			description="engineer" 				mne="engineer"/>
 
-  <EPICS_PV PV="gp:m1.DESC"  description="VDM_Stripe motor description" mne="VDM_Stripe_DESC" as_string="true"/>
-  <EPICS_PV PV="gp:m1.RBV"   description="VDM_Stripe motor"             mne="VDM_Stripe"     display_format="%.3f"/>
-  <EPICS_PV PV="gp:m1.VAL"   description="VDM_Stripe motor target"      mne="VDM_Stripe_VAL" display_format="%.3f"/>
-  <EPICS_PV PV="gp:m1.DMOV"  description="VDM_Stripe motor done moving" mne="VDM_Stripe_DMOV"/>
-  <EPICS_PV PV="gp:m2.DESC"  description="DCM_theta motor description"  mne="DCM_theta_DESC" as_string="true"/>
-  <EPICS_PV PV="gp:m2.RBV"   description="DCM_theta motor"              mne="DCM_theta"      display_format="%.6f"/>
-  <EPICS_PV PV="gp:m2.VAL"   description="DCM_theta motor target"       mne="DCM_theta_VAL"  display_format="%.6f"/>
-  <EPICS_PV PV="gp:m2.DMOV"  description="DCM_theta motor done moving"  mne="DCM_theta_DMOV"/>
+  <EPICS_PV PV="gp:m1.DESC"  description="M1 motor description"  mne="M1_DESC" as_string="true"/>
+  <EPICS_PV PV="gp:m1.RBV"   description="M1 motor"              mne="M1"     display_format="%.3f"/>
+  <EPICS_PV PV="gp:m1.VAL"   description="M1 motor target"       mne="M1_VAL" display_format="%.3f"/>
+  <EPICS_PV PV="gp:m1.DMOV"  description="M1 motor done moving"  mne="M1_DMOV"/>
+  <EPICS_PV PV="gp:m2.DESC"  description="M2 motor description"  mne="M2_DESC" as_string="true"/>
+  <EPICS_PV PV="gp:m2.RBV"   description="M2 motor"              mne="M2"      display_format="%.6f"/>
+  <EPICS_PV PV="gp:m2.VAL"   description="M2 motor target"       mne="M2_VAL"  display_format="%.6f"/>
+  <EPICS_PV PV="gp:m2.DMOV"  description="M2 motor done moving"  mne="M2_DMOV"/>
 
   <EPICS_PV PV="gp:alldone" description="all motors done moving" mne="motors_alldone"/>
   <EPICS_PV PV="gp:moving" description="number of motors moving" mne="motors_moving"/>

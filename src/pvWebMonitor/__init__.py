@@ -3,7 +3,7 @@ pvWebMonitor
 """
 
 __package_name__ = "pvWebMonitor"
-__description__ = "post EPICS PVs to read-only web page"
+__description__ = "Create static web site from EPICS PVs."
 __long_description__ = __description__
 __author__ = "Pete R. Jemian"
 __email__ = "jemian@anl.gov"
@@ -17,7 +17,7 @@ __license__ = "UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)"
 __url__ = "http://pvWebMonitor.readthedocs.io"
 __download_url__ = "https://github.com/prjemian/pvWebMonitor.git"
 __keywords__ = ["EPICS", "PV", "tool", "HTML"]
-__requires__ = ["pyepics", "lxml", "numpy"]
+__requires__ = ["pyepics", "lxml", "numpy", "ophyd"]
 
 __classifiers__ = [
     "Development Status :: 6 - Mature",

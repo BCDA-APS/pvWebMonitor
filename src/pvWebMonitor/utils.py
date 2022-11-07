@@ -77,9 +77,10 @@ def writeFile(output_file, contents):
     :param str output_file: file to be written (path is optional)
     :param str contents: text to write in *output_file*
     """
-    f = open(output_file, "w")
-    f.write(contents)
-    f.close()
+    if isinstance(contents, bytes):
+        contents = contents.decode("utf8")
+    with open(output_file, "w") as f:
+        f.write(contents)
 
 
 def __parse_xml__(xml_file_name):
@@ -116,4 +117,4 @@ def xslt_transformation(xslt_file, src_xml_file, result_xml_file):
     transform = etree.XSLT(xslt_doc)
     result_doc = transform(src_doc)
     buf = etree.tostring(result_doc, pretty_print=True)
-    writeFile(result_xml_file, buf)
+    writeFile(result_xml_file, buf.decode("utf8"))

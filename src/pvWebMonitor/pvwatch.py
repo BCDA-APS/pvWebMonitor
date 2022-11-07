@@ -1,53 +1,219 @@
-'''
+"""
 pvWebMonitor.pvwatch
-'''
+"""
 
 # Copyright (c) 2005-2020, UChicago Argonne, LLC.
 # See LICENSE file for details.
 
 
+from . import utils
+from lxml import etree
+from ophyd.signal import EpicsSignalBase
 import datetime
 import epics
 import fnmatch
-from lxml import etree
-import numpy
+import logging
+import ophyd
 import os
 import time
-import utils
 
 
-XML_SCHEMA_FILE = 'pvlist.xsd'
-XML_RAWDATA_FILE_NAME = 'rawdata.xml'
-XSL_PVLIST_FILE_NAME = 'pvlist.xsl'
-XSL_RAWDATA_FILE_NAME = 'rawdata.xsl'
-XSL_INDEX_FILE_NAME = 'index.xsl'
+logger = logging.getLogger(__name__)
+logger.setLevel("DEBUG")
+XML_SCHEMA_FILE = "pvlist.xsd"
+XML_RAWDATA_FILE_NAME = "rawdata.xml"
+XSL_PVLIST_FILE_NAME = "pvlist.xsl"
+XSL_RAWDATA_FILE_NAME = "rawdata.xsl"
+XSL_INDEX_FILE_NAME = "index.xsl"
+
+ophyd.set_cl("PyEpics".lower())
+# set default timeout for all EpicsSignal connections & communications
+TIMEOUT = 60
+if not EpicsSignalBase._EpicsSignalBase__any_instantiated:
+    EpicsSignalBase.set_defaults(
+        auto_monitor=True,
+        timeout=TIMEOUT,
+        write_timeout=TIMEOUT,
+        connection_timeout=TIMEOUT,
+    )
 
 
 class PvNotRegistered(Exception):
-    '''pv not in pvdb'''
-    pass
+    """PV not in 'pvdb'."""
+
 
 class CouldNotParseXml(Exception):
-    '''Could not parse XML file'''
-    pass
+    """Could not parse XML file."""
 
 
 def _xslt_(xslt_file, source_xml_file):
-    '''
-    convenience routine for XSLT transformations
+    """
+    Convenience routine for XSLT transformations.
 
     For a given XSLT file *abcdefg.xsl*, will produce a file *abcdefg.html*::
 
         abcdefg.xsl + xml_data  --> abcdefg.html
 
-    '''
-    output_xml_file = os.path.splitext(xslt_file)[0] + os.extsep + 'html'
+    """
+    output_xml_file = os.path.splitext(xslt_file)[0] + os.extsep + "html"
     utils.xslt_transformation(xslt_file, source_xml_file, output_xml_file)
 
 
+class PvCrossReference:
+    """
+    Maintain cross-references between pvnames, mnemonics, and their signals.
+    """
+
+    def __init__(self) -> None:
+        self.clear()
+
+    def __len__(self):
+        return len(self.pv_ref)
+
+    def clear(self):
+        """Delete the cross-references tables."""
+        self.pv_ref = {}  # pvname: signal
+        self.mne_ref = {}  # mnemonic: pvname
+
+    def add(self, pv, mne, entry):
+        """Collect a new PV name, mnemonic, and PvEntry entry object."""
+        if pv in self.pv_ref:
+            raise KeyError(f"'{pv}' is already known.")
+        self.pv_ref[pv] = entry
+        self.mne_ref[mne] = pv
+
+    def get(self, key):
+        """Lookup an entry by PV or mnemonic."""
+        if key in self.pv_ref:
+            return self.pv_ref[key]
+        if key in self.mne_ref:
+            return self.get(self.mne_ref[key])
+        raise KeyError(f"'{key}' not found.")
+
+    def known(self, pv):
+        """Is this PV known?"""
+        return pv in self.pv_ref
+
+    @property
+    def mnemonics(self):
+        """List the known mnemonics."""
+        return self.mne_ref.keys()
+
+    @property
+    def pvnames(self):
+        """List the known PV names."""
+        return self.pv_ref.keys()
+
+
+class PvEntry:
+    """
+    Monitor (read-only) a single EPICS PV.
+    """
+
+    def __init__(
+        self,
+        mnemonic,
+        pvname,
+        as_string=False,
+        description=None,
+        fmt="%s",
+    ):
+        self.as_string: bool = as_string  # return string representation of the value
+        self.description: str = description  # text description for humans
+        self.fmt: str = fmt  # format for display
+        self.mnemonic: str = mnemonic  # symbolic name used in the python code
+        self.pvname: str = pvname  # EPICS PV name
+
+        self.char_value: str = None  # string value
+        self.counter: int = 0  # number of monitor events received
+        self.raw_value: str = None  # unformatted value
+        self.record_type: str = None  # EPICS record type
+        self.signal_ro = ophyd.EpicsSignalRO(pvname, name=mnemonic)  # EPICS PV
+        self.timestamp: object = None  # client time last monitor was received
+        self.units: str = None  # engineering units
+        self.value: str = None  # formatted value
+
+        self.signal_ro.subscribe(self.ca_monitor_event)
+        self.learn_units()
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}("
+            f"pvname='{self.pvname}'"
+            f", mnemonic='{self.mnemonic}'"
+            f", description='{self.description}'"
+            f", as_string='{self.as_string}'"
+            f", connected='{self.connected}'"
+            ")"
+        )
+
+    def __str__(self):
+        return (
+            f"{self.__class__.__name__}("
+            f"pvname='{self.pvname}'"
+            f", mnemonic='{self.mnemonic}'"
+            f", description='{self.description}'"
+            f", as_string='{self.as_string}'"
+            ")"
+        )
+
+    @property
+    def connected(self):
+        """Is EPICS connected?"""
+        return self.signal_ro is not None and self.signal_ro.connected
+
+    def ca_monitor_event(self, **kwargs):
+        """Respond to an EPICS CA monitor event."""
+        if "value" in kwargs:
+            self.counter += 1
+            self.raw_value = kwargs["value"]
+            timestamp = kwargs["timestamp"]
+
+            self.value = self.fmt % self.raw_value
+            self.char_value = str(self.value)
+            dt = datetime.datetime.fromtimestamp(timestamp)
+            self.timestamp = dt.isoformat(timespec="seconds")  # as ISO8601
+            # logger.info("%r: kwargs: %s", self, kwargs)
+
+    def learn_units(self):
+        """
+        Learn the units from EPICS, adjust for 'user names', as known.
+        """
+        md = self.signal_ro.metadata
+
+        unit_renames = {  # handle some non SI unit names
+            # old      new
+            "millime": "mm",
+            "millira": "mr",
+            "degrees": "deg",
+            "Volts": "V",
+            "VDC": "V",
+            "eng": "",
+        }
+        units = md.get("units")
+        if units is not None:
+            if units in unit_renames:
+                units = unit_renames[units]
+            self.units = units
+
+    def learn_record_type(self):
+        """
+        Record the EPICS RTYP (record type, if available).
+        """
+        basename = self.pvname.split(".")[0]
+        field = self.pvname[len(basename) :]
+        rtyp_pv = epics.PV(basename + ".RTYP")  # use PyEpics here
+        rtyp = rtyp_pv.get() or "unknown"
+        if basename == self.pvname or field == ".VAL":
+            self.record_type = rtyp
+        else:
+            # field of record
+            self.record_type = rtyp + field
+
+
 class PvWatch(object):
-    '''
-    Core function of the pvWebMonitor package
+    """
+    Core of the pvWebMonitor package.
 
     To call this code, first define ``configuration=dict()`` with terms
     as defined in :meth:`read_config.read_xml`, then statements such as:
@@ -58,69 +224,66 @@ class PvWatch(object):
         watcher = PvWatch(configuration)
         watcher.start()
 
-    '''
+    """
 
     def __init__(self, configuration):
         self.configuration = configuration  # from XML configuration file
-        self.pvdb = {}      # cache of last known good values
-        self.xref = {}      # cross-reference between mnemonics and PV names: {mne:pvname}
+        self.pvdb = PvCrossReference()  # cache of last known good values
         self.monitor_counter = 0
-        self.upload_patterns = configuration['PATTERNS']
+        self.upload_patterns = configuration["PATTERNS"]
 
         self.get_pvlist()
-        utils.logMessage('read list of PVs to monitor')
-
-        pv_conn = [pv['ch'].connected for pv in self.pvdb.values()]
-        numConnected = numpy.count_nonzero(pv_conn)
-        utils.logMessage("Connected %d of total %d EPICS PVs" % (numConnected, len(self.pvdb)) )
+        logger.debug("read list of PVs to monitor")
 
     def start(self):
-        '''begin receiving PV updates and posting new web content'''
-        nextReport = utils.getTime()
-        nextLog = nextReport
-        delta_report = datetime.timedelta(seconds=self.configuration['REPORT_INTERVAL_S'])
-        delta_log = datetime.timedelta(seconds=self.configuration['LOG_INTERVAL_S'])
+        """begin receiving PV updates and posting new web content"""
+        log_deadline = time.time()
+        log_interval = self.configuration["LOG_INTERVAL_S"]
+        report_deadline = time.time()
+        report_interval = self.configuration["REPORT_INTERVAL_S"]
         mainLoopCount = 0
+        mainLoopCountRollover = self.configuration["MAINLOOP_COUNTER_TRIGGER"]
+        sleepInterval = self.configuration["SLEEP_INTERVAL_S"]
 
         while True:
-            mainLoopCount = (mainLoopCount + 1) % self.configuration['MAINLOOP_COUNTER_TRIGGER']
-
-            dt = utils.getTime()
-            epics.ca.poll()
-
+            mainLoopCount = (mainLoopCount + 1) % mainLoopCountRollover
             if mainLoopCount == 0:
-                utils.logMessage(" %s times through main loop" % self.configuration['MAINLOOP_COUNTER_TRIGGER'])
+                logger.debug(" %s times through main loop", mainLoopCountRollover)
 
-            if dt >= nextReport:
-                nextReport = dt + delta_report
+            t_now = time.time()
 
-                try: self.report()                                   # write contents of pvdb to a file
-                except Exception: utils.logException("report()")
+            if t_now >= report_deadline:
+                report_deadline = time.time() + report_interval
+                print(f"New report deadline: {report_deadline}")
+                logger.debug("reporting ...")
 
-            if dt >= nextLog:
-                nextLog = dt + delta_log
-                msg = "checkpoint, %d EPICS monitor events received" % self.monitor_counter
-                utils.logMessage(msg)
+                try:
+                    self.report()  # write contents of pvdb to a file
+                except Exception as exc:
+                    logger.debug("exception: %s", exc)
+
+            if t_now >= log_deadline:
+                log_deadline = time.time() + log_interval
+                logger.debug(
+                    "checkpoint, %d EPICS monitor events received", self.monitor_counter
+                )
                 self.monitor_counter = 0  # reset
 
-            time.sleep(self.configuration['SLEEP_INTERVAL_S'])
+            time.sleep(sleepInterval)
 
     def get_pvlist(self):
-        '''get the PVs from the XML file'''
-        pvlist_file = self.configuration['PVLIST_FILE']
+        """get the PVs from the XML file"""
+        pvlist_file = self.configuration["PVLIST_FILE"]
         if not os.path.exists(pvlist_file):
-            utils.logMessage('could not find file: ' + pvlist_file)
+            logger.debug("could not find file: %s", pvlist_file)
             return
         try:
             tree = etree.parse(pvlist_file)
         except Exception as exc:
-            msg = 'could not parse file: ' + pvlist_file + ", " + str(exc)
-            utils.logMessage(msg)
-            raise CouldNotParseXml(msg)
+            raise CouldNotParseXml(f"could not parse file '{pvlist_file}': {exc}")
 
         utils.validate(tree, XML_SCHEMA_FILE)
-        msg = 'validated file: ' + pvlist_file
-        utils.logMessage(msg)
+        logger.debug("validated file: '%s'", pvlist_file)
 
         for key in tree.findall(".//EPICS_PV"):
             if key.get("_ignore_", "false").lower() == "false":
@@ -132,127 +295,63 @@ class PvWatch(object):
                 # :see: http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get
                 try:
                     self.add_pv(mne, pv, desc, fmt, as_string)
-                except:
-                    msg = "%s: problem connecting: %s" % (pvlist_file, etree.tostring(key))
-                    utils.logException(msg)
+                except Exception as exc:
+                    logger.warning(
+                        "'%s': problem connecting '%s': %s",
+                        pvlist_file,
+                        utils.etree_as_str(key),
+                        exc,
+                    )
 
-        utils.logMessage('all PVs added')
+        logger.debug("all PVs added")
 
     def add_pv(self, mne, pv, desc, fmt, as_string):
-        '''Connect to a EPICS (PyEpics) process variable'''
-        if pv in self.pvdb:
-            msg = "key '%s' already defined by id=%s" % (pv, self.pvdb[pv]['id'])
-            raise KeyError(msg)
+        """Connect to a EPICS (PyEpics) process variable"""
+        if self.pvdb.known(pv):
+            raise KeyError(f"PV '{pv}' already defined.")
 
-        ch = epics.PV(pv)
-        entry = {
-            'name': pv,             # EPICS PV name
-            'id': mne,              # symbolic name used in the python code
-            'description': desc,    # text description for humans
-            'timestamp': None,      # client time last monitor was received
-            'counter': 0,           # number of monitor events received
-            'units': "",            # engineering units
-            'ch': ch,               # EPICS PV channel
-            'format': fmt,          # format for display
-            'value': None,          # formatted value
-            'raw_value': None,      # unformatted value
-            'char_value': None,     # string value
-            'as_string': as_string, # whether to return the string representation of the value
-        }
-        self.pvdb[pv] = entry
-        self.xref[mne] = pv            # mne is local mnemonic, define actual PV in pvlist.xml
-        ch.add_callback(self.EPICS_monitor_receiver)  # start callbacks now
+        entry = PvEntry(mne, pv, description=desc, fmt=fmt, as_string=as_string)
+        self.pvdb.add(pv, mne, entry)
 
-        cv = ch.get_ctrlvars()
-        unit_renames = {        # handle some non SI unit names
-            # old      new
-            'millime': 'mm',
-            'millira': 'mr',
-            'degrees': 'deg',
-            'Volts':   'V',
-            'VDC':     'V',
-            'eng':     '',
-        }
-        if cv is not None and 'units' in cv:
-            units = cv['units']
-            if units in unit_renames:
-                units = unit_renames[units]
-            entry['units'] = units
-
-        # report the RTYP (record type, if available)
-        basename = pv.split('.')[0]
-        field = pv[len(basename):]
-        rtyp_pv = epics.PV(basename + '.RTYP')
-        rtyp = rtyp_pv.get() or 'unknown'
-        if basename == pv or field == '.VAL':
-            entry['record_type'] = rtyp
-        else:
-            # field of record
-            entry['record_type'] = rtyp + field
-
-        # FIXME: what to do if PV did not connect? (ch.connected == False)
-        if not ch.connected:
-            utils.logMessage('PV not connected yet: ' + pv)
-
-        self.update_pvdb(pv, ch.get())   # initialize the cache
+        if not entry.connected:
+            logger.debug("PV not connected yet: %s", pv)
 
     def add_file_pattern(self, pattern):
-        '''
+        """
         add ``pattern`` as an additional file extension pattern
 
         Any file with extension matching any of the patterns in
         ``self.upload_patterns`` will copied to the
         WWW directory, if they are newer.
-        '''
+        """
         self.upload_patterns.append(pattern)
 
-    def update_pvdb(self, pv, raw_value):
-        '''
-        log PV value to the cache in pvdb
-
-        :param str pv: name of EPICS PV
-        :param obj raw_value: could be str, float, int, or ...
-        '''
-        if pv not in self.pvdb:
-            raise PvNotRegistered(
-                '!!!ERROR!!! PV %s was not found in pvdb!', pv
-            )
-        entry = self.pvdb[pv]
-        ch = entry['ch']
-        entry['timestamp'] = utils.getTime()
-        entry['counter'] += 1
-        entry['raw_value'] = raw_value
-        entry['char_value'] = ch.char_value
-        if entry['as_string']:
-            entry['value'] = ch.char_value
-        else:
-            entry['value'] = entry['format'] % raw_value
-
-    def EPICS_monitor_receiver(self, *args, **kws):
-        '''Response to an EPICS (PyEpics) monitor on the channel'''
-        pv = kws['pvname']
-        if pv not in self.pvdb:
-            msg = '!!!ERROR!!! %s was not found in pvdb!' % pv
-            raise PvNotRegistered, msg
-        self.update_pvdb(pv, kws['value'])   # cache the last known good value
-        self.monitor_counter += 1
-
     def buildReport(self):
-        '''build the report'''
+        """build the report"""
         root = etree.Element("pvWebMonitor")
         root.set("version", "1")
         node = etree.SubElement(root, "written_by")
-        node.text = 'pvWebMonitor/PvWatch'
+        node.text = "pvWebMonitor/PvWatch"
         node = etree.SubElement(root, "datetime")
-        node.text = str(utils.getTime()).split('.')[0]
+        node.text = datetime.datetime.now().isoformat(timespec="seconds")
 
-        sorted_id_list = sorted(self.xref)
-        fields = ("name", "id", "description", "timestamp", "record_type",
-                  "counter", "units", "value", "char_value", "raw_value", "format")
+        fields = (
+            "pvname",
+            "mnemonic",
+            "description",
+            "timestamp",
+            "record_type",
+            "counter",
+            "units",
+            "value",
+            "char_value",
+            "raw_value",
+            "fmt",
+        )
 
-        for mne in sorted_id_list:
-            pv = self.xref[mne]
-            entry = self.pvdb[pv]
+        for mne in sorted(self.pvdb.mnemonics):
+            entry = self.pvdb.get(mne)
+            pv = entry.pvname
 
             node = etree.SubElement(root, "pv")
             node.set("id", mne)
@@ -260,22 +359,18 @@ class PvWatch(object):
 
             for item in fields:
                 subnode = etree.SubElement(node, item)
-                subnode.text = str(entry[item])
+                subnode.text = str(getattr(entry, item))
 
-        try:
-            pi_xml = etree.ProcessingInstruction('xml', 'version="1.0"')
-            xmlText = etree.tostring(pi_xml, pretty_print=True)
-        except ValueError:
-            # some instanced of lxml raise a ValueError saying that 'xml' is not allowed
-            xmlText = '<?xml version="1.0" ?>\n'
-        pi_xsl = etree.ProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="pvlist.xsl"')
-        xmlText += etree.tostring(pi_xsl, pretty_print=True)
-        xmlText += etree.tostring(root, pretty_print=True)
+        xmlText = '<?xml version="1.0" ?>'
+        pi_xsl = etree.ProcessingInstruction(
+            "xml-stylesheet", 'type="text/xsl" href="pvlist.xsl"'
+        )
+        xmlText += f"\n{utils.etree_as_str(pi_xsl)}" f"\n{utils.etree_as_str(root)}"
 
         return xmlText
 
     def report(self):
-        '''
+        """
         write the values out to files
 
         The values of the monitored EPICS PVs (the "raw data")
@@ -283,17 +378,19 @@ class PvWatch(object):
         with one or more XSLT stylesheets to create HTML pages.
         An overall "home page" (index.html) is created to provide
         a table of contents of this static web site.
-        '''
+        """
         xmlText = self.buildReport()
         utils.writeFile(XML_RAWDATA_FILE_NAME, xmlText)
 
         # accumulate list of each file written below
         www_site_file_list = []
-        xslt_file_list_used = ['index.xsl', ]  # do the index.xsl file last
+        xslt_file_list_used = [
+            "index.xsl",
+        ]  # do the index.xsl file last
         www_site_file_list.append(XML_RAWDATA_FILE_NAME)
 
         # add pvlist.xml to file list
-        pvlist_xml_file_name = self.configuration['PVLIST_FILE']
+        pvlist_xml_file_name = self.configuration["PVLIST_FILE"]
         www_site_file_list.append(pvlist_xml_file_name)
 
         # add pvlist.xsl to file list
@@ -314,7 +411,7 @@ class PvWatch(object):
                 xslt_file_list_used.append(xslt_file_name)
 
                 # convert all .xsl files
-                xslt_files = fnmatch.filter(os.listdir('.'), '*.xsl')
+                xslt_files = fnmatch.filter(os.listdir("."), "*.xsl")
                 for xslt_file_name in xslt_files:
                     if xslt_file_name not in xslt_file_list_used:
                         _xslt_(xslt_file_name, report_xml_file_name)
@@ -332,14 +429,24 @@ class PvWatch(object):
             _xslt_(xslt_file_name, report_xml_file_name)
 
         # include any other useful files from the project directory
-        local_files = os.listdir('.')
+        local_files = os.listdir(".")
         for file_pattern in self.upload_patterns:
             www_site_file_list += fnmatch.filter(local_files, file_pattern)
             www_site_file_list += fnmatch.filter(local_files, file_pattern.upper())
 
         # only copy files if web_site_path is not the current dir
         www_site_file_list = sorted(set(www_site_file_list))
-        www_site_path = os.path.abspath(self.configuration['LOCAL_WWW_LIVEDATA_DIR'])
+        www_site_path = os.path.abspath(self.configuration["LOCAL_WWW_LIVEDATA_DIR"])
         if www_site_path != os.path.abspath(os.getcwd()):
             for fname in www_site_file_list:
                 utils.copyToWebServer(fname, www_site_path)
+
+    def pv_connected(self, pvname):
+        """Is the named PV connected?"""
+        if self.pvdb.known(pvname):
+            return self.pvdb.get(pvname).connected
+        return False
+
+    def get(self, pvname):
+        """Return the PvEntry object for the named PV."""
+        return self.pvdb.get(pvname)

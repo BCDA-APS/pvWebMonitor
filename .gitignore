@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.settings
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/build/
+
+# pvWebMonitor local application
+src/pvWebMonitor/log_file.txt
+src/pvWebMonitor/pvlist.xml
+src/pvWebMonitor/localwww
+src/pvWebMonitor/www_project
+rawdata.xml
+pvlist.html
+log_file.txt
+www_project/
+
+# Microsoft VSCode editor
+.vscode/
+
+# local developer code
+dev_*.py

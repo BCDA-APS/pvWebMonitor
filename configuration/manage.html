@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The manage.sh file &#8212; pvWebMonitor 2020.0.0+22.g8963ff9 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'configuration/manage';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example" href="../example/index.html" />
+    <link rel="prev" title="The livedata.xsl file" href="livedata.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">pvWebMonitor 2020.0.0+22.g8963ff9 documentation</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../contents.html">
+                        Contents
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../contents.html">
+                        Contents
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Configuration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setup a new project directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">The <cite>config.xml</cite> file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pvlist.html">The <cite>pvlist.xml</cite> file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rawdata.html">The <cite>rawdata.xsl</cite> file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="livedata.html">The <cite>livedata.xsl</cite> file</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The <cite>manage.sh</cite> file</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../example/index.html">Example</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example/livedata.html">Livedata Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/rawdata.html">Example Raw Data for Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../src/index.html">Source Code</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../src/main.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">main</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/pvwatch.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">pvwatch</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/read_config.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">read_config</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/setup.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/utils.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Change History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Software License</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="the-manage-sh-file">
+<h1>The <cite>manage.sh</cite> file<a class="headerlink" href="#the-manage-sh-file" title="Permalink to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code> may be run as either a command-line program or run in a
+background (daemon) process.  To ensure the program is always as intended, a
+shell script is used to initialize and/or restart as needed.  The shell script
+may be called periodically by a system scheduler such as <a class="reference internal" href="#cron"><span class="std std-ref">cron - The Linux system scheduler</span></a>. An
+example shows the shell script installed with a new project directory.  The
+contents of the file are described below.</p>
+<p>The shell script is run with either of these commands:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>command</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">help</span></code></p></td>
+<td><p>Short text showing these commands.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">start</span></code></p></td>
+<td><p>Starts a process and writes the <em>pid</em> to the <code class="docutils literal notranslate"><span class="pre">PIDFILE</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">stop</span></code></p></td>
+<td><p>Stops the process with <em>pid</em> matching value in the <code class="docutils literal notranslate"><span class="pre">PIDFILE</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">restart</span></code></p></td>
+<td><p>Stops, then starts the process (in the background).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">checkup</span></code></p></td>
+<td><p>Checks if the process is running.  Starts it if it is not running.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="compound">
+<p class="rubric">Example shell script</p>
+<p>Example shell script to manage the <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code>
+process either as a startup or a background daemon.</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">  2</span><span class="c1"># init file for pvWebMonitor</span>
+<span class="linenos">  3</span><span class="c1">#</span>
+<span class="linenos">  4</span><span class="c1"># chkconfig: - 98 98</span>
+<span class="linenos">  5</span><span class="c1"># description: pvWebMonitor WWW page update script for NAME_YOUR_SYSTEM_HERE</span>
+<span class="linenos">  6</span><span class="c1">#</span>
+<span class="linenos">  7</span><span class="c1"># processname: pvWebMonitor_MAKE_THIS_NAME_UNIQUE</span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span><span class="nv">PROJECT_DIR</span><span class="o">=</span>/tmp/pv
+<span class="linenos"> 11</span><span class="c1"># MANAGE=${PROJECT_DIR}/manage.sh</span>
+<span class="linenos"> 12</span><span class="nv">LOGFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>/log-manage.txt
+<span class="linenos"> 13</span><span class="nv">PIDFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>/pid.txt
+<span class="linenos"> 14</span><span class="nv">CONFIGFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>/config.xml
+<span class="linenos"> 15</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="o">=</span>/home/oxygen/JEMIAN/Apps/anaconda/bin/pvWebMonitor
+<span class="linenos"> 16</span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">0</span>
+<span class="linenos"> 17</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span>get_pid<span class="o">(){</span>
+<span class="linenos"> 20</span>    <span class="nb">cd</span> <span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>
+<span class="linenos"> 21</span>    <span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>/bin/cat <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span><span class="k">)</span>
+<span class="linenos"> 22</span>    <span class="k">return</span> <span class="s2">&quot;</span><span class="nv">$PID</span><span class="s2">&quot;</span>
+<span class="linenos"> 23</span><span class="o">}</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span>check_pid_running<span class="o">(){</span>
+<span class="linenos"> 27</span>    get_pid
+<span class="linenos"> 28</span>    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 29</span>        <span class="c1"># no PID in the PIDFILE</span>
+<span class="linenos"> 30</span>        <span class="nv">RETVAL</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos"> 31</span>    <span class="k">else</span>
+<span class="linenos"> 32</span>        <span class="nv">RESPONSE</span><span class="o">=</span><span class="k">$(</span>ps -p <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span> -o <span class="nv">comm</span><span class="o">=</span><span class="k">)</span>
+<span class="linenos"> 33</span>        <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESPONSE</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;pvWebMonitor&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 34</span>            <span class="c1"># PID matches the pvWebMonitor profile</span>
+<span class="linenos"> 35</span>            <span class="nv">RETVAL</span><span class="o">=</span><span class="m">0</span>
+<span class="linenos"> 36</span>        <span class="k">else</span>
+<span class="linenos"> 37</span>            <span class="c1"># PID is not pvWebMonitor</span>
+<span class="linenos"> 38</span>            <span class="nv">RETVAL</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos"> 39</span>        <span class="k">fi</span>
+<span class="linenos"> 40</span>    <span class="k">fi</span>
+<span class="linenos"> 41</span>    <span class="k">return</span> <span class="nv">$RETVAL</span>
+<span class="linenos"> 42</span><span class="o">}</span>
+<span class="linenos"> 43</span>
+<span class="linenos"> 44</span>
+<span class="linenos"> 45</span>start<span class="o">(){</span>
+<span class="linenos"> 46</span>    <span class="nb">cd</span> <span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>
+<span class="linenos"> 47</span>    <span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span> <span class="si">${</span><span class="nv">CONFIGFILE</span><span class="si">}</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt;&gt; <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span> <span class="p">&amp;</span>
+<span class="linenos"> 48</span>    <span class="nv">PID</span><span class="o">=</span><span class="nv">$!</span>
+<span class="linenos"> 49</span>    /bin/echo <span class="si">${</span><span class="nv">PID</span><span class="si">}</span> &gt; <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span>
+<span class="linenos"> 50</span>    /bin/echo <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] started </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt;&gt; <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span> <span class="p">&amp;</span>
+<span class="linenos"> 51</span>    /bin/echo <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] started </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 52</span><span class="o">}</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span>
+<span class="linenos"> 55</span>stop<span class="o">(){</span>
+<span class="linenos"> 56</span>    get_pid
+<span class="linenos"> 57</span>    check_pid_running
+<span class="linenos"> 58</span>    
+<span class="linenos"> 59</span>    <span class="k">if</span> <span class="o">[</span> <span class="nv">$RETVAL</span> <span class="o">==</span> <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 60</span>        /bin/echo <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] not running </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt;&gt; <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span> <span class="p">&amp;</span>
+<span class="linenos"> 61</span>    <span class="k">else</span>
+<span class="linenos"> 62</span>        <span class="nb">kill</span> <span class="si">${</span><span class="nv">PID</span><span class="si">}</span>
+<span class="linenos"> 63</span>        /bin/echo <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] stopped </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt;&gt; <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span> <span class="p">&amp;</span>
+<span class="linenos"> 64</span>        /bin/echo <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] stopped </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 65</span>    <span class="k">fi</span>
+<span class="linenos"> 66</span>    /bin/cp -f /dev/null <span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span>
+<span class="linenos"> 67</span><span class="o">}</span>
+<span class="linenos"> 68</span>
+<span class="linenos"> 69</span>
+<span class="linenos"> 70</span>restart<span class="o">(){</span>
+<span class="linenos"> 71</span>    stop
+<span class="linenos"> 72</span>    start
+<span class="linenos"> 73</span><span class="o">}</span>
+<span class="linenos"> 74</span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span>checkup<span class="o">(){</span>
+<span class="linenos"> 77</span>    <span class="c1">#=====================</span>
+<span class="linenos"> 78</span>    <span class="c1"># call periodically (every 5 minutes) to see if pvWebMonitor is running</span>
+<span class="linenos"> 79</span>    <span class="c1">#=====================</span>
+<span class="linenos"> 80</span>    <span class="c1">#   field         allowed values</span>
+<span class="linenos"> 81</span>    <span class="c1">#   -----         --------------</span>
+<span class="linenos"> 82</span>    <span class="c1">#   minute        0-59  (use /5 for 5 minute interval)</span>
+<span class="linenos"> 83</span>    <span class="c1">#   hour          0-23</span>
+<span class="linenos"> 84</span>    <span class="c1">#   day of month  1-31</span>
+<span class="linenos"> 85</span>    <span class="c1">#   month         1-12 (or names, see below)</span>
+<span class="linenos"> 86</span>    <span class="c1">#   day of week   0-7 (0 or 7 is Sun, or use names)</span>
+<span class="linenos"> 87</span>    <span class="c1">#</span>
+<span class="linenos"> 88</span>    <span class="c1"># Re-direct output to throw away (`` &gt;&gt; /dev/null``)</span>
+<span class="linenos"> 89</span>    <span class="c1"># or log to a file (`` &gt;&gt; /some/file/some/where/log/txt``).</span>
+<span class="linenos"> 90</span>    <span class="c1"># */5 * * * * /tmp/pv/manage.sh checkup 2&gt;&amp;1 &gt; /dev/null</span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span>
+<span class="linenos"> 93</span>    get_pid
+<span class="linenos"> 94</span>    check_pid_running
+<span class="linenos"> 95</span>    <span class="k">if</span> <span class="o">[</span> <span class="nv">$RETVAL</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="linenos"> 96</span>        <span class="nb">echo</span> <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] running fine, so it seems&quot;</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt; /dev/null
+<span class="linenos"> 97</span>    <span class="k">else</span>
+<span class="linenos"> 98</span>        <span class="nb">echo</span> <span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] could not identify running process </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">, starting new process&quot;</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt;&gt; <span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span>
+<span class="linenos"> 99</span>        start
+<span class="linenos">100</span>    <span class="k">fi</span>
+<span class="linenos">101</span><span class="o">}</span>
+<span class="linenos">102</span>
+<span class="linenos">103</span>
+<span class="linenos">104</span><span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="k">in</span>
+<span class="linenos">105</span>  start<span class="o">)</span> start <span class="p">;;</span>
+<span class="linenos">106</span>  stop<span class="o">)</span> stop <span class="p">;;</span>
+<span class="linenos">107</span>  restart<span class="o">)</span> restart <span class="p">;;</span>
+<span class="linenos">108</span>  checkup<span class="o">)</span> checkup <span class="p">;;</span>
+<span class="linenos">109</span>  *<span class="o">)</span>
+<span class="linenos">110</span>    <span class="nb">echo</span> $<span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|checkup}&quot;</span>
+<span class="linenos">111</span>    <span class="nb">exit</span> <span class="m">1</span>
+<span class="linenos">112</span><span class="k">esac</span>
+</pre></div>
+</div>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">PROJECT_DIR</span></code>:</dt><dd><p>The local directory for the configuration files used by the <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code>
+process. You probably want to change this.  All other files are relative to
+the <code class="docutils literal notranslate"><span class="pre">${PROJECT_DIR}</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CONFIG_FILE</span></code>:</dt><dd><p>The configuration file used by the <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code> process. You probably
+want to change this.  See the <a class="reference internal" href="config.html#config-file"><span class="std std-ref">The config.xml file</span></a> section.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">EXECUTABLE_SCRIPT</span></code>:</dt><dd><p>The absolute path to the <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code> code. You probably do not need to
+change this.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">LOGFILE</span></code>:</dt><dd><p>Any information logged by the <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code> process will be written
+to this file.  It is not necessary for you to change this value.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PIDFILE</span></code>:</dt><dd><p>This file contains the current system process identifier (<em>pid</em>)
+of the <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code> process.  Do not change this file.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RETVAL</span></code>:</dt><dd><p>Internal use.  Do not change this.</p>
+</dd>
+</dl>
+<section id="cron-the-linux-system-scheduler">
+<span id="cron"></span><h2>cron - The Linux system scheduler<a class="headerlink" href="#cron-the-linux-system-scheduler" title="Permalink to this heading">#</a></h2>
+<p>Linux has a system task scheduler called <code class="docutils literal notranslate"><span class="pre">cron</span></code>.  (see, for example
+<a class="reference external" href="https://opensource.com/article/17/11/how-use-cron-linux">https://opensource.com/article/17/11/how-use-cron-linux</a>) This may be used to run
+periodic processes or to run processes at certain times (such as on system
+startup).  You edit your <code class="docutils literal notranslate"><span class="pre">cron</span></code> file and add or modify the configuration
+lines for your periodic command.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Be sure to redirect the output  or you’ll get lots of email from <code class="docutils literal notranslate"><span class="pre">cron</span></code>!</p>
+</div>
+<p>Here, we use <code class="docutils literal notranslate"><span class="pre">cron</span></code> to both start <code class="docutils literal notranslate"><span class="pre">pvWebMonitor</span></code> on system startup and to
+check up on it to ensure it stays running by running the <code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">checkup</span></code>
+command periodically.  The logic is the period between calls is the time we choose to wait
+between checkups.  Either on system startup or a restart of the process, this will be the
+longest time that the process is not running.</p>
+<p>To edit your <code class="docutils literal notranslate"><span class="pre">cron</span></code> file, type <code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-e</span></code> on the linux command line.  (You
+might be asked to choose your text editor.)  Paste these lines into the editor
+(usually at the bottom):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># every five minutes (redirect cron output to ignore)</span>
+<span class="o">*/</span><span class="mi">5</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span>  <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pv</span><span class="o">/</span><span class="n">manage</span><span class="o">.</span><span class="n">sh</span> <span class="n">checkup</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</pre></div>
+</div>
+<p>The syntax of the file is described in <code class="docutils literal notranslate"><span class="pre">cron</span></code>’s documentation.
+Suffice to say this runs the <code class="docutils literal notranslate"><span class="pre">manage.sh</span> <span class="pre">checkup</span></code> command (from the <code class="docutils literal notranslate"><span class="pre">/tmp/pv</span></code>
+directory – change to where your <code class="docutils literal notranslate"><span class="pre">${PROJECT_DIR}</span></code> directory is located).
+It runs all day, every day, every 5 minutes, starting at :00, :05, :10, …</p>
+</section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="livedata.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">The <cite>livedata.xsl</cite> file</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="../example/index.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Example</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cron-the-linux-system-scheduler">
+   cron - The Linux system scheduler
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../_sources/configuration/manage.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2005-2020, UChicago Argonne, LLC.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

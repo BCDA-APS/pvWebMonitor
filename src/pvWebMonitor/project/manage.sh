@@ -100,18 +100,10 @@ checkup(){
 
 
 case "$1" in
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  restart)
-    restart
-    ;;
-  checkup)
-    checkup
-    ;;
+  start) start ;;
+  stop) stop ;;
+  restart) restart ;;
+  checkup) checkup ;;
   *)
     echo $"Usage: $0 {start|stop|restart|checkup}"
     exit 1

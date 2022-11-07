@@ -8,6 +8,7 @@ pvWebMonitor.pvwatch
 
 from . import utils
 from lxml import etree
+from ophyd.signal import EpicsSignalBase
 import datetime
 import epics
 import fnmatch
@@ -18,11 +19,23 @@ import time
 
 
 logger = logging.getLogger(__name__)
+logger.setLevel("DEBUG")
 XML_SCHEMA_FILE = "pvlist.xsd"
 XML_RAWDATA_FILE_NAME = "rawdata.xml"
 XSL_PVLIST_FILE_NAME = "pvlist.xsl"
 XSL_RAWDATA_FILE_NAME = "rawdata.xsl"
 XSL_INDEX_FILE_NAME = "index.xsl"
+
+ophyd.set_cl("PyEpics".lower())
+# set default timeout for all EpicsSignal connections & communications
+TIMEOUT = 60
+if not EpicsSignalBase._EpicsSignalBase__any_instantiated:
+    EpicsSignalBase.set_defaults(
+        auto_monitor=True,
+        timeout=TIMEOUT,
+        write_timeout=TIMEOUT,
+        connection_timeout=TIMEOUT,
+    )
 
 
 class PvNotRegistered(Exception):
@@ -74,7 +87,7 @@ class PvCrossReference:
         if key in self.pv_ref:
             return self.pv_ref[key]
         if key in self.mne_ref:
-            self.get(self.mne_ref[key])
+            return self.get(self.mne_ref[key])
         raise KeyError(f"'{key}' not found.")
 
     def known(self, pv):
@@ -160,6 +173,7 @@ class PvEntry:
             self.char_value = str(self.value)
             dt = datetime.datetime.fromtimestamp(timestamp)
             self.timestamp = dt.isoformat(timespec="seconds")  # as ISO8601
+            # logger.info("%r: kwargs: %s", self, kwargs)
 
     def learn_units(self):
         """
@@ -228,38 +242,37 @@ class PvWatch(object):
         report_deadline = time.time()
         report_interval = self.configuration["REPORT_INTERVAL_S"]
         mainLoopCount = 0
+        mainLoopCountRollover = self.configuration["MAINLOOP_COUNTER_TRIGGER"]
+        sleepInterval = self.configuration["SLEEP_INTERVAL_S"]
 
         while True:
-            mainLoopCount = (mainLoopCount + 1) % self.configuration[
-                "MAINLOOP_COUNTER_TRIGGER"
-            ]
-
-            t_now = time.time()
-            epics.ca.poll()
-
+            mainLoopCount = (mainLoopCount + 1) % mainLoopCountRollover
             if mainLoopCount == 0:
                 logger.debug(
-                    " %s times through main loop",
-                    self.configuration["MAINLOOP_COUNTER_TRIGGER"]
+                    " %s times through main loop", mainLoopCountRollover
                 )
 
+            t_now = time.time()
+
             if t_now >= report_deadline:
-                report_deadline += report_interval
+                report_deadline = time.time() + report_interval
+                print(f"New report deadline: {report_deadline}")
+                logger.debug("reporting ...")
 
                 try:
                     self.report()  # write contents of pvdb to a file
                 except Exception as exc:
-                    logger.debug("received expected exception: %s", exc)
+                    logger.debug("exception: %s", exc)
 
             if t_now >= log_deadline:
-                log_deadline += log_interval
+                log_deadline = time.time() + log_interval
                 logger.debug(
                     "checkpoint, %d EPICS monitor events received",
                     self.monitor_counter
                 )
                 self.monitor_counter = 0  # reset
 
-            time.sleep(self.configuration["SLEEP_INTERVAL_S"])
+            time.sleep(sleepInterval)
 
     def get_pvlist(self):
         """get the PVs from the XML file"""
@@ -305,9 +318,8 @@ class PvWatch(object):
         )
         self.pvdb.add(pv, mne, entry)
 
-        # FIXME: what to do if PV did not connect? (ch.connected == False)
         if not entry.connected:
-            logger.info("PV not connected yet: %s", pv)
+            logger.debug("PV not connected yet: %s", pv)
 
     def add_file_pattern(self, pattern):
         """
@@ -329,8 +341,8 @@ class PvWatch(object):
         node.text = datetime.datetime.now().isoformat(timespec="seconds")
 
         fields = (
-            "name",
-            "id",
+            "pvname",
+            "mnemonic",
             "description",
             "timestamp",
             "record_type",
@@ -339,7 +351,7 @@ class PvWatch(object):
             "value",
             "char_value",
             "raw_value",
-            "format",
+            "fmt",
         )
 
         for mne in sorted(self.pvdb.mnemonics):
@@ -352,7 +364,7 @@ class PvWatch(object):
 
             for item in fields:
                 subnode = etree.SubElement(node, item)
-                subnode.text = str(entry[item])
+                subnode.text = str(getattr(entry, item))
 
         xmlText = '<?xml version="1.0" ?>'
         pi_xsl = etree.ProcessingInstruction(

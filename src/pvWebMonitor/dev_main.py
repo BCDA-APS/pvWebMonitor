@@ -8,30 +8,32 @@ pvWebMonitor.dev_main
 # See LICENSE file for details.
 
 
-import os
+from pvWebMonitor import main
+import logging
+import pathlib
+import setup
 import sys
 import time
-import main
-import setup
 
-
+logging.basicConfig(level="DEBUG")
+logging.getLogger("ophyd").setLevel("WARNING")
 PROJECT_DIR = "./www_project"
 
 
 def setup_project_dir(path):
     """(re)creates a project scratch directory"""
-    path = os.path.abspath(path)
+    path = pathlib.Path(path)
 
     # tear down any old directories
-    if os.path.exists(path):
-        for fname in os.listdir(path):
-            os.remove(os.path.join(path, fname))
-        os.rmdir(path)
+    if path.exists():
+        for fname in path.iterdir():
+            fname.unlink()
+        path.rmdir()
         time.sleep(0.1)
 
     # tear down any old directories
-    if not os.path.exists(path):
-        os.mkdir(path)
+    if not path.exists():
+        path.mkdir()
 
     # fill it with the default files
     setup.main(path)
@@ -48,5 +50,5 @@ if __name__ == "__main__":
     # sys.argv.append('./www')
 
     setup_project_dir(PROJECT_DIR)
-    os.chdir(PROJECT_DIR)
+    pathlib.os.chdir(PROJECT_DIR)
     main.main()

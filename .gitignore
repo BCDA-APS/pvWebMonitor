@@ -51,6 +51,7 @@ src/pvWebMonitor/pvlist.xml
 src/pvWebMonitor/localwww
 src/pvWebMonitor/www_project
 rawdata.xml
+pvlist.html
 log_file.txt
 
 # Microsoft VSCode editor

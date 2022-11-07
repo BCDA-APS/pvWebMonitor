@@ -23,12 +23,6 @@ var/
 *.egg
 .settings
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -49,17 +43,18 @@ coverage.xml
 *.log
 
 # Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
+docs/build/
 
 # pvWebMonitor local application
 src/pvWebMonitor/log_file.txt
 src/pvWebMonitor/pvlist.xml
 src/pvWebMonitor/localwww
 src/pvWebMonitor/www_project
+rawdata.xml
+log_file.txt
 
 # Microsoft VSCode editor
 .vscode/
+
+# local developer code
+dev_*.py

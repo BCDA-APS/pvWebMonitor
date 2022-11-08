@@ -11,7 +11,7 @@ __institution__ = "Advanced Photon Source, Argonne National Laboratory"
 __author_name__ = __author__
 __author_email__ = __email__
 
-__copyright__ = "2005-2020, UChicago Argonne, LLC"
+__copyright__ = "2005-2022, UChicago Argonne, LLC"
 # __license_url__         = u''
 __license__ = "UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)"
 __url__ = "http://pvWebMonitor.readthedocs.io"
@@ -30,6 +30,7 @@ __classifiers__ = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Topic :: Scientific/Engineering",
     "Topic :: Software Development :: Embedded Systems",
     "Topic :: Software Development :: Libraries :: Python Modules",

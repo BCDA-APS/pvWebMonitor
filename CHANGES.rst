@@ -26,22 +26,22 @@ describe the future plans.
 2021.0.0
 ************
 
-release expected by 2022-11-18
+released 2022-11-08
 
 Breaking Changes
 ------------------------
 
 * Dropped support for Python <3.8 (includes Python 2)
 
+2020.0.0
 ------------
-
-:2021.0.0: release expected by 2020-12-18
-
-    * first python 2.8 release
 
 :2020.0.0: released 2020-09-24
 
     * last python 2.7 release
+
+Older Releases
+****************
 
 :2017.1211.1:        use Python versioneer
 :2017.1211.0:        ``as_string`` attribute

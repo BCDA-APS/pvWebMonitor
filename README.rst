@@ -15,7 +15,7 @@ script for automated startup in a cron task or at system startup.
 :email:  	jemian@anl.gov
 :copyright: 2005-2022, UChicago Argonne, LLC
 :license:   ANL OPEN SOURCE LICENSE (see *LICENSE*)
-:docs:      http://pvWebMonitor.readthedocs.io
+:docs:      https://bcda-aps.github.io/pvWebMonitor/
 :git:       https://github.com/BCDA-APS/pvWebMonitor.git
 :PyPI:      https://pypi.python.org/pypi/pvWebMonitor
 

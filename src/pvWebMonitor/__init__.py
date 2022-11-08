@@ -17,7 +17,13 @@ __license__ = "UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)"
 __url__ = "http://pvWebMonitor.readthedocs.io"
 __download_url__ = "https://github.com/prjemian/pvWebMonitor.git"
 __keywords__ = ["EPICS", "PV", "tool", "HTML"]
-__requires__ = ["pyepics", "lxml", "numpy", "ophyd", "packaging"]
+__requires__ = """
+    lxml
+    numpy
+    ophyd
+    packaging
+    pyepics
+""".split()
 
 __classifiers__ = [
     "Development Status :: 6 - Mature",

@@ -11,9 +11,9 @@ __institution__ = "Advanced Photon Source, Argonne National Laboratory"
 __author_name__ = __author__
 __author_email__ = __email__
 
-__copyright__ = "2005-2022, UChicago Argonne, LLC"
+__copyright__ = "2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved."
 # __license_url__         = u''
-__license__ = "UChicago Argonne, LLC OPEN SOURCE LICENSE (see LICENSE file)"
+__license__ = "EPICS Open License (see LICENSE file)"
 __url__ = "https://bcda-aps.github.io/pvWebMonitor/"
 __download_url__ = "https://github.com/prjemian/pvWebMonitor.git"
 __keywords__ = ["EPICS", "PV", "tool", "HTML"]

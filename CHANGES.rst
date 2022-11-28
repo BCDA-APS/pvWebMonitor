@@ -23,6 +23,16 @@ describe the future plans.
 
    release expected by TBA
 
+2021.0.1
+************
+
+released expected by 2022-11-30
+
+Maintenance
+-----------
+
+* Apply *EPICS Open License*.
+
 2021.0.0
 ************
 

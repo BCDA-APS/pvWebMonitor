@@ -2,15 +2,14 @@
 setup a new project directory
 """
 
-# Copyright (c) 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
+# Copyright (c) 2002-2025, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
 # See LICENSE file for details.
 
 
 import os
-import sys
 import platform
 import stat
-
+import sys
 
 PROJECT_SOURCE_DIR = "project"
 
@@ -73,8 +72,10 @@ def main(new_directory):
     new_files = os.listdir(new_directory)
 
     if not _ok_to_proceed_(src_files, new_files):
-        msg = "new project directory contains files that would be overwritten: "
-        raise RuntimeError(msg + new_directory)
+        raise RuntimeError(
+            "New project directory contains files that would"
+            f" be overwritten: {new_directory!r}"
+        )
 
     import shutil
 

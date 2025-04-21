@@ -5,13 +5,13 @@ pvWebMonitor.main
 
 USAGE::
 
-    jemian@gov:~$ pvWebMonitor
+    ~$ pvWebMonitor
     usage: pvWebMonitor [-h] [-l LOG_FILE] [-v] xml_config_file
     pvWebMonitor: error: too few arguments
 
 HELP::
 
-    jemian@gov:~$ pvWebMonitor -h
+    ~$ pvWebMonitor -h
     usage: pvWebMonitor [-h] [-l LOG_FILE] [-v] [--setup SETUP] xml_config_file
 
     pvWebMonitor: post EPICS PVs to read-only web page
@@ -30,13 +30,10 @@ HELP::
 
 VERSION::
 
-    jemian@gov:~$ pvWebMonitor -v
+    ~$ pvWebMonitor -v
     2015.0112.0
 
 """
-
-# Copyright (c) 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
-# See LICENSE file for details.
 
 
 import logging
@@ -49,14 +46,13 @@ DEFAULT_LOG_FILE = "log_file.txt"
 
 def main():
     """entry point for the command-line interface"""
-    from . import __description__
+    import argparse
+
     from . import __package_name__
     from . import __version__
     from . import read_config
-    import argparse
 
-    doc = __package_name__
-    doc += ": " + __description__
+    doc = f"{__package_name__}: Create static web site from EPICS PVs."
 
     parser = argparse.ArgumentParser(description=doc)
 
@@ -68,13 +64,9 @@ def main():
             default="configuration.xml",
         )
 
-        parser.add_argument(
-            "-l", "--log_file", action="store", help="log file", default="log_file.txt"
-        )
+        parser.add_argument("-l", "--log_file", action="store", help="log file", default="log_file.txt")
 
-        parser.add_argument(
-            "-v", "--version", action="version", version=__version__
-        )
+        parser.add_argument("-v", "--version", action="version", version=__version__)
 
     group = parser.add_argument_group("getting started (none of the above)")
     group.add_argument("--setup", help="setup a new project directory", type=str)
@@ -89,7 +81,7 @@ def main():
 
     if user_args.setup is not None:
         logger.info("Setup requested in directory: %s", user_args.setup)
-        import setup
+        from . import setup
 
         setup.main(user_args.setup)
         exit()
@@ -102,7 +94,8 @@ def main():
         configuration = read_config.read_xml(user_args.xml_config_file)
         logger.debug("read configuration file: %s", user_args.xml_config_file)
         logger.debug(
-            "configuration schema version: %s", configuration["SCHEMA_VERSION"]
+            "configuration schema version: %s",
+            configuration["SCHEMA_VERSION"],
         )
 
         watcher = pvwatch.PvWatch(configuration)
@@ -111,6 +104,11 @@ def main():
         watcher.start()
 
 
-if __name__ == "__main__":
-    """call the command-line interface"""
-    main()
+# -----------------------------------------------------------------------------
+# :author:    BCDA
+# :copyright: (c) 2005-2025, UChicago Argonne, LLC
+#
+# Distributed under the terms of the Argonne National Laboratory Open Source License.
+#
+# The full license is in the file LICENSE.txt, distributed with this software.
+# -----------------------------------------------------------------------------

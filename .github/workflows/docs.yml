@@ -22,39 +22,46 @@ on:
 # see: https://sphinx-notes.github.io/pages/
 # see: https://github.com/marketplace/actions/sphinx-to-github-pages
 
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
 
-  publish-docs:
+  docs:
     name: Publish documentation
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-      with:
-        fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
-
     - name: Deploy Information
       if: ${{ github.event.inputs.deploy }}
       run: |
         echo "Docs will be published from this workflow run."
 
-    - name: Install pandoc
-      run: |
-        sudo apt-get update && sudo apt-get -y install pandoc python3-pip
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
 
-    - name: Install Sphinx build requirements
-      run: |
-        pip install -r requirements-sphinx.txt
-        # setuptools-scm
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
 
-    - name: Install our package
+    - name: Install pandoc & upgrade pip
       run: |
-        pip install --no-deps -e .
+        sudo apt-get update && sudo apt-get -y install pandoc
+        python3 -m pip install --upgrade pip
+
+    - name: Install our package and Sphinx build requirements
+      run: |
+        python3 -m pip install -e .[doc]
 
     - name: Diagnostics
       run: |
         pip list
+        echo $(which pandoc)
+        echo $(which sphinx-build)
 
     - name: Build and Commit
       uses: sphinx-notes/pages@master

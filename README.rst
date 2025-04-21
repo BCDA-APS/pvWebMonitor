@@ -13,7 +13,7 @@ script for automated startup in a cron task or at system startup.
 
 :author: 	Pete R. Jemian
 :email:  	jemian@anl.gov
-:copyright: 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
+:copyright: 2002-2025, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
 :license:   EPICS (see *LICENSE*)
 :docs:      https://bcda-aps.github.io/pvWebMonitor/
 :git:       https://github.com/BCDA-APS/pvWebMonitor.git
@@ -24,7 +24,3 @@ script for automated startup in a cron task or at system startup.
       :target: https://github.com/BCDA-APS/pvWebMonitor/tags
    .. image:: https://img.shields.io/github/release/prjemian/pvWebMonitor.svg
       :target: https://github.com/BCDA-APS/pvWebMonitor/releases
-   .. .. image:: https://img.shields.io/pypi/pyversions/pvWebMonitor.svg
-      :target: https://pypi.python.org/pypi/pvWebMonitor
-   .. image:: https://img.shields.io/pypi/v/pvWebMonitor.svg
-      :target: https://pypi.python.org/pypi/pvWebMonitor/

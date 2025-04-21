@@ -2,21 +2,22 @@
 pvWebMonitor.pvwatch
 """
 
-# Copyright (c) 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
+# Copyright (c) 2002-2025, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
 # See LICENSE file for details.
 
 
-from . import utils
-from lxml import etree
-from ophyd.signal import EpicsSignalBase
 import datetime
-import epics
 import fnmatch
 import logging
-import ophyd
 import os
 import time
 
+import epics
+import ophyd
+from lxml import etree
+from ophyd.signal import EpicsSignalBase
+
+from . import utils
 
 logger = logging.getLogger(__name__)
 logger.setLevel("DEBUG")

@@ -1,13 +1,21 @@
 Installation
 ============
 
-If you need to install the *pvWebMonitor* package, follow these terse instructions::
+If you need to install the *pvWebMonitor* package::
 
    pip install pvWebMonitor
 
-Alternatively, you could clone the GitHub project::
+To install for development, follow these terse instructions:
 
-   git clone https://github.com/prjemian/pvWebMonitor.git
+.. code-block:: bash
+   :linenos:
 
-Once the installation is complete, 
+   git clone https://github.com/BCDA-APS/pvWebMonitor.git
+   cd pvWebMonitor
+   ENV_NAME=pvWebMonitor
+   conda create -y -n "${ENV_NAME}" "python=3.13" pandoc
+   conda activate "${ENV_NAME}"
+   pip install -e .
+
+Once the installation is complete,
 the *pvWebMonitor* executable should be ready to use.

@@ -18,10 +18,17 @@ The project `milestones <https://github.com/BCDA-APS/pvWebMonitor/milestones>`_
 describe the future plans.
 
 ..
-   2021.0.1
-   ************
+   2021.0.2
+   ********
 
-   release expected by TBA
+   release expected by 2025-04-30
+
+   Maintenance
+   -----------
+
+   * Drop versioneer for setuptools-scm.
+   * Test with Python 3.9-3.13.
+   * Update project packaging.
 
 2021.0.1
 ************

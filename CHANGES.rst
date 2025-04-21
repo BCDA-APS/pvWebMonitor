@@ -21,7 +21,7 @@ describe the future plans.
    2021.0.2
    ********
 
-   release expected by 2025-04-30
+   release expected by 2025-04-22.
 
    Maintenance
    -----------

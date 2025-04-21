@@ -1,10 +1,11 @@
-from .. import pvwatch
-from .. import read_config
-import epics
 import pathlib
-import pytest
 import time
 
+import epics
+import pytest
+
+from .. import pvwatch
+from .. import read_config
 
 PROJECT_PATH = pathlib.Path(__file__).parent.parent / "project"
 CONFIG_FILE = PROJECT_PATH / "config.xml"

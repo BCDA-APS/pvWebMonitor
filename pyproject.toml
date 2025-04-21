@@ -7,7 +7,6 @@ requires = [
 
 [project]
 name = "pvWebMonitor"
-dynamic = ["version"]
 description = "Create static web site from EPICS PVs."
 authors = [
   { name="BCDA" },
@@ -15,6 +14,7 @@ authors = [
 maintainers = [
   { name="Pete Jemian" },
 ]
+dynamic = ["version"]
 readme = "README.rst"
 requires-python = ">=3.9"
 keywords = ["EPICS", "PV", "tool", "HTML"]
@@ -26,6 +26,7 @@ classifiers = [
     "Environment :: Web Environment",
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
     "Programming Language :: Python",
     "Topic :: Scientific/Engineering",
     "Topic :: Software Development :: Embedded Systems",
@@ -55,7 +56,8 @@ doc = [
   "pydata-sphinx-theme",
   "pygments >=2.12",
   "pygments-ipython-console",
-  "setuptools-scm",
+  "setuptools >=77",
+  "setuptools-scm >=8",
   "sphinx",
   "sphinx-design",
 ]
@@ -230,13 +232,5 @@ docstring-code-format = false
 # enabled.
 docstring-code-line-length = "dynamic"
 
-# -------
-
-# [tool.setuptools]
-# py-modules = ["pvWebMonitor"]
-
-# [tool.setuptools.packages.find]
-# include = ["src/pvWebMonitor"]  # package names should match these glob patterns (["*"] by default)
-
 [tool.setuptools_scm]
-write_to = "src/pvWebMonitor/_version.py"
+# write_to = "src/pvWebMonitor/_version.py"

@@ -2,6 +2,6 @@ include CHANGES.rst
 include LICENSE
 include README.rst
 include src/pvWebMonitor/_version.py
-prune src/pvWebMonitor/tests/
+recursive-exclude src/pvWebMonitor/tests/
 global-exclude dev_*
 recursive-exclude src/dev_*/ *

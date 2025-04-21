@@ -1,17 +1,29 @@
 """pvWebMonitor"""
 
 __package_name__ = "pvWebMonitor"
+__settings_orgName__ = "BCDA-APS"
 
-try:
-    from setuptools_scm import get_version
 
-    __version__ = get_version(root="..", relative_to=__file__)
-    del get_version
-except (LookupError, ModuleNotFoundError):
-    from importlib.metadata import version
+def _get_version():
+    """Make the version code testable."""
+    import importlib.metadata
+    import importlib.util
 
-    __version__ = version(__package_name__)
-    del version
+    text = importlib.metadata.version(__package_name__)
+
+    if importlib.util.find_spec("setuptools_scm") is not None:
+        """Preferred source of package version information."""
+        import setuptools_scm
+
+        try:
+            text = setuptools_scm.get_version(root="..", relative_to=__file__)
+        except LookupError:
+            pass  # TODO: How to test this?
+
+    return text
+
+
+__version__ = _get_version()
 
 # -----------------------------------------------------------------------------
 # :author:    BCDA

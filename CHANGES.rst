@@ -18,10 +18,20 @@ The project `milestones <https://github.com/BCDA-APS/pvWebMonitor/milestones>`_
 describe the future plans.
 
 ..
+   2021.0.4
+   ********
+
+   Release expected by tba.
+
    2021.0.3
    ********
 
-   release expected by tba
+   Release expected by 2025-05-10.
+
+   Fixes
+   -----
+
+   * 'pvlist' page was not published.
 
 2021.0.2
 ********

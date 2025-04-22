@@ -1,3 +1,7 @@
+.. This page did not publish on GitHub when it was named without
+   the trailing underscore.
+   https://github.com/BCDA-APS/pvWebMonitor/issues/52
+
 The `pvlist.xml` file
 #####################
 

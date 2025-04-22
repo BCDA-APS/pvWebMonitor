@@ -10,7 +10,7 @@
 	  mne="ioc_alldone"
 	  />
 
-  <EPICS_PV PV="APS:SRcurrentAI" 
+  <EPICS_PV PV="S-DCCT:CurrentM" 
 	  description="APS storage ring current, mA" 
 	  display_format="%.2f" 
 	  mne="SR_current"
@@ -42,4 +42,3 @@
 	  />
 
 </pvwatch>
-

@@ -23,7 +23,7 @@ These steps are described in the following sections:
    install
    setup
    config
-   pvlist_
+   pvlist
    rawdata
    livedata
    manage

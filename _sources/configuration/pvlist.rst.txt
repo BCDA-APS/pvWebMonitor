@@ -289,7 +289,7 @@ An example of such a file is shown below.
       .. rubric:: Example `pvlist.xml` file.
          You can edit this file with a text editor.
       
-      .. literalinclude:: pvlist.xml
+      .. literalinclude:: pvlist_example.xml
          :tab-width: 4
          :linenos:
          :language: xml

@@ -23,17 +23,17 @@ describe the future plans.
 
    release expected by tba
 
-    2021.0.2
-    ********
+2021.0.2
+********
 
-    Release expected by 2025-04-22.
+Released 2025-04-22.
 
-    Maintenance
-    -----------
+Maintenance
+-----------
 
-    * Replace versioneer with setuptools-scm.
-    * Test with Python 3.9-3.13.
-    * Update project packaging.
+* Replace versioneer with setuptools-scm.
+* Test with Python 3.9-3.13.
+* Update project packaging.
 
 2021.0.1
 ************

@@ -1,7 +1,8 @@
 Overview
 ########
 
-The basic flow of data from EPICS to the WWW site is described in the following diagram:
+The basic flow of data from EPICS to the static web site is described in the
+following diagram:
 
 .. figure:: _static/overview.jpg
       :width: 90%
@@ -27,7 +28,7 @@ Finally, all content in the project directory (except for the
 content is copied, files that do not change are not re-copied.) 
 
 It is important to note the WWW site is written as a *static web site* 
-so that it provides no opportunity to change values in the EPICS system 
+so that it provides no opportunity to change any value in the EPICS system 
 being monitored.
 
 Also, since some browsers do not have XML parsers and thus cannot render XSLT [#]_,

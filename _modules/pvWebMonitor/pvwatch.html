@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pvWebMonitor.pvwatch &#8212; pvWebMonitor 2021.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=c4806274"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pvWebMonitor/pvwatch';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2021.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pvWebMonitor 2021.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contents.html">
+    Contents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BCDA-APS/pvWebMonitor" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contents.html">
+    Contents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BCDA-APS/pvWebMonitor" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pvWebMonitor.pvwatch</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pvWebMonitor.pvwatch</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">pvWebMonitor.pvwatch</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (c) 2002-2025, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.</span>
+<span class="c1"># See LICENSE file for details.</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">fnmatch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">epics</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ophyd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lxml</span><span class="w"> </span><span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ophyd.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">EpicsSignalBase</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+<span class="n">XML_SCHEMA_FILE</span> <span class="o">=</span> <span class="s2">&quot;pvlist.xsd&quot;</span>
+<span class="n">XML_RAWDATA_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;rawdata.xml&quot;</span>
+<span class="n">XSL_PVLIST_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;pvlist.xsl&quot;</span>
+<span class="n">XSL_RAWDATA_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;rawdata.xsl&quot;</span>
+<span class="n">XSL_INDEX_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;index.xsl&quot;</span>
+
+<span class="n">ophyd</span><span class="o">.</span><span class="n">set_cl</span><span class="p">(</span><span class="s2">&quot;PyEpics&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="c1"># set default timeout for all EpicsSignal connections &amp; communications</span>
+<span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">EpicsSignalBase</span><span class="o">.</span><span class="n">_EpicsSignalBase__any_instantiated</span><span class="p">:</span>
+    <span class="n">EpicsSignalBase</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span>
+        <span class="n">auto_monitor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span>
+        <span class="n">write_timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span>
+        <span class="n">connection_timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="PvNotRegistered">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvNotRegistered">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PvNotRegistered</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;PV not in &#39;pvdb&#39;.&quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="CouldNotParseXml">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.CouldNotParseXml">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CouldNotParseXml</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Could not parse XML file.&quot;&quot;&quot;</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_xslt_</span><span class="p">(</span><span class="n">xslt_file</span><span class="p">,</span> <span class="n">source_xml_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convenience routine for XSLT transformations.</span>
+
+<span class="sd">    For a given XSLT file *abcdefg.xsl*, will produce a file *abcdefg.html*::</span>
+
+<span class="sd">        abcdefg.xsl + xml_data  --&gt; abcdefg.html</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_xml_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">xslt_file</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">extsep</span> <span class="o">+</span> <span class="s2">&quot;html&quot;</span>
+    <span class="n">utils</span><span class="o">.</span><span class="n">xslt_transformation</span><span class="p">(</span><span class="n">xslt_file</span><span class="p">,</span> <span class="n">source_xml_file</span><span class="p">,</span> <span class="n">output_xml_file</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PvCrossReference">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvCrossReference">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PvCrossReference</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Maintain cross-references between pvnames, mnemonics, and their signals.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PvCrossReference.clear">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvCrossReference.clear">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the cross-references tables.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># pvname: signal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mne_ref</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># mnemonic: pvname</span></div>
+
+
+<div class="viewcode-block" id="PvCrossReference.add">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvCrossReference.add">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">mne</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Collect a new PV name, mnemonic, and PvEntry entry object.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">pv</span><span class="si">}</span><span class="s2">&#39; is already known.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span><span class="p">[</span><span class="n">pv</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mne_ref</span><span class="p">[</span><span class="n">mne</span><span class="p">]</span> <span class="o">=</span> <span class="n">pv</span></div>
+
+
+<div class="viewcode-block" id="PvCrossReference.get">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvCrossReference.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lookup an entry by PV or mnemonic.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mne_ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mne_ref</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PvCrossReference.known">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvCrossReference.known">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">known</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Is this PV known?&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mnemonics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List the known mnemonics.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mne_ref</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pvnames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List the known PV names.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pv_ref</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="PvEntry">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvEntry">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PvEntry</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Monitor (read-only) a single EPICS PV.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mnemonic</span><span class="p">,</span>
+        <span class="n">pvname</span><span class="p">,</span>
+        <span class="n">as_string</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">as_string</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">as_string</span>  <span class="c1"># return string representation of the value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">description</span>  <span class="c1"># text description for humans</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">fmt</span>  <span class="c1"># format for display</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mnemonic</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">mnemonic</span>  <span class="c1"># symbolic name used in the python code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pvname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">pvname</span>  <span class="c1"># EPICS PV name</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">char_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># string value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># number of monitor events received</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># unformatted value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">record_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># EPICS record type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span> <span class="o">=</span> <span class="n">ophyd</span><span class="o">.</span><span class="n">EpicsSignalRO</span><span class="p">(</span><span class="n">pvname</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">mnemonic</span><span class="p">)</span>  <span class="c1"># EPICS PV</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># client time last monitor was received</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># engineering units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># formatted value</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_monitor_event</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learn_units</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;pvname=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pvname</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, mnemonic=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mnemonic</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, description=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, as_string=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">as_string</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, connected=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">connected</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;pvname=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pvname</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, mnemonic=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mnemonic</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, description=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;, as_string=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">as_string</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">connected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Is EPICS connected?&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span><span class="o">.</span><span class="n">connected</span>
+
+<div class="viewcode-block" id="PvEntry.ca_monitor_event">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvEntry.ca_monitor_event">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ca_monitor_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Respond to an EPICS CA monitor event.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;value&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_value</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmt</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">char_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>  <span class="c1"># as ISO8601</span></div>
+
+            <span class="c1"># logger.info(&quot;%r: kwargs: %s&quot;, self, kwargs)</span>
+
+<div class="viewcode-block" id="PvEntry.learn_units">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvEntry.learn_units">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">learn_units</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Learn the units from EPICS, adjust for &#39;user names&#39;, as known.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">md</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span><span class="o">.</span><span class="n">metadata</span>
+
+        <span class="n">unit_renames</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># handle some non SI unit names</span>
+            <span class="c1"># old      new</span>
+            <span class="s2">&quot;millime&quot;</span><span class="p">:</span> <span class="s2">&quot;mm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;millira&quot;</span><span class="p">:</span> <span class="s2">&quot;mr&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;degrees&quot;</span><span class="p">:</span> <span class="s2">&quot;deg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Volts&quot;</span><span class="p">:</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;VDC&quot;</span><span class="p">:</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;eng&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">units</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">units</span> <span class="ow">in</span> <span class="n">unit_renames</span><span class="p">:</span>
+                <span class="n">units</span> <span class="o">=</span> <span class="n">unit_renames</span><span class="p">[</span><span class="n">units</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span></div>
+
+
+<div class="viewcode-block" id="PvEntry.learn_record_type">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvEntry.learn_record_type">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">learn_record_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Record the EPICS RTYP (record type, if available).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">basename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">basename</span><span class="p">)</span> <span class="p">:]</span>
+        <span class="n">rtyp_pv</span> <span class="o">=</span> <span class="n">epics</span><span class="o">.</span><span class="n">PV</span><span class="p">(</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;.RTYP&quot;</span><span class="p">)</span>  <span class="c1"># use PyEpics here</span>
+        <span class="n">rtyp</span> <span class="o">=</span> <span class="n">rtyp_pv</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;unknown&quot;</span>
+        <span class="k">if</span> <span class="n">basename</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvname</span> <span class="ow">or</span> <span class="n">field</span> <span class="o">==</span> <span class="s2">&quot;.VAL&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">record_type</span> <span class="o">=</span> <span class="n">rtyp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># field of record</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">record_type</span> <span class="o">=</span> <span class="n">rtyp</span> <span class="o">+</span> <span class="n">field</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PvWatch">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PvWatch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Core of the pvWebMonitor package.</span>
+
+<span class="sd">    To call this code, first define ``configuration=dict()`` with terms</span>
+<span class="sd">    as defined in :meth:`read_config.read_xml`, then statements such as:</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">       :linenos:</span>
+
+<span class="sd">        watcher = PvWatch(configuration)</span>
+<span class="sd">        watcher.start()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="n">configuration</span>  <span class="c1"># from XML configuration file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span> <span class="o">=</span> <span class="n">PvCrossReference</span><span class="p">()</span>  <span class="c1"># cache of last known good values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">monitor_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upload_patterns</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;PATTERNS&quot;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_pvlist</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;read list of PVs to monitor&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PvWatch.start">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.start">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;begin receiving PV updates and posting new web content&quot;&quot;&quot;</span>
+        <span class="n">log_deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">log_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;LOG_INTERVAL_S&quot;</span><span class="p">]</span>
+        <span class="n">report_deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">report_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;REPORT_INTERVAL_S&quot;</span><span class="p">]</span>
+        <span class="n">mainLoopCount</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mainLoopCountRollover</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;MAINLOOP_COUNTER_TRIGGER&quot;</span><span class="p">]</span>
+        <span class="n">sleepInterval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;SLEEP_INTERVAL_S&quot;</span><span class="p">]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">mainLoopCount</span> <span class="o">=</span> <span class="p">(</span><span class="n">mainLoopCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">mainLoopCountRollover</span>
+            <span class="k">if</span> <span class="n">mainLoopCount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">%s</span><span class="s2"> times through main loop&quot;</span><span class="p">,</span> <span class="n">mainLoopCountRollover</span><span class="p">)</span>
+
+            <span class="n">t_now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">t_now</span> <span class="o">&gt;=</span> <span class="n">report_deadline</span><span class="p">:</span>
+                <span class="n">report_deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="n">report_interval</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New report deadline: </span><span class="si">{</span><span class="n">report_deadline</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;reporting ...&quot;</span><span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>  <span class="c1"># write contents of pvdb to a file</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;exception: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">t_now</span> <span class="o">&gt;=</span> <span class="n">log_deadline</span><span class="p">:</span>
+                <span class="n">log_deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="n">log_interval</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="s2">&quot;checkpoint, </span><span class="si">%d</span><span class="s2"> EPICS monitor events received&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">monitor_counter</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">monitor_counter</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># reset</span>
+
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleepInterval</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.get_pvlist">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.get_pvlist">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_pvlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;get the PVs from the XML file&quot;&quot;&quot;</span>
+        <span class="n">pvlist_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;PVLIST_FILE&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pvlist_file</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;could not find file: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pvlist_file</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">pvlist_file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CouldNotParseXml</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;could not parse file &#39;</span><span class="si">{</span><span class="n">pvlist_file</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">utils</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">XML_SCHEMA_FILE</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;validated file: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">pvlist_file</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;.//EPICS_PV&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_ignore_&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span><span class="p">:</span>
+                <span class="n">mne</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mne&quot;</span><span class="p">)</span>
+                <span class="n">pv</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PV&quot;</span><span class="p">)</span>
+                <span class="n">desc</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">)</span>
+                <span class="n">fmt</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;display_format&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># default format</span>
+                <span class="n">as_string</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;as_string&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># default format</span>
+                <span class="c1"># :see: http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_pv</span><span class="p">(</span><span class="n">mne</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">as_string</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39;: problem connecting &#39;</span><span class="si">%s</span><span class="s2">&#39;: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="n">pvlist_file</span><span class="p">,</span>
+                        <span class="n">utils</span><span class="o">.</span><span class="n">etree_as_str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                        <span class="n">exc</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;all PVs added&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.add_pv">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.add_pv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mne</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">as_string</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect to a EPICS (PyEpics) process variable&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">known</span><span class="p">(</span><span class="n">pv</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PV &#39;</span><span class="si">{</span><span class="n">pv</span><span class="si">}</span><span class="s2">&#39; already defined.&quot;</span><span class="p">)</span>
+
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">PvEntry</span><span class="p">(</span><span class="n">mne</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">as_string</span><span class="o">=</span><span class="n">as_string</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="n">mne</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">entry</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;PV not connected yet: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pv</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.add_file_pattern">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.add_file_pattern">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_file_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        add ``pattern`` as an additional file extension pattern</span>
+
+<span class="sd">        Any file with extension matching any of the patterns in</span>
+<span class="sd">        ``self.upload_patterns`` will copied to the</span>
+<span class="sd">        WWW directory, if they are newer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upload_patterns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.buildReport">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.buildReport">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">buildReport</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;build the report&quot;&quot;&quot;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s2">&quot;pvWebMonitor&quot;</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;written_by&quot;</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;pvWebMonitor/PvWatch&quot;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;pvname&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mnemonic&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;record_type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;counter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;units&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;char_value&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;raw_value&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fmt&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">mne</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">mnemonics</span><span class="p">):</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">mne</span><span class="p">)</span>
+            <span class="n">pv</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">pvname</span>
+
+            <span class="n">node</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;pv&quot;</span><span class="p">)</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">mne</span><span class="p">)</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">pv</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">subnode</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+                <span class="n">subnode</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
+
+        <span class="n">xmlText</span> <span class="o">=</span> <span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; ?&gt;&#39;</span>
+        <span class="n">pi_xsl</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">ProcessingInstruction</span><span class="p">(</span>
+            <span class="s2">&quot;xml-stylesheet&quot;</span><span class="p">,</span> <span class="s1">&#39;type=&quot;text/xsl&quot; href=&quot;pvlist.xsl&quot;&#39;</span>
+        <span class="p">)</span>
+        <span class="n">xmlText</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">utils</span><span class="o">.</span><span class="n">etree_as_str</span><span class="p">(</span><span class="n">pi_xsl</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">utils</span><span class="o">.</span><span class="n">etree_as_str</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">xmlText</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.report">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.report">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        write the values out to files</span>
+
+<span class="sd">        The values of the monitored EPICS PVs (the &quot;raw data&quot;)</span>
+<span class="sd">        is written to an XML file.  This file is then used</span>
+<span class="sd">        with one or more XSLT stylesheets to create HTML pages.</span>
+<span class="sd">        An overall &quot;home page&quot; (index.html) is created to provide</span>
+<span class="sd">        a table of contents of this static web site.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">xmlText</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buildReport</span><span class="p">()</span>
+        <span class="n">utils</span><span class="o">.</span><span class="n">writeFile</span><span class="p">(</span><span class="n">XML_RAWDATA_FILE_NAME</span><span class="p">,</span> <span class="n">xmlText</span><span class="p">)</span>
+
+        <span class="c1"># accumulate list of each file written below</span>
+        <span class="n">www_site_file_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">xslt_file_list_used</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;index.xsl&quot;</span><span class="p">,</span>
+        <span class="p">]</span>  <span class="c1"># do the index.xsl file last</span>
+        <span class="n">www_site_file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">XML_RAWDATA_FILE_NAME</span><span class="p">)</span>
+
+        <span class="c1"># add pvlist.xml to file list</span>
+        <span class="n">pvlist_xml_file_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;PVLIST_FILE&quot;</span><span class="p">]</span>
+        <span class="n">www_site_file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pvlist_xml_file_name</span><span class="p">)</span>
+
+        <span class="c1"># add pvlist.xsl to file list</span>
+        <span class="n">xslt_file_name</span> <span class="o">=</span> <span class="n">XSL_PVLIST_FILE_NAME</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">):</span>
+            <span class="n">_xslt_</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">,</span> <span class="n">pvlist_xml_file_name</span><span class="p">)</span>
+            <span class="n">xslt_file_list_used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">)</span>
+
+        <span class="c1"># add report.xml to file list</span>
+        <span class="n">report_xml_file_name</span> <span class="o">=</span> <span class="n">XML_RAWDATA_FILE_NAME</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">report_xml_file_name</span><span class="p">):</span>
+            <span class="c1"># write &quot;report.xml&quot;    : values of monitored EPICS PVs</span>
+            <span class="n">www_site_file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">report_xml_file_name</span><span class="p">)</span>
+
+            <span class="n">xslt_file_name</span> <span class="o">=</span> <span class="n">XSL_RAWDATA_FILE_NAME</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">):</span>
+                <span class="n">_xslt_</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">,</span> <span class="n">report_xml_file_name</span><span class="p">)</span>
+                <span class="n">xslt_file_list_used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">)</span>
+
+                <span class="c1"># convert all .xsl files</span>
+                <span class="n">xslt_files</span> <span class="o">=</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span> <span class="s2">&quot;*.xsl&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">xslt_file_name</span> <span class="ow">in</span> <span class="n">xslt_files</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">xslt_file_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xslt_file_list_used</span><span class="p">:</span>
+                        <span class="n">_xslt_</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">,</span> <span class="n">report_xml_file_name</span><span class="p">)</span>
+
+        <span class="c1"># finally, write index.html from file list, table of files and descriptions as provided</span>
+        <span class="n">xslt_file_name</span> <span class="o">=</span> <span class="n">XSL_INDEX_FILE_NAME</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">):</span>
+            <span class="c1"># TODO: each XSLT file has a &quot;description&quot; attribute</span>
+            <span class="c1">#  This could be used when building &quot;index.html&quot; file</span>
+            <span class="c1">#  For now, this is manually copied from .xsl file to the table in index.xsl</span>
+            <span class="c1">#  To automate this process, a new, temporary XML document will need to be</span>
+            <span class="c1">#  created with the names and descriptions of all HTML pages.</span>
+            <span class="c1">#  Then use that XML in the following XSLT.</span>
+            <span class="c1">#  Also should add a time stamp string.</span>
+            <span class="n">_xslt_</span><span class="p">(</span><span class="n">xslt_file_name</span><span class="p">,</span> <span class="n">report_xml_file_name</span><span class="p">)</span>
+
+        <span class="c1"># include any other useful files from the project directory</span>
+        <span class="n">local_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">file_pattern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">upload_patterns</span><span class="p">:</span>
+            <span class="n">www_site_file_list</span> <span class="o">+=</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">local_files</span><span class="p">,</span> <span class="n">file_pattern</span><span class="p">)</span>
+            <span class="n">www_site_file_list</span> <span class="o">+=</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">local_files</span><span class="p">,</span> <span class="n">file_pattern</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+
+        <span class="c1"># only copy files if web_site_path is not the current dir</span>
+        <span class="n">www_site_file_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">www_site_file_list</span><span class="p">))</span>
+        <span class="n">www_site_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;LOCAL_WWW_LIVEDATA_DIR&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">www_site_path</span> <span class="o">!=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()):</span>
+            <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">www_site_file_list</span><span class="p">:</span>
+                <span class="n">utils</span><span class="o">.</span><span class="n">copyToWebServer</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">www_site_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.pv_connected">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.pv_connected">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pv_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvname</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Is the named PV connected?&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">known</span><span class="p">(</span><span class="n">pvname</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pvname</span><span class="p">)</span><span class="o">.</span><span class="n">connected</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="PvWatch.get">
+<a class="viewcode-back" href="../../src/pvwatch.html#pvWebMonitor.pvwatch.PvWatch.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvname</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the PvEntry object for the named PV.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvdb</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pvname</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2002-2025, UChicago Argonne, LLC.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

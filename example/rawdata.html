@@ -1,241 +1,277 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example Raw Data for Reports &#8212; pvWebMonitor 2021.0.1 documentation</title>
+    <title>Example Raw Data for Reports &#8212; pvWebMonitor 2021.0</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=c4806274"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'example/rawdata';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Source Code" href="../src/index.html" />
     <link rel="prev" title="Livedata Report" href="livedata.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2021.0" />
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
-
-  
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-    </div>
-  </div>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
   
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
+      <div class="navbar-item">
+
+  
     
   
-
 
 <a class="navbar-brand logo" href="../index.html">
-
   
   
   
   
   
   
+    <p class="title logo__title">pvWebMonitor 2021.0</p>
   
-
-  
-  
-    <p class="title logo__title">pvWebMonitor 2021.0.1 documentation</p>
-  
-</a>
+</a></div>
     
   </div>
-
   
   <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
+    
+    <div class="me-auto navbar-header-items__center">
       
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../contents.html">
-                        Contents
-                      </a>
-                    </li>
-                
-    </ul>
-</nav>
-      </div>
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../contents.html">
+    Contents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
       
     </div>
-
-    <div id="navbar-end">
+    
+    
+    <div class="navbar-header-items__end">
       
-        <div class="navbar-end-item navbar-persistent--container">
+        <div class="navbar-item navbar-persistent--container">
           
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
 </button>
         </div>
       
       
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BCDA-APS/pvWebMonitor" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
       
     </div>
+    
   </div>
-
-
   
   
     <div class="navbar-persistent--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
 </button>
     </div>
   
 
   
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-  </label>
+    </button>
   
-
 </div>
-  </nav>
+
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
       <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
         
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../contents.html">
-                        Contents
-                      </a>
-                    </li>
-                
-    </ul>
-</nav>
-      </div>
-      
-      </div>
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
     
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../contents.html">
+    Contents
+  </a>
+</li>
 
+  </ul>
+</nav></div>
+          
+        
+      </div>
     
     
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BCDA-APS/pvWebMonitor" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
       </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
     
   </div>
-
   
-  <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">
-    Section Navigation
-  </p>
-  <div class="bd-toc-item navbar-nav">
-    <ul class="current nav bd-sidenav">
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/index.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/index.html">Configuration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/install.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/setup.html">Setup a new project directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/config.html">The <cite>config.xml</cite> file</a></li>
@@ -244,55 +280,87 @@
 <li class="toctree-l2"><a class="reference internal" href="../configuration/livedata.html">The <cite>livedata.xsl</cite> file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/manage.html">The <cite>manage.sh</cite> file</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Example</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Example</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="livedata.html">Livedata Report</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Example Raw Data for Reports</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../src/index.html">Source Code</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../src/index.html">Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../src/main.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">main</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../src/pvwatch.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">pvwatch</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../src/read_config.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">read_config</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../src/setup.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../src/utils.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code> Module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Change History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">Software License</a></li>
 </ul>
-
-  </div>
-</nav>
+</div>
+</nav></div>
     </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
 
-  
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
-  </div>
-
-  
-  <div id="rtd-footer-container"></div>
 
       </div>
-      <main id="main-content" class="bd-main">
+      
+      <main id="main-content" class="bd-main" role="main">
         
         
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-            </div>
-            
-            
-            <article class="bd-article" role="main">
+          <div class="bd-content">
+            <div class="bd-article-container">
               
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../contents.html" class="nav-link">Contents</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Example</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Example Raw Data for Reports</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="example-raw-data-for-reports">
-<span id="rawdata"></span><h1>Example Raw Data for Reports<a class="headerlink" href="#example-raw-data-for-reports" title="Permalink to this heading">#</a></h1>
+<span id="rawdata"></span><h1>Example Raw Data for Reports<a class="headerlink" href="#example-raw-data-for-reports" title="Link to this heading">#</a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">file<span class="colon">:</span></dt>
 <dd class="field-odd"><p>&lt;web_site&gt;/rawdata.html</p>
@@ -306,218 +374,218 @@
 </dl>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="linenos">  2</span><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;pvlist.xsl&quot;?&gt;</span>
-<span class="linenos">  3</span><span class="nt">&lt;pvWebMonitor</span> <span class="na">version=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">  4</span>  <span class="nt">&lt;written_by&gt;</span>pvWebMonitor/PvWatch<span class="nt">&lt;/written_by&gt;</span>
-<span class="linenos">  5</span>  <span class="nt">&lt;datetime&gt;</span>2015-01-15 16:48:36<span class="nt">&lt;/datetime&gt;</span>
-<span class="linenos">  6</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;DCM_theta&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:m2.RBV&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">  7</span>    <span class="nt">&lt;name&gt;</span>prj:m2.RBV<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">  8</span>    <span class="nt">&lt;id&gt;</span>DCM_theta<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">  9</span>    <span class="nt">&lt;description&gt;</span>DCM_theta motor<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 10</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.891366<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 11</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 12</span>    <span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 13</span>    <span class="nt">&lt;value&gt;</span>-9.840000<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 14</span>    <span class="nt">&lt;raw_value&gt;</span>-9.84<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 15</span>    <span class="nt">&lt;format&gt;</span>%.6f<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 16</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 17</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;DCM_theta_dmov&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:m2.DMOV&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 18</span>    <span class="nt">&lt;name&gt;</span>prj:m2.DMOV<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 19</span>    <span class="nt">&lt;id&gt;</span>DCM_theta_dmov<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 20</span>    <span class="nt">&lt;description&gt;</span>DCM_theta motor done moving<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 21</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.864203<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 22</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 23</span>    <span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 24</span>    <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 25</span>    <span class="nt">&lt;raw_value&gt;</span>1<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 26</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 27</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 28</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;VDM_Stripe&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:m1.RBV&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 29</span>    <span class="nt">&lt;name&gt;</span>prj:m1.RBV<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 30</span>    <span class="nt">&lt;id&gt;</span>VDM_Stripe<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 31</span>    <span class="nt">&lt;description&gt;</span>VDM_Stripe motor<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 32</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.837633<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 33</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 34</span>    <span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 35</span>    <span class="nt">&lt;value&gt;</span>-1.510<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 36</span>    <span class="nt">&lt;raw_value&gt;</span>-1.51<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 37</span>    <span class="nt">&lt;format&gt;</span>%.3f<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 38</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 39</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;VDM_Stripe_dmov&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:m1.DMOV&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 40</span>    <span class="nt">&lt;name&gt;</span>prj:m1.DMOV<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 41</span>    <span class="nt">&lt;id&gt;</span>VDM_Stripe_dmov<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 42</span>    <span class="nt">&lt;description&gt;</span>VDM_Stripe motor done moving<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 43</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.810400<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 44</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 45</span>    <span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 46</span>    <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 47</span>    <span class="nt">&lt;raw_value&gt;</span>1<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 48</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 49</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 50</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai0&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai0&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 51</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai0<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 52</span>    <span class="nt">&lt;id&gt;</span>ai0<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 53</span>    <span class="nt">&lt;description&gt;</span>Arduino AI0<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 54</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:35.481271<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 55</span>    <span class="nt">&lt;counter&gt;</span>1808<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 56</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 57</span>    <span class="nt">&lt;value&gt;</span>0.0439882697947<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 58</span>    <span class="nt">&lt;raw_value&gt;</span>0.0439882697947<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 59</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 60</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 61</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai0_mean&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai0:mean&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 62</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai0:mean<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 63</span>    <span class="nt">&lt;id&gt;</span>ai0_mean<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 64</span>    <span class="nt">&lt;description&gt;</span>Arduino mean AI0<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 65</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:35.987300<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 66</span>    <span class="nt">&lt;counter&gt;</span>7901<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 67</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 68</span>    <span class="nt">&lt;value&gt;</span>0.0467644183773<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 69</span>    <span class="nt">&lt;raw_value&gt;</span>0.0467644183773<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 70</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 71</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 72</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai1&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai1&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 73</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai1<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 74</span>    <span class="nt">&lt;id&gt;</span>ai1<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 75</span>    <span class="nt">&lt;description&gt;</span>Arduino AI1<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 76</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:43:42.932475<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 77</span>    <span class="nt">&lt;counter&gt;</span>6<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 78</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 79</span>    <span class="nt">&lt;value&gt;</span>0.0<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 80</span>    <span class="nt">&lt;raw_value&gt;</span>0.0<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 81</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 82</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 83</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai1_mean&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai1:mean&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 84</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai1:mean<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 85</span>    <span class="nt">&lt;id&gt;</span>ai1_mean<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 86</span>    <span class="nt">&lt;description&gt;</span>Arduino mean AI1<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 87</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:17.053715<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 88</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos"> 89</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos"> 90</span>    <span class="nt">&lt;value&gt;</span>0.0<span class="nt">&lt;/value&gt;</span>
-<span class="linenos"> 91</span>    <span class="nt">&lt;raw_value&gt;</span>0.0<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos"> 92</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos"> 93</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos"> 94</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai2&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai2&quot;</span><span class="nt">&gt;</span>
-<span class="linenos"> 95</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai2<span class="nt">&lt;/name&gt;</span>
-<span class="linenos"> 96</span>    <span class="nt">&lt;id&gt;</span>ai2<span class="nt">&lt;/id&gt;</span>
-<span class="linenos"> 97</span>    <span class="nt">&lt;description&gt;</span>Arduino AI2<span class="nt">&lt;/description&gt;</span>
-<span class="linenos"> 98</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:47:54.988769<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos"> 99</span>    <span class="nt">&lt;counter&gt;</span>1319<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">100</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos">101</span>    <span class="nt">&lt;value&gt;</span>2.64418377322<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">102</span>    <span class="nt">&lt;raw_value&gt;</span>2.64418377322<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">103</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">104</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">105</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai2_mean&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai2:mean&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">106</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai2:mean<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">107</span>    <span class="nt">&lt;id&gt;</span>ai2_mean<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">108</span>    <span class="nt">&lt;description&gt;</span>Arduino mean AI2<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">109</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:35.998230<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">110</span>    <span class="nt">&lt;counter&gt;</span>7020<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">111</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos">112</span>    <span class="nt">&lt;value&gt;</span>2.64418377322<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">113</span>    <span class="nt">&lt;raw_value&gt;</span>2.64418377322<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">114</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">115</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">116</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;ai3_mean&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:ai3:mean&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">117</span>    <span class="nt">&lt;name&gt;</span>ino:cr:ai3:mean<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">118</span>    <span class="nt">&lt;id&gt;</span>ai3_mean<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">119</span>    <span class="nt">&lt;description&gt;</span>Arduino mean AI3<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">120</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:33.503247<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">121</span>    <span class="nt">&lt;counter&gt;</span>5977<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">122</span>    <span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
-<span class="linenos">123</span>    <span class="nt">&lt;value&gt;</span>2.61974584555<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">124</span>    <span class="nt">&lt;raw_value&gt;</span>2.61974584555<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">125</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">126</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">127</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;arduino_rate&quot;</span> <span class="na">name=</span><span class="s">&quot;ino:cr:rate&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">128</span>    <span class="nt">&lt;name&gt;</span>ino:cr:rate<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">129</span>    <span class="nt">&lt;id&gt;</span>arduino_rate<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">130</span>    <span class="nt">&lt;description&gt;</span>Arduino update rate<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">131</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:36.004167<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">132</span>    <span class="nt">&lt;counter&gt;</span>6214<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">133</span>    <span class="nt">&lt;units&gt;</span>1/s<span class="nt">&lt;/units&gt;</span>
-<span class="linenos">134</span>    <span class="nt">&lt;value&gt;</span>2142.0<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">135</span>    <span class="nt">&lt;raw_value&gt;</span>2142.0<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">136</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">137</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">138</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;engineer&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:ENGINEER&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">139</span>    <span class="nt">&lt;name&gt;</span>prj:ENGINEER<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">140</span>    <span class="nt">&lt;id&gt;</span>engineer<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">141</span>    <span class="nt">&lt;description&gt;</span>engineer<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">142</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.782947<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">143</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">144</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">145</span>    <span class="nt">&lt;value&gt;</span>engineer<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">146</span>    <span class="nt">&lt;raw_value&gt;</span>engineer<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">147</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">148</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">149</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;hostname&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:HOSTNAME&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">150</span>    <span class="nt">&lt;name&gt;</span>prj:HOSTNAME<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">151</span>    <span class="nt">&lt;id&gt;</span>hostname<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">152</span>    <span class="nt">&lt;description&gt;</span>IOC host name<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">153</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.755911<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">154</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">155</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">156</span>    <span class="nt">&lt;value&gt;</span>gov.aps.anl.gov<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">157</span>    <span class="nt">&lt;raw_value&gt;</span>gov.aps.anl.gov<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">158</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">159</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">160</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;motors_alldone&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:alldone&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">161</span>    <span class="nt">&lt;name&gt;</span>prj:alldone<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">162</span>    <span class="nt">&lt;id&gt;</span>motors_alldone<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">163</span>    <span class="nt">&lt;description&gt;</span>all motors done moving<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">164</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.919038<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">165</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">166</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">167</span>    <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">168</span>    <span class="nt">&lt;raw_value&gt;</span>1<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">169</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">170</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">171</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;motors_moving&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:moving&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">172</span>    <span class="nt">&lt;name&gt;</span>prj:moving<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">173</span>    <span class="nt">&lt;id&gt;</span>motors_moving<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">174</span>    <span class="nt">&lt;description&gt;</span>number of motors moving<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">175</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.945825<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">176</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">177</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">178</span>    <span class="nt">&lt;value&gt;</span>0<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">179</span>    <span class="nt">&lt;raw_value&gt;</span>0<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">180</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">181</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">182</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;starttod&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:STARTTOD&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">183</span>    <span class="nt">&lt;name&gt;</span>prj:STARTTOD<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">184</span>    <span class="nt">&lt;id&gt;</span>starttod<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">185</span>    <span class="nt">&lt;description&gt;</span>IOC boot time<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">186</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 15:30:16.701840<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">187</span>    <span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">188</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">189</span>    <span class="nt">&lt;value&gt;</span>01/12/2015 12:56:08<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">190</span>    <span class="nt">&lt;raw_value&gt;</span>01/12/2015 12:56:08<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">191</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">192</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">193</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;tod&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:TOD&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">194</span>    <span class="nt">&lt;name&gt;</span>prj:TOD<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">195</span>    <span class="nt">&lt;id&gt;</span>tod<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">196</span>    <span class="nt">&lt;description&gt;</span>IOC current time<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">197</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:35.521618<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">198</span>    <span class="nt">&lt;counter&gt;</span>4701<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">199</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">200</span>    <span class="nt">&lt;value&gt;</span>01/15/2015 16:48:35<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">201</span>    <span class="nt">&lt;raw_value&gt;</span>01/15/2015 16:48:35<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">202</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">203</span>  <span class="nt">&lt;/pv&gt;</span>
-<span class="linenos">204</span>  <span class="nt">&lt;pv</span> <span class="na">id=</span><span class="s">&quot;uptime&quot;</span> <span class="na">name=</span><span class="s">&quot;prj:UPTIME&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">205</span>    <span class="nt">&lt;name&gt;</span>prj:UPTIME<span class="nt">&lt;/name&gt;</span>
-<span class="linenos">206</span>    <span class="nt">&lt;id&gt;</span>uptime<span class="nt">&lt;/id&gt;</span>
-<span class="linenos">207</span>    <span class="nt">&lt;description&gt;</span>time IOC running<span class="nt">&lt;/description&gt;</span>
-<span class="linenos">208</span>    <span class="nt">&lt;timestamp&gt;</span>2015-01-15 16:48:35.521851<span class="nt">&lt;/timestamp&gt;</span>
-<span class="linenos">209</span>    <span class="nt">&lt;counter&gt;</span>4701<span class="nt">&lt;/counter&gt;</span>
-<span class="linenos">210</span>    <span class="nt">&lt;units&gt;&lt;/units&gt;</span>
-<span class="linenos">211</span>    <span class="nt">&lt;value&gt;</span>3 days, 03:52:27<span class="nt">&lt;/value&gt;</span>
-<span class="linenos">212</span>    <span class="nt">&lt;raw_value&gt;</span>3 days, 03:52:27<span class="nt">&lt;/raw_value&gt;</span>
-<span class="linenos">213</span>    <span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
-<span class="linenos">214</span>  <span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">  3</span><span class="nt">&lt;pvWebMonitor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">  4</span><span class="w">  </span><span class="nt">&lt;written_by&gt;</span>pvWebMonitor/PvWatch<span class="nt">&lt;/written_by&gt;</span>
+<span class="linenos">  5</span><span class="w">  </span><span class="nt">&lt;datetime&gt;</span>2015-01-15<span class="w"> </span>16:48:36<span class="nt">&lt;/datetime&gt;</span>
+<span class="linenos">  6</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;DCM_theta&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:m2.RBV&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">  7</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:m2.RBV<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">  8</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>DCM_theta<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">  9</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>DCM_theta<span class="w"> </span>motor<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 10</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.891366<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 11</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 12</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 13</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>-9.840000<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 14</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>-9.84<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 15</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%.6f<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 16</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 17</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;DCM_theta_dmov&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:m2.DMOV&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 18</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:m2.DMOV<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 19</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>DCM_theta_dmov<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 20</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>DCM_theta<span class="w"> </span>motor<span class="w"> </span>done<span class="w"> </span>moving<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 21</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.864203<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 22</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 23</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 24</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 25</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>1<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 26</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 27</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 28</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;VDM_Stripe&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:m1.RBV&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 29</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:m1.RBV<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 30</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>VDM_Stripe<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 31</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>VDM_Stripe<span class="w"> </span>motor<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 32</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.837633<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 33</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 34</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 35</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>-1.510<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 36</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>-1.51<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 37</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%.3f<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 38</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 39</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;VDM_Stripe_dmov&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:m1.DMOV&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:m1.DMOV<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 41</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>VDM_Stripe_dmov<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 42</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>VDM_Stripe<span class="w"> </span>motor<span class="w"> </span>done<span class="w"> </span>moving<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 43</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.810400<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 45</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>deg<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 47</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>1<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 48</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 49</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 50</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai0&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 51</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai0<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 52</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai0<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 53</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>AI0<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:35.481271<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 55</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>1808<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 57</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>0.0439882697947<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>0.0439882697947<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 59</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 60</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 61</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai0_mean&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai0:mean&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 62</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai0:mean<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 63</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai0_mean<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 64</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>mean<span class="w"> </span>AI0<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 65</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:35.987300<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 66</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>7901<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 67</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 68</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>0.0467644183773<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 69</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>0.0467644183773<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 70</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 71</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 72</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai1&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai1<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 74</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai1<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>AI1<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 76</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:43:42.932475<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 77</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>6<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 78</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 79</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>0.0<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 80</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>0.0<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 81</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 82</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 83</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai1_mean&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai1:mean&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai1:mean<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai1_mean<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 86</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>mean<span class="w"> </span>AI1<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 87</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:17.053715<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 88</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos"> 89</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos"> 90</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>0.0<span class="nt">&lt;/value&gt;</span>
+<span class="linenos"> 91</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>0.0<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos"> 92</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos"> 93</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos"> 94</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai2&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai2&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai2<span class="nt">&lt;/name&gt;</span>
+<span class="linenos"> 96</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai2<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 97</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>AI2<span class="nt">&lt;/description&gt;</span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:47:54.988769<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>1319<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">100</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos">101</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>2.64418377322<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">102</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>2.64418377322<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">103</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">104</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">105</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai2_mean&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai2:mean&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">106</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai2:mean<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">107</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai2_mean<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">108</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>mean<span class="w"> </span>AI2<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">109</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:35.998230<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">110</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>7020<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">111</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos">112</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>2.64418377322<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">113</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>2.64418377322<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">114</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">115</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">116</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ai3_mean&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:ai3:mean&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">117</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:ai3:mean<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">118</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>ai3_mean<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">119</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>mean<span class="w"> </span>AI3<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">120</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:33.503247<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">121</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>5977<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">122</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>V<span class="nt">&lt;/units&gt;</span>
+<span class="linenos">123</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>2.61974584555<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">124</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>2.61974584555<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">125</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">126</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">127</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;arduino_rate&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ino:cr:rate&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">128</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>ino:cr:rate<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">129</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>arduino_rate<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">130</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>Arduino<span class="w"> </span>update<span class="w"> </span>rate<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">131</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:36.004167<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">132</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>6214<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">133</span><span class="w">    </span><span class="nt">&lt;units&gt;</span>1/s<span class="nt">&lt;/units&gt;</span>
+<span class="linenos">134</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>2142.0<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">135</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>2142.0<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">136</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">137</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">138</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;engineer&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:ENGINEER&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">139</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:ENGINEER<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">140</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>engineer<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">141</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>engineer<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">142</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.782947<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">143</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">144</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">145</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>engineer<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">146</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>engineer<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">147</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">148</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">149</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;hostname&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:HOSTNAME&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">150</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:HOSTNAME<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">151</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>hostname<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">152</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>IOC<span class="w"> </span>host<span class="w"> </span>name<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">153</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.755911<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">154</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">155</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">156</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>gov.aps.anl.gov<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">157</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>gov.aps.anl.gov<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">158</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">159</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">160</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;motors_alldone&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:alldone&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">161</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:alldone<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">162</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>motors_alldone<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">163</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>all<span class="w"> </span>motors<span class="w"> </span>done<span class="w"> </span>moving<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">164</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.919038<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">165</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">166</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">167</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">168</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>1<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">169</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">170</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">171</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;motors_moving&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:moving&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">172</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:moving<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">173</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>motors_moving<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">174</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>number<span class="w"> </span>of<span class="w"> </span>motors<span class="w"> </span>moving<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">175</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.945825<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">176</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">177</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">178</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>0<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">179</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>0<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">180</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">181</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">182</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;starttod&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:STARTTOD&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">183</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:STARTTOD<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">184</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>starttod<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">185</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>IOC<span class="w"> </span>boot<span class="w"> </span>time<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">186</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>15:30:16.701840<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">187</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>2<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">188</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">189</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>01/12/2015<span class="w"> </span>12:56:08<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">190</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>01/12/2015<span class="w"> </span>12:56:08<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">191</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">192</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">193</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;tod&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:TOD&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">194</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:TOD<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">195</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>tod<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">196</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>IOC<span class="w"> </span>current<span class="w"> </span>time<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">197</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:35.521618<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">198</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>4701<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">199</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">200</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>01/15/2015<span class="w"> </span>16:48:35<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">201</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>01/15/2015<span class="w"> </span>16:48:35<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">202</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">203</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
+<span class="linenos">204</span><span class="w">  </span><span class="nt">&lt;pv</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;uptime&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;prj:UPTIME&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">205</span><span class="w">    </span><span class="nt">&lt;name&gt;</span>prj:UPTIME<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">206</span><span class="w">    </span><span class="nt">&lt;id&gt;</span>uptime<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">207</span><span class="w">    </span><span class="nt">&lt;description&gt;</span>time<span class="w"> </span>IOC<span class="w"> </span>running<span class="nt">&lt;/description&gt;</span>
+<span class="linenos">208</span><span class="w">    </span><span class="nt">&lt;timestamp&gt;</span>2015-01-15<span class="w"> </span>16:48:35.521851<span class="nt">&lt;/timestamp&gt;</span>
+<span class="linenos">209</span><span class="w">    </span><span class="nt">&lt;counter&gt;</span>4701<span class="nt">&lt;/counter&gt;</span>
+<span class="linenos">210</span><span class="w">    </span><span class="nt">&lt;units&gt;&lt;/units&gt;</span>
+<span class="linenos">211</span><span class="w">    </span><span class="nt">&lt;value&gt;</span>3<span class="w"> </span>days,<span class="w"> </span>03:52:27<span class="nt">&lt;/value&gt;</span>
+<span class="linenos">212</span><span class="w">    </span><span class="nt">&lt;raw_value&gt;</span>3<span class="w"> </span>days,<span class="w"> </span>03:52:27<span class="nt">&lt;/raw_value&gt;</span>
+<span class="linenos">213</span><span class="w">    </span><span class="nt">&lt;format&gt;</span>%s<span class="nt">&lt;/format&gt;</span>
+<span class="linenos">214</span><span class="w">  </span><span class="nt">&lt;/pv&gt;</span>
 <span class="linenos">215</span><span class="nt">&lt;/pvWebMonitor&gt;</span>
 </pre></div>
 </div>
@@ -526,7 +594,7 @@
 <img alt="../_images/rawdata.png" src="../_images/rawdata.png" />
 <figcaption>
 <p><span class="caption-text">Example report of the raw data monitored by an
-instance of <em>pvWebMonitor</em>.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+instance of <em>pvWebMonitor</em>.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
@@ -535,106 +603,108 @@ click here –&gt; <a class="reference download internal" download="" href="../_
 </section>
 
 
-            </article>
-            
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="livedata.html" title="previous page">
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="livedata.html"
+       title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Livedata Report</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Livedata Report</p>
       </div>
-  </a>
-  <a class='right-next' id="next-link" href="../src/index.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Source Code</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
-</div>
-            </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
-              
-<div class="toc-item">
-  
-<div id="searchbox"></div>
-</div>
-
-<div class="toc-item">
-  
-</div>
-
-<div class="toc-item">
-  
-<div class="tocsection sourcelink">
-    <a href="../_sources/example/rawdata.rst.txt">
-        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+    <a class="right-next"
+       href="../src/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Source Code</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-
-</div>
-
+                </footer>
+              
             </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/example/rawdata.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
             
           </div>
-        </footer>
+          <footer class="bd-footer-content">
+            
+          </footer>
         
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
-  <footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-  <div class="footer-item">
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
     
-<p class="copyright">
-
-    &copy; Copyright 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved..<br>
-
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    <p class="theme-version">
-    Built with the
-    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
-        PyData Sphinx Theme
-    </a>
-    0.12.0.
-</p>
-  </div>
-  
-  <div class="footer-item">
+      © Copyright 2002-2025, UChicago Argonne, LLC.
+      <br/>
     
-<p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
-</p>
+  </p>
+</div>
+      
+        <div class="footer-item">
 
-  </div>
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
   
 </div>
+
   </footer>
   </body>
 </html>

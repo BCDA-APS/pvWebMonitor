@@ -1,4 +1,0 @@
-pydata-sphinx-theme
-pygments >=2.12
-jinja2 >=3.0
-versioneer

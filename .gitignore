@@ -60,3 +60,6 @@ www_project/
 
 # local developer code
 dev_*.py
+
+_version.py
+src/pvWebMonitor/_version.py

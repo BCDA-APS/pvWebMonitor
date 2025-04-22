@@ -1,0 +1,236 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools_scm[toml]>=8.0",
+  "setuptools>=64",
+]
+
+[project]
+name = "pvWebMonitor"
+description = "Create static web site from EPICS PVs."
+authors = [
+  { name="BCDA" },
+]
+maintainers = [
+  { name="Pete Jemian" },
+]
+dynamic = ["version"]
+readme = "README.rst"
+requires-python = ">=3.9"
+keywords = ["EPICS", "PV", "tool", "HTML"]
+license = "LicenseRef-EPICS-Open-License"
+license-files = ["LICEN[CS]E*"]
+classifiers = [
+    "Development Status :: 6 - Mature",
+    "Environment :: Console",
+    "Environment :: Web Environment",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Embedded Systems",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "lxml",
+    "numpy",
+    "ophyd",
+    "pyepics",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build",
+  "coverage",
+  "coveralls",
+  "isort",
+  "pre-commit",
+  "pytest",
+  "ruff",
+]
+doc = [
+  "ipython",
+  "jinja2 >=3.0",
+  "pydata-sphinx-theme",
+  "pygments >=2.12",
+  "pygments-ipython-console",
+  "setuptools >=77",
+  "setuptools-scm >=8",
+  "sphinx",
+  "sphinx-design",
+]
+all = ["pvWebMonitor[dev,doc]"]
+
+[project.scripts]
+pvWebMonitor = "pvWebMonitor.main:main"
+
+[project.urls]
+"Homepage" = "https://bcda-aps.github.io/pvWebMonitor/"
+"Bug Tracker" = "https://github.com/bcda-aps/pvWebMonitor/issues"
+"source" = "https://github.com/bcda-aps/pvWebMonitor/"
+
+[tool.black]
+line-length = 115
+target-version = ['py313']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | \.pytest_cache
+    | _build
+    | build
+    | conda
+    | dist
+    | docs
+    | ideas
+    | resources
+  )/
+  | _version.py
+)
+'''
+
+[tool.copyright]
+copyright = "2002-2025, UChicago Argonne, LLC"
+
+[tool.coverage.run]
+concurrency = [
+    "thread",
+    "multiprocessing"
+]
+omit = [
+    # omit anything under the installed packages directory
+    "*/site-packages/*",
+    # omit these individual files
+]
+relative_files = true
+
+[tool.flake8]
+max-line-length = 115
+exclude = [
+  ".git",
+  "__pycache__",
+  "build",
+  "dist",
+  "docs/source",
+  "ideas/",
+  "resources/debug_findpv.py",
+]
+extend-ignore = [
+  "E203", # See https://github.com/PyCQA/pycodestyle/issues/373
+  "E226",
+  "E402", # module level import not at top of file (for cansas.py)
+  "E501",
+  "E741",
+  "F401",  # imported but unused
+  "F403",
+  "F722", # allow Annotated[typ, some_func("some string")]
+  "F811", # support typing.overload decorator
+  "W503",
+  "W504",
+]
+
+[tool.isort]
+force_single_line  = "True"
+include_trailing_comma = true
+multi_line_output = "NOQA"
+profile = "black"
+src_paths = ["src/pvWebMonitor"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 115
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py313"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["E4", "E7", "E9", "F"]
+ignore = ["E402", "E741", "F405"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = false
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
+
+[tool.setuptools_scm]
+# write_to = "src/pvWebMonitor/_version.py"

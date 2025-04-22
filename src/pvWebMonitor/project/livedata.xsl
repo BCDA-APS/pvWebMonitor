@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-# Copyright (c) 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
+# Copyright (c) 2002-2025, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
 # See LICENSE file for details.
  -->
 

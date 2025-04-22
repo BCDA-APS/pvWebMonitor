@@ -4,14 +4,15 @@
 Read XML configuration file for ``pvWebMonitor`` package.
 """
 
-# Copyright (c) 2005-2022, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
+# Copyright (c) 2002-2025, University of Chicago, The Regents of the University of California, and Berliner Elektronenspeicherring Gesellschaft fuer Synchrotronstrahlung m.b.H. (BESSY) All rights reserved.
 # See LICENSE file for details.
 
 
-from . import utils
-from lxml import etree
 import os
 
+from lxml import etree
+
+from . import utils
 
 ROOT_TAG = "pvWebMonitor__config"
 XML_SCHEMA_FILES = {
@@ -22,7 +23,7 @@ DEFAULT_FILE_UPLOAD_MATCH_PATTERNS = "*.html *.gif *.jpeg *.jpg *.png *.xsl".spl
 
 
 def read_xml(xml_file):
-    """
+    r"""
     return the configuration details as a dictionary
 
     :param return: dictionary

@@ -1,4 +1,4 @@
 Software License
 ================
 
-.. literalinclude:: ../../src/pvWebMonitor/LICENSE
+.. literalinclude:: ../../LICENSE

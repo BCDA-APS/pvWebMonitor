@@ -8,12 +8,13 @@ pvWebMonitor.dev_main
 # See LICENSE file for details.
 
 
-from pvWebMonitor import main
 import logging
 import pathlib
-import setup
 import sys
 import time
+
+import setup
+from pvWebMonitor import main
 
 logging.basicConfig(level="DEBUG")
 logging.getLogger("ophyd").setLevel("WARNING")

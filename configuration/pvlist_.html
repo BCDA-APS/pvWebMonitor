@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The pvlist.xml file &#8212; pvWebMonitor 2021.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5aa71c57"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'configuration/pvlist_';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The rawdata.xsl file" href="rawdata.html" />
+    <link rel="prev" title="The config.xml file" href="config.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2021.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pvWebMonitor 2021.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../contents.html">
+    Contents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BCDA-APS/pvWebMonitor" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../contents.html">
+    Contents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BCDA-APS/pvWebMonitor" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Configuration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setup a new project directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">The <cite>config.xml</cite> file</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The <cite>pvlist.xml</cite> file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rawdata.html">The <cite>rawdata.xsl</cite> file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="livedata.html">The <cite>livedata.xsl</cite> file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">The <cite>manage.sh</cite> file</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../example/index.html">Example</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example/livedata.html">Livedata Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/rawdata.html">Example Raw Data for Reports</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../src/index.html">Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../src/main.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">main</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/pvwatch.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">pvwatch</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/read_config.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">read_config</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/setup.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/utils.html"><em>pvWebMonitor</em> Package: <code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code> Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Change History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Software License</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../contents.html" class="nav-link">Contents</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Configuration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">The <cite>pvlist.xml</cite> file</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-pvlist-xml-file">
+<h1>The <cite>pvlist.xml</cite> file<a class="headerlink" href="#the-pvlist-xml-file" title="Link to this heading">#</a></h1>
+<p>The complete list of EPICS Process Variables to be monitored
+is declared in the <em>pvlist.xml</em> file.</p>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
+<p>The <em>pvlist.xml</em> must be “well-formed XML”.
+(Google for this term to become informed what this means.)</p>
+<p>The first lines of the file are <em>always</em>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="linenos">2</span><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;pvlist.xsl&quot; ?&gt;</span>
+</pre></div>
+</div>
+<p>The first line declares this to be a file that should be well-formed XML
+according to the version 1.0 standard.  The second line provides a
+convenience definition for visualizing the <em>pvlist.xml</em> file in a
+browser that uses the <em>pvlist.xsl</em> file to format the XML content
+into something that humans can more easily read.  To do this, the
+<em>pvlist.xsl</em> file must be in the same directory as the <em>pvlist.xml</em> file.</p>
+</section>
+<section id="root-tag">
+<h2>Root tag<a class="headerlink" href="#root-tag" title="Link to this heading">#</a></h2>
+<p>All well-formed XML files have a single element at the outermost (root)
+level of the file.  In the <em>pvlist.xml</em> file, the root element
+is <strong>pvwatch</strong>.  Note the closing <code class="docutils literal notranslate"><span class="pre">&lt;/pvwatch&gt;</span></code> tag at the end of the file.</p>
+<p>A version attribute describes this file adheres to the <code class="docutils literal notranslate"><span class="pre">version=&quot;1.0&quot;</span></code>
+definition of <em>pvlist.xml</em> files.  That definition is described in the
+XML Schema file <em>pvlist.xsd</em> provided in the source code package.</p>
+<p>This XML Schema definition is used to validate the <em>pvlist.xml</em> when it is read.
+If there are problems, the first problem discovered will be reported.</p>
+<p>Inside the root tag, <em>EPICS_PV</em> elements describe the PVs to be monitored.
+Additionally, <em>definition</em> tags are provided to describe the terms used.</p>
+</section>
+<section id="describe-a-pv-to-monitor">
+<h2>Describe a PV to Monitor<a class="headerlink" href="#describe-a-pv-to-monitor" title="Link to this heading">#</a></h2>
+<p>Each PV to be monitored is declared in the XML file using
+a line such as this example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span>
+<span class="linenos">2</span><span class="w">  </span><span class="na">PV=</span><span class="s">&quot;ioc:xps:c0:m1.RBV&quot;</span>
+<span class="linenos">3</span><span class="w">  </span><span class="na">mne=</span><span class="s">&quot;mr&quot;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="na">description=</span><span class="s">&quot;motor MR, degrees&quot;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>This says to monitor the EPICS process variable named
+<code class="docutils literal notranslate"><span class="pre">ioc:xps:c0:m1.RBV</span></code> and to associate that value with
+the mnemonic named <code class="docutils literal notranslate"><span class="pre">mr</span></code>.  The description text
+<code class="docutils literal notranslate"><span class="pre">motor</span> <span class="pre">MR,</span> <span class="pre">degrees</span></code> can be used in displays for this value.
+The tag <code class="docutils literal notranslate"><span class="pre">EPICS_PV</span></code> describes this as a PV declaration.
+It must appear in uppercase letters.
+A complete list of terms is described in the section below:
+<cite>ref</cite>:pvlist.terms`.</p>
+<p>At minimum, it is required to provide the <em>PV</em>, <em>mne</em>,
+and <em>description</em> attributes.</p>
+<p>The order of the attributes is not important, they can be given in any order.
+Also, the spacing between attributes is not important.  The entire
+<em>EPICS_PV</em> element can be specified on one line or broken across several lines.</p>
+<p>Keep the description text short. Longer descriptions, including
+those with line breaks, are less useful in creating display screens.</p>
+<p><strong>Note:</strong> The mnemonic name <code class="docutils literal notranslate"><span class="pre">mne</span></code> must adhere to the rules for XML <code class="docutils literal notranslate"><span class="pre">NCName</span></code> (non-colonized name).
+The practical restrictions of NCName are that it cannot contain several
+symbol characters like
+<code class="docutils literal notranslate"><span class="pre">:</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code>, <code class="docutils literal notranslate"><span class="pre">;</span></code>,
+whitespace characters or different parentheses.
+Furthermore an NCName cannot begin with a
+number, dot or minus character although they can appear later in an NCName.
+The regular expression is:  <code class="docutils literal notranslate"><span class="pre">[\i-[:]][\c-[:]]*</span></code></p>
+<section id="the-closing-tag">
+<h3>The closing tag<a class="headerlink" href="#the-closing-tag" title="Link to this heading">#</a></h3>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">/&gt;</span></code> is used to close the <code class="docutils literal notranslate"><span class="pre">EPICS_PV</span></code> element.
+It is equivalent to use:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span>
+<span class="linenos">2</span><span class="w">  </span><span class="na">PV=</span><span class="s">&quot;ioc:xps:c0:m1.RBV&quot;</span>
+<span class="linenos">3</span><span class="w">  </span><span class="na">mne=</span><span class="s">&quot;mr&quot;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="na">description=</span><span class="s">&quot;motor MR, degrees&quot;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="nt">&gt;&lt;/EPICS_PV&gt;</span>
+</pre></div>
+</div>
+<p>but this is not advised since no content is allowed for
+EPICS_PV elements, only attributes.</p>
+</section>
+</section>
+<section id="terms">
+<span id="pvlist-terms"></span><h2>Terms<a class="headerlink" href="#terms" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mne</p></td>
+<td><p>one-word mnemonic reference used in python and xslt code
+(mne should be unique for each EPICS_PV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>PV</p></td>
+<td><p>EPICS process variable name (must be used in only one EPICS_PV)</p></td>
+</tr>
+<tr class="row-even"><td><p>description</p></td>
+<td><p>useful text informative to others</p></td>
+</tr>
+<tr class="row-odd"><td><p>display_format</p></td>
+<td><p>(optional, default=”%s”) PVs will be formatted for display with this string</p></td>
+</tr>
+<tr class="row-even"><td><p>_ignore_</p></td>
+<td><p>(optional, default=”false”) this PV is ignored if value is not “false”</p></td>
+</tr>
+<tr class="row-odd"><td><p>as_string</p></td>
+<td><p>(optional, default=”false”) whether to return the string representation of the value</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These two declarations are equivalent:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;ioc:xps:c0:m1.RBV&quot;</span><span class="w"> </span><span class="na">description=</span><span class="s">&quot;motor MR, degrees&quot;</span><span class="w"> </span><span class="na">display_format=</span><span class="s">&quot;%.6f&quot;</span><span class="w"> </span><span class="na">mne=</span><span class="s">&quot;mr&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span>
+<span class="linenos">2</span><span class="w">  </span><span class="na">PV=</span><span class="s">&quot;ioc:xps:c0:m1.RBV&quot;</span>
+<span class="linenos">3</span><span class="w">  </span><span class="na">description=</span><span class="s">&quot;motor MR, degrees&quot;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="na">display_format=</span><span class="s">&quot;%.6f&quot;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="na">mne=</span><span class="s">&quot;mr&quot;</span>
+<span class="linenos">6</span><span class="w">  </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="epics-r3-strings-using-the-waveform-record-as-string">
+<span id="index-0"></span><h2>EPICS R3 strings using the <em>waveform</em> record (<code class="docutils literal notranslate"><span class="pre">as_string</span></code>)<a class="headerlink" href="#epics-r3-strings-using-the-waveform-record-as-string" title="Link to this heading">#</a></h2>
+<p>In EPICS R3 IOCs, it is common to provide support for long strings (40 or more characters)
+using a <span class="target" id="index-1"></span>waveform <a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> record with character data type.  For example, the EPICS
+<span class="target" id="index-2"></span>AreaDetector <a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> has such a PV to store the full path (length up to 256) to an attributes file.
+Here’s an example using the PV with an instance of the <span class="target" id="index-3"></span>ADSimDetector <a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caget 13SIM1:cam1:NDAttributesFile.{RTYP,FTVL,VAL}
+13SIM1:cam1:NDAttributesFile.RTYP waveform
+13SIM1:cam1:NDAttributesFile.FTVL CHAR
+13SIM1:cam1:NDAttributesFile.VAL 256 47 116 109 112 47 ...
+</pre></div>
+</div>
+<p><cite>pvWebMonitor</cite> uses the <code class="docutils literal notranslate"><span class="pre">as_string</span></code> support from PyEpics <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> to report
+both the character list values and the text string values of the string waveform.
+Here is the configuration in <cite>pvlist.xml</cite> to watch that PV:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">EPICS_PV</span>
+    <span class="n">PV</span><span class="o">=</span><span class="s2">&quot;13SIM1:cam1:NDAttributesFile&quot;</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;NDAttributesFile array&quot;</span>
+    <span class="n">mne</span><span class="o">=</span><span class="s2">&quot;NDAttributesFile_array&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>and here is typical content in the <cite>rawdata.xml</cite> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pv</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;NDAttributesFile_array&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;13SIM1:cam1:NDAttributesFile&quot;</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="mi">13</span><span class="n">SIM1</span><span class="p">:</span><span class="n">cam1</span><span class="p">:</span><span class="n">NDAttributesFile</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="n">NDAttributesFile_array</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="n">NDAttributesFile</span> <span class="n">array</span><span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="mi">2017</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">11</span> <span class="mi">11</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mf">43.157445</span><span class="o">&lt;/</span><span class="n">timestamp</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">record_type</span><span class="o">&gt;</span><span class="n">waveform</span><span class="o">&lt;/</span><span class="n">record_type</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">counter</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">counter</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">units</span><span class="o">&gt;&lt;/</span><span class="n">units</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">[</span> <span class="mi">47</span> <span class="mi">116</span> <span class="mi">109</span> <span class="mi">112</span>  <span class="mi">47</span>  <span class="mi">97</span> <span class="mi">116</span> <span class="mi">116</span> <span class="mi">114</span> <span class="mi">105</span>  <span class="mi">98</span> <span class="mi">117</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span>  <span class="mi">46</span> <span class="mi">120</span> <span class="mi">109</span> <span class="mi">108</span>   <span class="mi">0</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">char_value</span><span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">attributes</span><span class="o">.</span><span class="n">xml</span><span class="o">&lt;/</span><span class="n">char_value</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">raw_value</span><span class="o">&gt;</span><span class="p">[</span> <span class="mi">47</span> <span class="mi">116</span> <span class="mi">109</span> <span class="mi">112</span>  <span class="mi">47</span>  <span class="mi">97</span> <span class="mi">116</span> <span class="mi">116</span> <span class="mi">114</span> <span class="mi">105</span>  <span class="mi">98</span> <span class="mi">117</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span>  <span class="mi">46</span> <span class="mi">120</span> <span class="mi">109</span> <span class="mi">108</span>   <span class="mi">0</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">raw_value</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;%</span><span class="n">s</span><span class="o">&lt;/</span><span class="nb">format</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">pv</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You’ll need to access the text as a string using <code class="docutils literal notranslate"><span class="pre">char_value</span></code> rather than just <code class="docutils literal notranslate"><span class="pre">value</span></code>.
+If you want the <code class="docutils literal notranslate"><span class="pre">value</span></code> to be the text string, add the <code class="docutils literal notranslate"><span class="pre">as_string=&quot;true&quot;</span></code>
+attribute in the entry in the <cite>pvlist.xml</cite> file, such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">EPICS_PV</span>
+    <span class="n">PV</span><span class="o">=</span><span class="s2">&quot;13SIM1:cam1:NDAttributesFile&quot;</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;NDAttributesFile array&quot;</span>
+    <span class="n">mne</span><span class="o">=</span><span class="s2">&quot;NDAttributesFile_array&quot;</span>
+    <span class="n">as_string</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Then, the <code class="docutils literal notranslate"><span class="pre">char_value</span></code> and the <code class="docutils literal notranslate"><span class="pre">value</span></code> both have the string as a result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pv</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;NDAttributesFile_string&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;13SIM1:cam1:NDAttributesFile&quot;</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="mi">13</span><span class="n">SIM1</span><span class="p">:</span><span class="n">cam1</span><span class="p">:</span><span class="n">NDAttributesFile</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="n">NDAttributesFile_string</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="n">NDAttributesFile</span> <span class="n">string</span><span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="mi">2017</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">11</span> <span class="mi">11</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mf">43.185298</span><span class="o">&lt;/</span><span class="n">timestamp</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">record_type</span><span class="o">&gt;</span><span class="n">waveform</span><span class="o">&lt;/</span><span class="n">record_type</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">counter</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">counter</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">units</span><span class="o">&gt;&lt;/</span><span class="n">units</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">attributes</span><span class="o">.</span><span class="n">xml</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">char_value</span><span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">attributes</span><span class="o">.</span><span class="n">xml</span><span class="o">&lt;/</span><span class="n">char_value</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">raw_value</span><span class="o">&gt;</span><span class="p">[</span> <span class="mi">47</span> <span class="mi">116</span> <span class="mi">109</span> <span class="mi">112</span>  <span class="mi">47</span>  <span class="mi">97</span> <span class="mi">116</span> <span class="mi">116</span> <span class="mi">114</span> <span class="mi">105</span>  <span class="mi">98</span> <span class="mi">117</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span>  <span class="mi">46</span> <span class="mi">120</span> <span class="mi">109</span> <span class="mi">108</span>   <span class="mi">0</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">raw_value</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;%</span><span class="n">s</span><span class="o">&lt;/</span><span class="nb">format</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">pv</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>In both cases, whether or not <code class="docutils literal notranslate"><span class="pre">as_string</span></code> is used, the character list representation
+is available in the <code class="docutils literal notranslate"><span class="pre">raw_value</span></code> and the text string representation is available
+in the <code class="docutils literal notranslate"><span class="pre">char_value</span></code>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>EPICS R3 <em>waveform</em> record:
+<a class="reference external" href="https://wiki-ext.aps.anl.gov/epics/index.php/RRM_3-14_Waveform">https://wiki-ext.aps.anl.gov/epics/index.php/RRM_3-14_Waveform</a></p>
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>EPICS AreaDetector:
+<a class="reference external" href="http://cars9.uchicago.edu/software/epics/areaDetector.html">http://cars9.uchicago.edu/software/epics/areaDetector.html</a></p>
+</aside>
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>ADSimDetector:
+<a class="reference external" href="http://cars.uchicago.edu/software/epics/simDetectorDoc.html">http://cars.uchicago.edu/software/epics/simDetectorDoc.html</a></p>
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>PyEpics:
+<a class="reference external" href="http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get">http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get</a></p>
+</aside>
+</aside>
+</section>
+<section id="removing-declarations">
+<h2>Removing declarations<a class="headerlink" href="#removing-declarations" title="Link to this heading">#</a></h2>
+<p>Sometimes, it is necessary to stop watching a certain PV.
+There are three ways to do this.   It can be commented out
+using XML comments, it can be marked to <em>_ignore_</em> it,
+or the declaration could be deleted.  We’ll describe the
+first two cases.</p>
+<section id="comment-out-in-xml">
+<h3>Comment out in XML<a class="headerlink" href="#comment-out-in-xml" title="Link to this heading">#</a></h3>
+<p>To comment out using an XML comment (<code class="docutils literal notranslate"><span class="pre">&lt;!--</span> <span class="pre">--&gt;</span></code>),
+take this code:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;ioc:m1&quot;</span><span class="w"> </span><span class="na">mne=</span><span class="s">&quot;m1&quot;</span><span class="w"> </span><span class="na">description=</span><span class="s">&quot;motor 1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>and surround it with XML comment tags, such as:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cm">&lt;!--</span>
+<span class="linenos">2</span><span class="cm">&lt;EPICS_PV PV=&quot;ioc:m1&quot; mne=&quot;m1&quot; description=&quot;motor 1&quot; /&gt;</span>
+<span class="linenos">3</span><span class="cm">--&gt;</span>
+</pre></div>
+</div>
+<p>XML comment tags can be used to block out many <em>EPICS_PV</em>
+declarations at once.</p>
+</section>
+<section id="marking-with-ignore-attribute">
+<h3>Marking with <em>_ignore_</em> attribute<a class="headerlink" href="#marking-with-ignore-attribute" title="Link to this heading">#</a></h3>
+<p>To mark a single <em>EPICS_PV</em> declaration to be ignored,
+take this code:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;ioc:m1&quot;</span><span class="w"> </span><span class="na">mne=</span><span class="s">&quot;m1&quot;</span><span class="w"> </span><span class="na">description=</span><span class="s">&quot;motor 1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>and add the <code class="docutils literal notranslate"><span class="pre">_ignore_=&quot;true&quot;</span></code> attribute, such as:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">_ignore_=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;ioc:m1&quot;</span><span class="w"> </span><span class="na">mne=</span><span class="s">&quot;m1&quot;</span><span class="w"> </span><span class="na">description=</span><span class="s">&quot;motor 1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>The <em>_ignore_</em> attribute can be given in any order.  The value <em>true</em> may be
+upper or lower case but must be enclosed by double quotes.</p>
+<p>Each PV to be ignored using the <em>_ignore_</em> attribute must
+have its own <em>_ignore_</em> attribute.  You cannot mark a whole block
+of <em>EPICS_PV</em> elements with a single <em>_ignore_</em> attribute.</p>
+</section>
+</section>
+<section id="example-pvlist-xml-file">
+<h2>Example <em>pvlist.xml</em> file<a class="headerlink" href="#example-pvlist-xml-file" title="Link to this heading">#</a></h2>
+<p>An example of such a file is shown below.</p>
+<blockquote>
+<div><div class="compound">
+<p class="rubric">Example <cite>pvlist.xml</cite> file.
+You can edit this file with a text editor.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="linenos"> 2</span><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;pvlist.xsl&quot; ?&gt;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="cm">&lt;!-- You can edit this file with a text editor --&gt;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">&lt;pvwatch</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;ioc:alldone&quot;</span><span class="w"> </span>
+<span class="linenos"> 9</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;IOC motors moving&quot;</span><span class="w"> </span>
+<span class="linenos">10</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;ioc_alldone&quot;</span>
+<span class="linenos">11</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;APS:SRcurrentAI&quot;</span><span class="w"> </span>
+<span class="linenos">14</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;APS storage ring current, mA&quot;</span><span class="w"> </span>
+<span class="linenos">15</span><span class="w">      </span><span class="na">display_format=</span><span class="s">&quot;%.2f&quot;</span><span class="w"> </span>
+<span class="linenos">16</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;SR_current&quot;</span>
+<span class="linenos">17</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;ID:Energy&quot;</span><span class="w">    </span>
+<span class="linenos">20</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;Und_E&quot;</span><span class="w"> </span>
+<span class="linenos">21</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;ID E, keV&quot;</span><span class="w">  </span>
+<span class="linenos">22</span><span class="w">      </span><span class="na">display_format=</span><span class="s">&quot;%.4f&quot;</span>
+<span class="linenos">23</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">24</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;dcm:BraggEAO&quot;</span><span class="w"> </span>
+<span class="linenos">25</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;DCM_E&quot;</span><span class="w"> </span>
+<span class="linenos">26</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;DCM E, keV&quot;</span><span class="w"> </span>
+<span class="linenos">27</span><span class="w">      </span><span class="na">display_format=</span><span class="s">&quot;%.4f&quot;</span>
+<span class="linenos">28</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;PSS:STA_A_FES_OPEN_PL.VAL&quot;</span><span class="w"> </span>
+<span class="linenos">31</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;white shutter opened&quot;</span><span class="w"> </span>
+<span class="linenos">32</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;white_shtr_opened&quot;</span>
+<span class="linenos">33</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">34</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;PSS:STA_B_SBS_OPEN_PL.VAL&quot;</span><span class="w"> </span>
+<span class="linenos">35</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;mono shutter opened&quot;</span><span class="w"> </span>
+<span class="linenos">36</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;mono_shtr_opened&quot;</span>
+<span class="linenos">37</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">38</span><span class="w">  </span><span class="nt">&lt;EPICS_PV</span><span class="w"> </span><span class="na">PV=</span><span class="s">&quot;PSS:D_BEAM_READY&quot;</span><span class="w"> </span>
+<span class="linenos">39</span><span class="w">      </span><span class="na">_ignore_=</span><span class="s">&quot;true&quot;</span><span class="w">  </span>
+<span class="linenos">40</span><span class="w">      </span><span class="na">description=</span><span class="s">&quot;PSS: D Beam Ready&quot;</span><span class="w"> </span>
+<span class="linenos">41</span><span class="w">      </span><span class="na">mne=</span><span class="s">&quot;D_beam_ready&quot;</span>
+<span class="linenos">42</span><span class="w">      </span><span class="nt">/&gt;</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="nt">&lt;/pvwatch&gt;</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="config.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The <cite>config.xml</cite> file</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rawdata.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The <cite>rawdata.xsl</cite> file</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-tag">Root tag</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-a-pv-to-monitor">Describe a PV to Monitor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-closing-tag">The closing tag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms">Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epics-r3-strings-using-the-waveform-record-as-string">EPICS R3 strings using the <em>waveform</em> record (<code class="docutils literal notranslate"><span class="pre">as_string</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-declarations">Removing declarations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comment-out-in-xml">Comment out in XML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marking-with-ignore-attribute">Marking with <em>_ignore_</em> attribute</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-pvlist-xml-file">Example <em>pvlist.xml</em> file</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/configuration/pvlist_.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2002-2025, UChicago Argonne, LLC.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

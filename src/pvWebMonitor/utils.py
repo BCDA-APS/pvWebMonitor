@@ -37,10 +37,11 @@ def copyToWebServer(local_file, web_site_path):
             # not a new file, no need to copy
             return
 
-        local_file_cksum = hashlib.md5(local_file).hexdigest()
-        web_site_file_cksum = hashlib.md5(web_site_file).hexdigest()
-        if local_file_cksum == web_site_file_cksum:
-            # the same file, no need to copy
+        def cksum(text: str) -> str:
+            return hashlib.md5(text.encode(encoding="utf8")).hexdigest()
+
+        if cksum(local_file) == cksum(web_site_file):
+            # Identical, no need to copy.
             return
 
     shutil.copyfile(local_file, web_site_file)

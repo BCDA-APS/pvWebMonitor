@@ -36,6 +36,8 @@ describe the future plans.
     Maintenance
     -----------
 
+    * Revise APS storage ring current PV.
+
 2021.0.2
 ********
 

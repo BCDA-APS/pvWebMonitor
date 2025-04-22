@@ -7,19 +7,18 @@
 # processname: pvWebMonitor_MAKE_THIS_NAME_UNIQUE
 
 
-PROJECT_DIR=/tmp/pv
+PROJECT_DIR="/tmp/pv"
 # MANAGE=${PROJECT_DIR}/manage.sh
-LOGFILE=${PROJECT_DIR}/log-manage.txt
-PIDFILE=${PROJECT_DIR}/pid.txt
-CONFIGFILE=${PROJECT_DIR}/config.xml
-EXECUTABLE_SCRIPT=/home/oxygen/JEMIAN/Apps/anaconda/bin/pvWebMonitor
+LOGFILE="${PROJECT_DIR}/log-manage.txt"
+PIDFILE="${PROJECT_DIR}/pid.txt"
+CONFIGFILE="${PROJECT_DIR}/config.xml"
+EXECUTABLE_SCRIPT="/home/oxygen/JEMIAN/Apps/anaconda/bin/pvWebMonitor"
 RETVAL=0
 
 
 get_pid(){
-    cd ${PROJECT_DIR}
-    PID=$(/bin/cat ${PIDFILE})
-    return "$PID"
+    cd "${PROJECT_DIR}"
+    PID=$(/bin/cat "${PIDFILE}")
 }
 
 
@@ -43,12 +42,12 @@ check_pid_running(){
 
 
 start(){
-    cd ${PROJECT_DIR}
-    ${EXECUTABLE_SCRIPT} ${CONFIGFILE} 2>&1 >> ${LOGFILE} &
+    cd "${PROJECT_DIR}"
+    "${EXECUTABLE_SCRIPT}" "${CONFIGFILE}" 2>&1 >> "${LOGFILE}" &
     PID=$!
-    /bin/echo ${PID} > ${PIDFILE}
-    /bin/echo "# [$0 $(/bin/date)] started ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
-    /bin/echo "# [$0 $(/bin/date)] started ${PID}: ${EXECUTABLE_SCRIPT}"
+    /bin/echo "${PID}" > "${PIDFILE}"
+    /bin/echo "# [$0 $(/bin/date)] started "${PID}": "${EXECUTABLE_SCRIPT}"" 2>&1 >> "${LOGFILE}" &
+    /bin/echo "# [$0 $(/bin/date)] started "${PID}": "${EXECUTABLE_SCRIPT}""
 }
 
 
@@ -56,14 +55,14 @@ stop(){
     get_pid
     check_pid_running
     
-    if [ $RETVAL == 1 ]; then
-		/bin/echo "# [$0 $(/bin/date)] not running ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
+    if [ ${RETVAL} == 1 ]; then
+		/bin/echo "# [$0 $(/bin/date)] not running "${PID}": "${EXECUTABLE_SCRIPT}"" 2>&1 >> "${LOGFILE}" &
     else
-    	kill ${PID}
-    	/bin/echo "# [$0 $(/bin/date)] stopped ${PID}: ${EXECUTABLE_SCRIPT}" 2>&1 >> ${LOGFILE} &
-    	/bin/echo "# [$0 $(/bin/date)] stopped ${PID}: ${EXECUTABLE_SCRIPT}"
+    	kill "${PID}"
+    	/bin/echo "# [$0 $(/bin/date)] stopped "${PID}": "${EXECUTABLE_SCRIPT}"" 2>&1 >> "${LOGFILE}" &
+    	/bin/echo "# [$0 $(/bin/date)] stopped "${PID}": "${EXECUTABLE_SCRIPT}""
     fi
-    /bin/cp -f /dev/null ${PIDFILE}
+    /bin/cp -f /dev/null "${PIDFILE}"
 }
 
 
@@ -85,8 +84,8 @@ checkup(){
     #   month         1-12 (or names, see below)
     #   day of week   0-7 (0 or 7 is Sun, or use names)
     #
-    # Re-direct output to throw away (`` >> /dev/null``)
-    # or log to a file (`` >> /some/file/some/where/log/txt``).
+    # Re-direct output to throw away (>> /dev/null)
+    # or log to a file (>> /some/file/some/where/log/txt).
     # */5 * * * * /tmp/pv/manage.sh checkup 2>&1 > /dev/null
 
 
@@ -95,7 +94,7 @@ checkup(){
     if [ $RETVAL == 0 ]; then
 		echo "# [$0 $(/bin/date)] running fine, so it seems" 2>&1 > /dev/null
     else
-		echo "# [$0 $(/bin/date)] could not identify running process ${PID}, starting new process" 2>&1 >> ${LOGFILE}
+		echo "# [$0 $(/bin/date)] could not identify running process "${PID}", starting new process" 2>&1 >> "${LOGFILE}"
 		start
     fi
 }

@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=5aa71c57"></script>
+    <script src="../_static/documentation_options.js?v=9fb95f03"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'configuration/manage';</script>
@@ -406,109 +406,108 @@ process either as a startup or a background daemon.</p>
 <span class="linenos">  7</span><span class="c1"># processname: pvWebMonitor_MAKE_THIS_NAME_UNIQUE</span>
 <span class="linenos">  8</span>
 <span class="linenos">  9</span>
-<span class="linenos"> 10</span><span class="nv">PROJECT_DIR</span><span class="o">=</span>/tmp/pv
+<span class="linenos"> 10</span><span class="nv">PROJECT_DIR</span><span class="o">=</span><span class="s2">&quot;/tmp/pv&quot;</span>
 <span class="linenos"> 11</span><span class="c1"># MANAGE=${PROJECT_DIR}/manage.sh</span>
-<span class="linenos"> 12</span><span class="nv">LOGFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>/log-manage.txt
-<span class="linenos"> 13</span><span class="nv">PIDFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>/pid.txt
-<span class="linenos"> 14</span><span class="nv">CONFIGFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>/config.xml
-<span class="linenos"> 15</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="o">=</span>/home/oxygen/JEMIAN/Apps/anaconda/bin/pvWebMonitor
+<span class="linenos"> 12</span><span class="nv">LOGFILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span><span class="s2">/log-manage.txt&quot;</span>
+<span class="linenos"> 13</span><span class="nv">PIDFILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span><span class="s2">/pid.txt&quot;</span>
+<span class="linenos"> 14</span><span class="nv">CONFIGFILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span><span class="s2">/config.xml&quot;</span>
+<span class="linenos"> 15</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="o">=</span><span class="s2">&quot;/home/oxygen/JEMIAN/Apps/anaconda/bin/pvWebMonitor&quot;</span>
 <span class="linenos"> 16</span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">0</span>
 <span class="linenos"> 17</span>
 <span class="linenos"> 18</span>
 <span class="linenos"> 19</span>get_pid<span class="o">(){</span>
-<span class="linenos"> 20</span><span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>
-<span class="linenos"> 21</span><span class="w">    </span><span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span><span class="k">)</span>
-<span class="linenos"> 22</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PID</span><span class="s2">&quot;</span>
-<span class="linenos"> 23</span><span class="o">}</span>
+<span class="linenos"> 20</span><span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 21</span><span class="w">    </span><span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>/bin/cat<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="linenos"> 22</span><span class="o">}</span>
+<span class="linenos"> 23</span>
 <span class="linenos"> 24</span>
-<span class="linenos"> 25</span>
-<span class="linenos"> 26</span>check_pid_running<span class="o">(){</span>
-<span class="linenos"> 27</span><span class="w">    </span>get_pid
-<span class="linenos"> 28</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos"> 29</span><span class="w">        </span><span class="c1"># no PID in the PIDFILE</span>
-<span class="linenos"> 30</span><span class="w">        </span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">1</span>
-<span class="linenos"> 31</span><span class="w">    </span><span class="k">else</span>
-<span class="linenos"> 32</span><span class="w">        </span><span class="nv">RESPONSE</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">comm</span><span class="o">=</span><span class="k">)</span>
-<span class="linenos"> 33</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESPONSE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pvWebMonitor&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos"> 34</span><span class="w">            </span><span class="c1"># PID matches the pvWebMonitor profile</span>
-<span class="linenos"> 35</span><span class="w">            </span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">0</span>
-<span class="linenos"> 36</span><span class="w">        </span><span class="k">else</span>
-<span class="linenos"> 37</span><span class="w">            </span><span class="c1"># PID is not pvWebMonitor</span>
-<span class="linenos"> 38</span><span class="w">            </span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">1</span>
-<span class="linenos"> 39</span><span class="w">        </span><span class="k">fi</span>
-<span class="linenos"> 40</span><span class="w">    </span><span class="k">fi</span>
-<span class="linenos"> 41</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">$RETVAL</span>
-<span class="linenos"> 42</span><span class="o">}</span>
+<span class="linenos"> 25</span>check_pid_running<span class="o">(){</span>
+<span class="linenos"> 26</span><span class="w">    </span>get_pid
+<span class="linenos"> 27</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 28</span><span class="w">        </span><span class="c1"># no PID in the PIDFILE</span>
+<span class="linenos"> 29</span><span class="w">        </span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos"> 30</span><span class="w">    </span><span class="k">else</span>
+<span class="linenos"> 31</span><span class="w">        </span><span class="nv">RESPONSE</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">comm</span><span class="o">=</span><span class="k">)</span>
+<span class="linenos"> 32</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESPONSE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pvWebMonitor&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 33</span><span class="w">            </span><span class="c1"># PID matches the pvWebMonitor profile</span>
+<span class="linenos"> 34</span><span class="w">            </span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">0</span>
+<span class="linenos"> 35</span><span class="w">        </span><span class="k">else</span>
+<span class="linenos"> 36</span><span class="w">            </span><span class="c1"># PID is not pvWebMonitor</span>
+<span class="linenos"> 37</span><span class="w">            </span><span class="nv">RETVAL</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos"> 38</span><span class="w">        </span><span class="k">fi</span>
+<span class="linenos"> 39</span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">$RETVAL</span>
+<span class="linenos"> 41</span><span class="o">}</span>
+<span class="linenos"> 42</span>
 <span class="linenos"> 43</span>
-<span class="linenos"> 44</span>
-<span class="linenos"> 45</span>start<span class="o">(){</span>
-<span class="linenos"> 46</span><span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span>
-<span class="linenos"> 47</span><span class="w">    </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CONFIGFILE</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="linenos"> 48</span><span class="w">    </span><span class="nv">PID</span><span class="o">=</span><span class="nv">$!</span>
-<span class="linenos"> 49</span><span class="w">    </span>/bin/echo<span class="w"> </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span>
-<span class="linenos"> 50</span><span class="w">    </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] started </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="linenos"> 51</span><span class="w">    </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] started </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="linenos"> 52</span><span class="o">}</span>
+<span class="linenos"> 44</span>start<span class="o">(){</span>
+<span class="linenos"> 45</span><span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PROJECT_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONFIGFILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos"> 47</span><span class="w">    </span><span class="nv">PID</span><span class="o">=</span><span class="nv">$!</span>
+<span class="linenos"> 48</span><span class="w">    </span>/bin/echo<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 49</span><span class="w">    </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] started &quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;: &quot;</span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos"> 50</span><span class="w">    </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] started &quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;: &quot;</span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 51</span><span class="o">}</span>
+<span class="linenos"> 52</span>
 <span class="linenos"> 53</span>
-<span class="linenos"> 54</span>
-<span class="linenos"> 55</span>stop<span class="o">(){</span>
-<span class="linenos"> 56</span><span class="w">    </span>get_pid
-<span class="linenos"> 57</span><span class="w">    </span>check_pid_running
-<span class="linenos"> 58</span><span class="w">    </span>
-<span class="linenos"> 59</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$RETVAL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos"> 60</span><span class="w">        </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] not running </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="linenos"> 61</span><span class="w">    </span><span class="k">else</span>
-<span class="linenos"> 62</span><span class="w">        </span><span class="nb">kill</span><span class="w"> </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span>
-<span class="linenos"> 63</span><span class="w">        </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] stopped </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="linenos"> 64</span><span class="w">        </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] stopped </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">: </span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="linenos"> 65</span><span class="w">    </span><span class="k">fi</span>
-<span class="linenos"> 66</span><span class="w">    </span>/bin/cp<span class="w"> </span>-f<span class="w"> </span>/dev/null<span class="w"> </span><span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span>
-<span class="linenos"> 67</span><span class="o">}</span>
+<span class="linenos"> 54</span>stop<span class="o">(){</span>
+<span class="linenos"> 55</span><span class="w">    </span>get_pid
+<span class="linenos"> 56</span><span class="w">    </span>check_pid_running
+<span class="linenos"> 57</span><span class="w">    </span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">RETVAL</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 59</span><span class="w">        </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] not running &quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;: &quot;</span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos"> 60</span><span class="w">    </span><span class="k">else</span>
+<span class="linenos"> 61</span><span class="w">        </span><span class="nb">kill</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 62</span><span class="w">        </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] stopped &quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;: &quot;</span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="linenos"> 63</span><span class="w">        </span>/bin/echo<span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] stopped &quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;: &quot;</span><span class="si">${</span><span class="nv">EXECUTABLE_SCRIPT</span><span class="si">}</span><span class="s2">&quot;&quot;</span>
+<span class="linenos"> 64</span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos"> 65</span><span class="w">    </span>/bin/cp<span class="w"> </span>-f<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PIDFILE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 66</span><span class="o">}</span>
+<span class="linenos"> 67</span>
 <span class="linenos"> 68</span>
-<span class="linenos"> 69</span>
-<span class="linenos"> 70</span>restart<span class="o">(){</span>
-<span class="linenos"> 71</span><span class="w">    </span>stop
-<span class="linenos"> 72</span><span class="w">    </span>start
-<span class="linenos"> 73</span><span class="o">}</span>
+<span class="linenos"> 69</span>restart<span class="o">(){</span>
+<span class="linenos"> 70</span><span class="w">    </span>stop
+<span class="linenos"> 71</span><span class="w">    </span>start
+<span class="linenos"> 72</span><span class="o">}</span>
+<span class="linenos"> 73</span>
 <span class="linenos"> 74</span>
-<span class="linenos"> 75</span>
-<span class="linenos"> 76</span>checkup<span class="o">(){</span>
-<span class="linenos"> 77</span><span class="w">    </span><span class="c1">#=====================</span>
-<span class="linenos"> 78</span><span class="w">    </span><span class="c1"># call periodically (every 5 minutes) to see if pvWebMonitor is running</span>
-<span class="linenos"> 79</span><span class="w">    </span><span class="c1">#=====================</span>
-<span class="linenos"> 80</span><span class="w">    </span><span class="c1">#   field         allowed values</span>
-<span class="linenos"> 81</span><span class="w">    </span><span class="c1">#   -----         --------------</span>
-<span class="linenos"> 82</span><span class="w">    </span><span class="c1">#   minute        0-59  (use /5 for 5 minute interval)</span>
-<span class="linenos"> 83</span><span class="w">    </span><span class="c1">#   hour          0-23</span>
-<span class="linenos"> 84</span><span class="w">    </span><span class="c1">#   day of month  1-31</span>
-<span class="linenos"> 85</span><span class="w">    </span><span class="c1">#   month         1-12 (or names, see below)</span>
-<span class="linenos"> 86</span><span class="w">    </span><span class="c1">#   day of week   0-7 (0 or 7 is Sun, or use names)</span>
-<span class="linenos"> 87</span><span class="w">    </span><span class="c1">#</span>
-<span class="linenos"> 88</span><span class="w">    </span><span class="c1"># Re-direct output to throw away (`` &gt;&gt; /dev/null``)</span>
-<span class="linenos"> 89</span><span class="w">    </span><span class="c1"># or log to a file (`` &gt;&gt; /some/file/some/where/log/txt``).</span>
-<span class="linenos"> 90</span><span class="w">    </span><span class="c1"># */5 * * * * /tmp/pv/manage.sh checkup 2&gt;&amp;1 &gt; /dev/null</span>
+<span class="linenos"> 75</span>checkup<span class="o">(){</span>
+<span class="linenos"> 76</span><span class="w">    </span><span class="c1">#=====================</span>
+<span class="linenos"> 77</span><span class="w">    </span><span class="c1"># call periodically (every 5 minutes) to see if pvWebMonitor is running</span>
+<span class="linenos"> 78</span><span class="w">    </span><span class="c1">#=====================</span>
+<span class="linenos"> 79</span><span class="w">    </span><span class="c1">#   field         allowed values</span>
+<span class="linenos"> 80</span><span class="w">    </span><span class="c1">#   -----         --------------</span>
+<span class="linenos"> 81</span><span class="w">    </span><span class="c1">#   minute        0-59  (use /5 for 5 minute interval)</span>
+<span class="linenos"> 82</span><span class="w">    </span><span class="c1">#   hour          0-23</span>
+<span class="linenos"> 83</span><span class="w">    </span><span class="c1">#   day of month  1-31</span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="c1">#   month         1-12 (or names, see below)</span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="c1">#   day of week   0-7 (0 or 7 is Sun, or use names)</span>
+<span class="linenos"> 86</span><span class="w">    </span><span class="c1">#</span>
+<span class="linenos"> 87</span><span class="w">    </span><span class="c1"># Re-direct output to throw away (&gt;&gt; /dev/null)</span>
+<span class="linenos"> 88</span><span class="w">    </span><span class="c1"># or log to a file (&gt;&gt; /some/file/some/where/log/txt).</span>
+<span class="linenos"> 89</span><span class="w">    </span><span class="c1"># */5 * * * * /tmp/pv/manage.sh checkup 2&gt;&amp;1 &gt; /dev/null</span>
+<span class="linenos"> 90</span>
 <span class="linenos"> 91</span>
-<span class="linenos"> 92</span>
-<span class="linenos"> 93</span><span class="w">    </span>get_pid
-<span class="linenos"> 94</span><span class="w">    </span>check_pid_running
-<span class="linenos"> 95</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$RETVAL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos"> 96</span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] running fine, so it seems&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-<span class="linenos"> 97</span><span class="w">    </span><span class="k">else</span>
-<span class="linenos"> 98</span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] could not identify running process </span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">, starting new process&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span>
-<span class="linenos"> 99</span><span class="w">        </span>start
-<span class="linenos">100</span><span class="w">    </span><span class="k">fi</span>
-<span class="linenos">101</span><span class="o">}</span>
+<span class="linenos"> 92</span><span class="w">    </span>get_pid
+<span class="linenos"> 93</span><span class="w">    </span>check_pid_running
+<span class="linenos"> 94</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$RETVAL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 95</span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] running fine, so it seems&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<span class="linenos"> 96</span><span class="w">    </span><span class="k">else</span>
+<span class="linenos"> 97</span><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# [</span><span class="nv">$0</span><span class="s2"> </span><span class="k">$(</span>/bin/date<span class="k">)</span><span class="s2">] could not identify running process &quot;</span><span class="si">${</span><span class="nv">PID</span><span class="si">}</span><span class="s2">&quot;, starting new process&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos"> 98</span><span class="w">        </span>start
+<span class="linenos"> 99</span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos">100</span><span class="o">}</span>
+<span class="linenos">101</span>
 <span class="linenos">102</span>
-<span class="linenos">103</span>
-<span class="linenos">104</span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<span class="linenos">105</span><span class="w">  </span>start<span class="o">)</span><span class="w"> </span>start<span class="w"> </span><span class="p">;;</span>
-<span class="linenos">106</span><span class="w">  </span>stop<span class="o">)</span><span class="w"> </span>stop<span class="w"> </span><span class="p">;;</span>
-<span class="linenos">107</span><span class="w">  </span>restart<span class="o">)</span><span class="w"> </span>restart<span class="w"> </span><span class="p">;;</span>
-<span class="linenos">108</span><span class="w">  </span>checkup<span class="o">)</span><span class="w"> </span>checkup<span class="w"> </span><span class="p">;;</span>
-<span class="linenos">109</span><span class="w">  </span>*<span class="o">)</span>
-<span class="linenos">110</span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>$<span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|checkup}&quot;</span>
-<span class="linenos">111</span><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<span class="linenos">112</span><span class="k">esac</span>
+<span class="linenos">103</span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos">104</span><span class="w">  </span>start<span class="o">)</span><span class="w"> </span>start<span class="w"> </span><span class="p">;;</span>
+<span class="linenos">105</span><span class="w">  </span>stop<span class="o">)</span><span class="w"> </span>stop<span class="w"> </span><span class="p">;;</span>
+<span class="linenos">106</span><span class="w">  </span>restart<span class="o">)</span><span class="w"> </span>restart<span class="w"> </span><span class="p">;;</span>
+<span class="linenos">107</span><span class="w">  </span>checkup<span class="o">)</span><span class="w"> </span>checkup<span class="w"> </span><span class="p">;;</span>
+<span class="linenos">108</span><span class="w">  </span>*<span class="o">)</span>
+<span class="linenos">109</span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>$<span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|checkup}&quot;</span>
+<span class="linenos">110</span><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="linenos">111</span><span class="k">esac</span>
 </pre></div>
 </div>
 </div>

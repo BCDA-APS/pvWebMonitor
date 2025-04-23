@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=5aa71c57"></script>
+    <script src="../../_static/documentation_options.js?v=9fb95f03"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pvWebMonitor/pvwatch';</script>
@@ -469,7 +469,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># number of monitor events received</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raw_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># unformatted value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">record_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># EPICS record type</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span> <span class="o">=</span> <span class="n">ophyd</span><span class="o">.</span><span class="n">EpicsSignalRO</span><span class="p">(</span><span class="n">pvname</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">mnemonic</span><span class="p">)</span>  <span class="c1"># EPICS PV</span>
+
+        <span class="c1"># EPICS PV</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal_ro</span> <span class="o">=</span> <span class="n">ophyd</span><span class="o">.</span><span class="n">EpicsSignalRO</span><span class="p">(</span><span class="n">pvname</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">mnemonic</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="n">as_string</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># client time last monitor was received</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># engineering units</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># formatted value</span>
@@ -620,7 +623,8 @@
             <span class="k">if</span> <span class="n">t_now</span> <span class="o">&gt;=</span> <span class="n">log_deadline</span><span class="p">:</span>
                 <span class="n">log_deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="n">log_interval</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
-                    <span class="s2">&quot;checkpoint, </span><span class="si">%d</span><span class="s2"> EPICS monitor events received&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">monitor_counter</span>
+                    <span class="s2">&quot;checkpoint, </span><span class="si">%d</span><span class="s2"> EPICS monitor events received&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">monitor_counter</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">monitor_counter</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># reset</span>
 
@@ -645,14 +649,14 @@
 
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;.//EPICS_PV&quot;</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_ignore_&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span><span class="p">:</span>
-                <span class="n">mne</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mne&quot;</span><span class="p">)</span>
-                <span class="n">pv</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PV&quot;</span><span class="p">)</span>
-                <span class="n">desc</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">)</span>
-                <span class="n">fmt</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;display_format&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># default format</span>
-                <span class="n">as_string</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;as_string&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># default format</span>
-                <span class="c1"># :see: http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">add_pv</span><span class="p">(</span><span class="n">mne</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">as_string</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_pv</span><span class="p">(</span>
+                        <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mne&quot;</span><span class="p">),</span>
+                        <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PV&quot;</span><span class="p">),</span>
+                        <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">),</span>
+                        <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;display_format&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">),</span>
+                        <span class="n">key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;as_string&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;TRUE&quot;</span><span class="p">,</span>
+                    <span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39;: problem connecting &#39;</span><span class="si">%s</span><span class="s2">&#39;: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
@@ -730,7 +734,8 @@
 
         <span class="n">xmlText</span> <span class="o">=</span> <span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; ?&gt;&#39;</span>
         <span class="n">pi_xsl</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">ProcessingInstruction</span><span class="p">(</span>
-            <span class="s2">&quot;xml-stylesheet&quot;</span><span class="p">,</span> <span class="s1">&#39;type=&quot;text/xsl&quot; href=&quot;pvlist.xsl&quot;&#39;</span>
+            <span class="s2">&quot;xml-stylesheet&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;type=&quot;text/xsl&quot; href=&quot;pvlist.xsl&quot;&#39;</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">xmlText</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">utils</span><span class="o">.</span><span class="n">etree_as_str</span><span class="p">(</span><span class="n">pi_xsl</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">utils</span><span class="o">.</span><span class="n">etree_as_str</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 

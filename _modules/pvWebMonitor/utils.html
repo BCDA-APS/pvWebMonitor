@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=5aa71c57"></script>
+    <script src="../../_static/documentation_options.js?v=9fb95f03"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pvWebMonitor/utils';</script>
@@ -356,10 +356,11 @@
             <span class="c1"># not a new file, no need to copy</span>
             <span class="k">return</span>
 
-        <span class="n">local_file_cksum</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">local_file</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-        <span class="n">web_site_file_cksum</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">web_site_file</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">local_file_cksum</span> <span class="o">==</span> <span class="n">web_site_file_cksum</span><span class="p">:</span>
-            <span class="c1"># the same file, no need to copy</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">cksum</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">cksum</span><span class="p">(</span><span class="n">local_file</span><span class="p">)</span> <span class="o">==</span> <span class="n">cksum</span><span class="p">(</span><span class="n">web_site_file</span><span class="p">):</span>
+            <span class="c1"># Identical, no need to copy.</span>
             <span class="k">return</span>
 
     <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="n">web_site_file</span><span class="p">)</span></div>

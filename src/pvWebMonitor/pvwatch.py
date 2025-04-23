@@ -129,7 +129,10 @@ class PvEntry:
         self.counter: int = 0  # number of monitor events received
         self.raw_value: str = None  # unformatted value
         self.record_type: str = None  # EPICS record type
-        self.signal_ro = ophyd.EpicsSignalRO(pvname, name=mnemonic)  # EPICS PV
+
+        # EPICS PV
+        self.signal_ro = ophyd.EpicsSignalRO(pvname, name=mnemonic, string=as_string)
+
         self.timestamp: object = None  # client time last monitor was received
         self.units: str = None  # engineering units
         self.value: str = None  # formatted value
@@ -266,7 +269,8 @@ class PvWatch(object):
             if t_now >= log_deadline:
                 log_deadline = time.time() + log_interval
                 logger.debug(
-                    "checkpoint, %d EPICS monitor events received", self.monitor_counter
+                    "checkpoint, %d EPICS monitor events received",
+                    self.monitor_counter,
                 )
                 self.monitor_counter = 0  # reset
 
@@ -288,14 +292,14 @@ class PvWatch(object):
 
         for key in tree.findall(".//EPICS_PV"):
             if key.get("_ignore_", "false").lower() == "false":
-                mne = key.get("mne")
-                pv = key.get("PV")
-                desc = key.get("description")
-                fmt = key.get("display_format", "%s")  # default format
-                as_string = key.get("as_string", False)  # default format
-                # :see: http://cars9.uchicago.edu/software/python/pyepics3/pv.html?highlight=as_string#pv.get
                 try:
-                    self.add_pv(mne, pv, desc, fmt, as_string)
+                    self.add_pv(
+                        key.get("mne"),
+                        key.get("PV"),
+                        key.get("description"),
+                        key.get("display_format", "%s"),
+                        key.get("as_string", "false").upper() == "TRUE",
+                    )
                 except Exception as exc:
                     logger.warning(
                         "'%s': problem connecting '%s': %s",
@@ -364,7 +368,8 @@ class PvWatch(object):
 
         xmlText = '<?xml version="1.0" ?>'
         pi_xsl = etree.ProcessingInstruction(
-            "xml-stylesheet", 'type="text/xsl" href="pvlist.xsl"'
+            "xml-stylesheet",
+            'type="text/xsl" href="pvlist.xsl"',
         )
         xmlText += f"\n{utils.etree_as_str(pi_xsl)}" f"\n{utils.etree_as_str(root)}"
 

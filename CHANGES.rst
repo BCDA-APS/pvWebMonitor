@@ -31,6 +31,8 @@ describe the future plans.
    Fixes
    -----
 
+   * Exception from report() blocked posting of new PV values.
+   * Handling of XML 'as_string' attribute was updated.
    * 'pvlist' page was not published.
 
     Maintenance
